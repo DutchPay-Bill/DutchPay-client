@@ -1,0 +1,11 @@
+$yellow: #E4FF63;
+$black: #131313;
+
+.button {
+  max-width: 300px;
+  height: 47px;
+  border-radius: 16px !important;
+  background-color: $yellow !important;
+  color: $black !important;
+  // Add any other styles you want here
+}
