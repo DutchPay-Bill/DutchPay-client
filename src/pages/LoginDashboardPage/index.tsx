@@ -1,6 +1,6 @@
 import { LoginMenu } from "../../containers/LoginMenu";
 
-export function LoginDashboardPage() {
+export default function LoginDashboardPage() {
   return (
     <>
       <LoginMenu />
