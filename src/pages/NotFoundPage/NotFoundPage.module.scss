@@ -1,0 +1,50 @@
+.pageNotFound {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  ;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.932);
+
+  .text {
+    font-size: 50px;
+  }
+
+  .text2 {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    gap: 10px;
+  }
+
+  .countdown {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .pageNotFound {
+    text-align: left;
+
+    .text {
+      font-size: 24px;
+    }
+
+    .text2 {
+      font-size: 22px;
+    }
+
+    .countdown {
+      font-size: 16px;
+    }
+  }
+
+  .astronaut {
+    margin-bottom: 30px;
+  }
+
+
+}
