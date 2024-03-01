@@ -1,4 +1,4 @@
-@import '../../assets//images/background/background.scss';
+// @import '../../assets//images/background/background.scss';
 $backgroundColor : #131313ee;
 $buttonColor : #1E1E1E;
 $textColor : #DADADA;
@@ -11,7 +11,7 @@ $textColor : #DADADA;
   height: 100vh;
   background-color: $backgroundColor;
 
-  .logo {}
+  // .logo {}
 
   .phoneNumberSection {
     display: flex;
