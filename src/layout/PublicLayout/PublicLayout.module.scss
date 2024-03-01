@@ -1,0 +1,63 @@
+$backgroundColor : #1E1E1E;
+$black : #131313;
+$white : #DADADA;
+$yellow : #E4FF63;
+
+.container { //gedein width
+    padding: 8px;
+    margin: 0px auto 16px;
+    height: 50px;
+    max-width: calc(100% - 40px);
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: $backgroundColor;
+    border-radius: 20px;
+}
+
+.iconBlack {
+    color: $black;
+}
+
+.iconWhite {
+    color: $white;
+}
+
+.textButtonWhite {
+    margin: 0;
+    color: $white;
+}
+
+.homeButton {
+    height: 30px;
+    width: 40vw;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $yellow;
+    border-radius: 10px;
+}
+
+.otherButton {
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $backgroundColor;
+}
+
+// @media screen and (min-width: 600px) {
+//     .container {
+//         max-width: calc(100% - 40px);
+//         min-width: none;
+//     }
+// }
