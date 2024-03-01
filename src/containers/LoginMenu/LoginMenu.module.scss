@@ -1,0 +1,78 @@
+@import '../../assets//images/background/background.scss';
+$backgroundColor : #131313ee;
+$buttonColor : #1E1E1E;
+$textColor : #DADADA;
+
+.loginMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $backgroundColor;
+
+  .logo {}
+
+  .phoneNumberSection {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+
+    .phoneNumberSelect {
+      border-radius: 16px;
+    }
+
+    .phoneNumberInput {
+      border-radius: 16px !important;
+    }
+
+    .loginButton {
+      margin-top: 15px;
+    }
+  }
+
+  .divider {
+    margin: 15px;
+  }
+
+  .socialLoginSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 330px;
+
+    .socialLoginButton {
+      display: flex;
+      align-items: center;
+      background-color: $buttonColor;
+      height: 45px;
+      width: 100%;
+      border-radius: 16px;
+      margin-top: 10px;
+      color: $textColor;
+
+      .icon {
+        width: 20px; // Adjust based on your design
+        height: auto;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .text {
+    margin-top: 50px;
+    color: $textColor;
+
+    .signInLink {
+      margin-top: 20px;
+      text-decoration: none;
+      color: $textColor;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
