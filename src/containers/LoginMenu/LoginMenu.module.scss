@@ -11,19 +11,38 @@ $textColor : #DADADA;
   height: 100vh;
   background-color: $backgroundColor;
 
-  // .logo {}
+  .logo {
+    max-width: 252px;
+    width: 100%;
+    height: auto;
+  }
 
   .phoneNumberSection {
     display: flex;
     align-items: center;
     margin-top: 50px;
+    max-width: 330px;
+    width: 100%;
 
     .phoneNumberSelect {
+      background-color: $buttonColor;
+      max-width: 90px;
+      width: 100%;
+      height: 42px;
       border-radius: 16px;
+      margin-right: 7px;
+      padding-left: 10px;
+      color: $textColor;
     }
 
     .phoneNumberInput {
-      border-radius: 16px !important;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 230px;
+      height: 42px;
+      background-color: $buttonColor;
+      padding-left: 20px;
+      color: $textColor;
     }
 
     .loginButton {
@@ -32,7 +51,21 @@ $textColor : #DADADA;
   }
 
   .divider {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    max-width: 320px;
     margin: 15px;
+  }
+
+  .divider::before,
+  .divider::after {
+    content: "";
+    height: 1px;
+    width: 100vw;
+    max-width: 135px;
+    background-color: $textColor;
+    display: block;
   }
 
   .socialLoginSection {
@@ -51,6 +84,8 @@ $textColor : #DADADA;
       border-radius: 16px;
       margin-top: 10px;
       color: $textColor;
+      text-transform: none;
+      font-size: 12px;
 
       .icon {
         width: 20px; // Adjust based on your design
@@ -63,11 +98,13 @@ $textColor : #DADADA;
   .text {
     margin-top: 50px;
     color: $textColor;
+    font-size: 12px;
 
     .signInLink {
       margin-top: 20px;
       text-decoration: none;
       color: $textColor;
+      font-weight: bold;
       cursor: pointer;
 
       &:hover {
