@@ -1,10 +1,10 @@
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Button, Divider, Input, MenuItem, Select, Typography } from "@mui/material";
-import styles from './LoginMenu.module.scss';
-import { ButtonLogin } from "../../components";
 import logo from '../../assets/images/app-loading/logo-4.png';
 import googleLogo from '../../assets/images/google.svg';
 import appleLogo from '../../assets/images/apple.svg';
+import styles from './LoginMenu.module.scss';
+import { ButtonCustom } from '../../components';
 
 export default function LoginMenu() {
   const dummyCodes = [
@@ -31,7 +31,7 @@ export default function LoginMenu() {
           defaultValue="8121605XXXX"
         />
       </Box>
-      <ButtonLogin buttonText="Log in" />
+      <ButtonCustom buttonText="Log in" />
 
       <Divider className={styles.divider}>or</Divider>
 

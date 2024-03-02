@@ -9,7 +9,9 @@ $textColor : #DADADA;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: $backgroundColor;
+  background-image: url(../../assets/images/app-background.jpg);
+  background-size: cover;
+  background-position: center;
 
   .logo {
     max-width: 252px;
@@ -31,7 +33,7 @@ $textColor : #DADADA;
       height: 42px;
       border-radius: 16px;
       margin-right: 7px;
-      padding-left: 10px;
+      padding-left: 4px;
       color: $textColor;
     }
 
@@ -110,6 +112,18 @@ $textColor : #DADADA;
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+}
+
+@media screen and (max-width:374px) {
+  .loginMenu {
+    padding: 0px 20px;
+
+    .divider::before,
+    .divider::after {
+      width: 100vw;
+      max-width: 100px;
     }
   }
 }
