@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
-import { LoadingBackground1, LoadingBackground2, LoadingBackground3 } from '../../components';
+import { LoadingBackground1, LoadingBackground2, LoadingBackground3, LoadingBackground4 } from '../../components';
 import LoginMenu from '../LoginMenu';
 import './AppLoading.scss';
 
@@ -8,6 +8,7 @@ const loadingComponents = [
   <LoadingBackground1 />,
   <LoadingBackground2 />,
   <LoadingBackground3 />,
+  <LoadingBackground4 />,
   <LoginMenu />
 ];
 
