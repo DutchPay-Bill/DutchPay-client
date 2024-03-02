@@ -1,0 +1,113 @@
+$textColor : #131313ee;
+$buttonColor : #1E1E1E;
+$backgroundColor : #f1f1f1;
+$white : #fff;
+
+.loginMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $backgroundColor;
+
+  .personalInfoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    height: 60vh;
+    max-width: 330px;
+    width: 100%;
+
+    .headingSmall {
+        font-size: 17px;
+        align-self: flex-start ;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    .headingSmall:nth-child(even) {
+        font-size: 17px;
+        align-self: flex-start ;
+        font-weight: 400;
+        margin-bottom: 70px;
+    }
+
+    .headingBig {
+        font-size: 30px;
+        align-self: flex-start;
+        font-weight: bold;
+    }
+
+    .headingBig:nth-child(odd) {
+        font-size: 30px;
+        align-self: flex-start;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+
+    .inputLabel {
+        align-self: flex-start;
+        font-size: 12px;
+        font-weight: 400;
+        color: $textColor;
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+
+    .inputLabel2 {
+        padding: 0;
+    }
+
+    .personalInfoInput {
+        width: 100%;
+        max-width: 400px;
+        background-color: $white;
+      }
+
+    .personalInfoInput:nth-child(odd) {
+        margin-bottom: 40px;
+        width: 100%;
+        max-width: 400px;
+        background-color: $white;
+      }
+
+    .personalInfoInput2 {
+        border-radius: 8px;
+        padding: 8px 20px;
+        background-color: $white;
+        color: $textColor;
+      }
+
+  }
+
+  .phoneNumberSection {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    max-width: 330px;
+    width: 100%;
+
+    .phoneNumberSelect {
+      background-color: $buttonColor;
+      max-width: 90px;
+      width: 100%;
+      height: 42px;
+      border-radius: 16px;
+      margin-right: 7px;
+      padding-left: 10px;
+      color: $white;
+    }
+
+    .phoneNumberInput {
+      border-radius: 16px;
+      width: 100%;
+      max-width: 230px;
+      height: 42px;
+      background-color: $buttonColor;
+      padding-left: 20px;
+      color: $white;
+    }
+    }
+}
