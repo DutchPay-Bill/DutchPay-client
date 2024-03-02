@@ -1,0 +1,17 @@
+.root {
+    background-color: #131313;
+  }
+  
+.title {
+    flex-grow: 1;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.toolbar {
+  display: flex ;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
+  
+}

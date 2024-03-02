@@ -5,6 +5,7 @@ import {
   RegisterDashboardPage,
   NotFoundPage,
 } from "./pages";
+import MyAccount from "./pages/MyAccount";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         />
         <Route path="/login" element={<LoginDashBoardPage />} />
         <Route path="/register" element={<RegisterDashboardPage />} />
+        <Route path="/MyAccount" element={<MyAccount />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
