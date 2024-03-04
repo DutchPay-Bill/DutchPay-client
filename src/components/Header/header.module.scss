@@ -1,30 +1,33 @@
-:root {
-  --background-color: #131313;
-  --black: #131313;
-  --white: #DADADA;
-  --yellow: #E4FF63;
-}
+:root { --background-color: #1E1E1E; 
+  --black: #131313; 
+  --white: #DADADA; 
+  --yellow: #E4FF63; }
 
-.root {
-  background-color: var(--background-color);
-  border-radius: 16px !important;
-  margin: 10px !important;
-}
+.root { 
+  background-color: var(--background-color); 
+  border-radius: 16px !important; 
+  margin-left: 290px; 
+  margin-right: 290px; 
+  margin-bottom: auto; 
+  margin-top: 20px; }
 
-.title {
-  flex-grow: 1;
-  color: #fff;
-  padding-left: 10px;
-}
+.title { 
+  flex-grow: 1; 
+  color: #fff; 
+  padding-left: 10px; }
 
-.backbutton {
-  color: #fff;
-  margin-top: 6px;
-}
+.backbutton { 
+color: #fff; 
+margin-top: 6px; }
 
-.toolbar {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 10px;
+.toolbar { 
+  display: flex; 
+  justify-content: flex-start; 
+  align-items: center; 
+  margin: 10px; }
+
+@media screen and (max-width: 768px) { 
+.root { 
+  margin-left: 20px; 
+  margin-right: 20px; } 
 }
