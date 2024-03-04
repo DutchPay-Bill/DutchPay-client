@@ -1,26 +1,39 @@
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Divider, MenuItem, Select, TextField, Typography } from "@mui/material";
-import styles from './LoginMenu.module.scss';
-import { ButtonLogin } from "../../components";
+import { Box, Button, Divider, Input, MenuItem, Select, Typography } from "@mui/material";
 import logo from '../../assets/images/app-loading/logo-4.png';
 import googleLogo from '../../assets/images/google.svg';
 import appleLogo from '../../assets/images/apple.svg';
+import styles from './LoginMenu.module.scss';
+import { ButtonCustom } from '../../components';
 
-export function LoginMenu() {
+export default function LoginMenu() {
+  const dummyCodes = [
+    { value: '+62' },
+    { value: '+1' },
+    { value: '+44' },
+    { value: '+81' },
+  ];
   return (
     <Box className={styles.loginMenu}>
       <img className={styles.logo} src={logo} alt="Dutch Pay Logo" />
 
       <Box className={styles.phoneNumberSection}>
-        <Select defaultValue="+62" className={styles.phoneNumberSelect}>
-          <MenuItem value="+62">+62</MenuItem>
-          <MenuItem value="+23">+23</MenuItem>
+        <Select defaultValue={'+62'} className={styles.phoneNumberSelect}>
+          {dummyCodes.map((country) => (
+            <MenuItem key={country.value} value={country.value}>
+              {country.value}
+            </MenuItem>
+          ))}
         </Select>
-        <TextField className={styles.phoneNumberInput} />
-      </Box>
-      <ButtonLogin buttonText="Login" />
 
-      <Divider className={styles.divider}> or </Divider>
+        <Input
+          className={styles.phoneNumberInput}
+          defaultValue="8121605XXXX"
+        />
+      </Box>
+      <ButtonCustom buttonText="Log in" />
+
+      <Divider className={styles.divider}>or</Divider>
 
       <Box className={styles.socialLoginSection}>
         <Button className={styles.socialLoginButton}>
@@ -32,7 +45,7 @@ export function LoginMenu() {
       </Box>
 
       <Typography className={styles.text}>
-        Not registered yet? <RouterLink to="/register" className={styles.signInLink}>Sign in</RouterLink>
+        Not registered yet? <RouterLink to="/register" className={styles.signInLink}>Sign up</RouterLink>
       </Typography>
     </Box>
   );
