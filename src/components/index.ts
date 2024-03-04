@@ -1,1 +1,5 @@
-export { default as ButtonLogin } from './Button'
+export { default as ButtonCustom } from './Button'
+export { default as LoadingBackground1 } from './Loading/Background1'
+export { default as LoadingBackground2 } from './Loading/Background2'
+export { default as LoadingBackground3 } from './Loading/Background3'
+export { default as LoadingBackground4 } from './Loading/Background4'

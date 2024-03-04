@@ -1,0 +1,13 @@
+.fade {
+  transition: opacity 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  background-color: transparent; // Set the background color when fading in
+}
+
+.fade-out {
+  opacity: 0;
+  background-color: #ffffff; // Set the background color when fading out
+}

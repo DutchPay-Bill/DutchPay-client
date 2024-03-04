@@ -9,7 +9,7 @@ interface ButtonLoginProps {
   to?: string; // Route to navigate to
 }
 
-const ButtonLogin: React.FC<ButtonLoginProps> = ({ buttonText, to }) => {
+const ButtonCustom: React.FC<ButtonLoginProps> = ({ buttonText, to }) => {
   return (
     <Button
       className={styles.button}
@@ -23,4 +23,4 @@ const ButtonLogin: React.FC<ButtonLoginProps> = ({ buttonText, to }) => {
   );
 };
 
-export default ButtonLogin;
+export default ButtonCustom;

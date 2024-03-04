@@ -1,0 +1,30 @@
+.background {
+  height: 100vh;
+  background-image: url(/src/assets/images/app-loading/loading-bg-4.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .logo {
+    max-width: 252px;
+    width: 100%;
+  }
+
+  .textContainer {
+    text-align: center;
+    margin-top: 40px;
+
+    .text1 {
+      color: white;
+      font-size: 27px;
+    }
+
+    .text2 {
+      color: white;
+      font-size: 16px;
+    }
+  }
+}
