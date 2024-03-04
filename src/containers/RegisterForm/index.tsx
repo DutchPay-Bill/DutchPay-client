@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Box, Toolbar, Button, Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
@@ -34,12 +35,25 @@ export default function RegisterForm() {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ pt: 10, position: "fixed" }}>
-        <Button>
-          <ArrowBackIosNewIcon />
-        </Button>
-      </Toolbar>
-      <Box className={styles.loginMenu}>
+      <Box className={styles.registerMenu}>
+        <Box className={styles.toolbar}>
+          {activeStep === 0 && (
+            <RouterLink to="/login">
+              <ArrowBackIosNewIcon className={styles.backIcon} />
+            </RouterLink>
+          )}
+          {activeStep !== 0 && (
+            <IconButton
+              onClick={handleBack}
+              className={styles.arrowContainer}
+              disableTouchRipple
+              disableFocusRipple
+              disableRipple
+            >
+              <ArrowBackIosNewIcon className={styles.backIcon} />
+            </IconButton>
+          )}
+        </Box>
         {activeStep === steps.length ? (
           <React.Fragment>
             {/* ini belum di set marginnya*/}
@@ -56,19 +70,25 @@ export default function RegisterForm() {
         ) : (
           <React.Fragment>
             {getStepContent(activeStep)}
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              {activeStep !== 0 && (
-                <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                  Back
+            <Box className={styles.buttonContainer}>
+              {activeStep !== 2 && (
+                <Button
+                  className={styles.nextButton}
+                  variant="contained"
+                  onClick={handleNext}
+                >
+                  {activeStep === 0 ? "Next" : "Send OTP"}
                 </Button>
               )}
-              <Button
-                variant="contained"
-                onClick={handleNext}
-                sx={{ mt: 3, ml: 1 }}
-              >
-                {activeStep === steps.length - 1 ? "Place order" : "Next"}
-              </Button>
+              {activeStep === 2 && (
+                <Button
+                  className={styles.verifyButton}
+                  variant="contained"
+                  onClick={handleNext}
+                >
+                  Verify OTP
+                </Button>
+              )}
             </Box>
           </React.Fragment>
         )}
