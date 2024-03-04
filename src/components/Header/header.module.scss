@@ -1,17 +1,30 @@
+:root {
+  --background-color: #131313;
+  --black: #131313;
+  --white: #DADADA;
+  --yellow: #E4FF63;
+}
+
 .root {
-    background-color: #131313;
-  }
-  
+  background-color: var(--background-color);
+  border-radius: 16px !important;
+  margin: 10px !important;
+}
+
 .title {
-    flex-grow: 1;
-    color: #fff;
-    padding-left: 10px;
+  flex-grow: 1;
+  color: #fff;
+  padding-left: 10px;
+}
+
+.backbutton {
+  color: #fff;
+  margin-top: 6px;
 }
 
 .toolbar {
-  display: flex ;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: 10px;
-  
 }

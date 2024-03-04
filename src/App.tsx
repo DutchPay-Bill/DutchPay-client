@@ -22,7 +22,13 @@ const App = () => {
         />
         <Route path="/login" element={<LoginDashBoardPage />} />
         <Route path="/register" element={<RegisterDashboardPage />} />
-        <Route path="/MyAccount" element={<MyAccount />} />
+        <Route path="/myaccount" element={
+              <>
+                <MyAccount/>
+                <PublicLayout/>
+              </>
+            }
+          />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
