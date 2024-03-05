@@ -8,7 +8,7 @@ const PublicLayout = () => {
       <Button>
         <Box className={styles.homeButton}>
           <Home className={styles.iconBlack} fontSize="small" />
-          <h6 className={styles.iconBlack}>Home</h6>
+          <h6 className={styles.textHome}>Home</h6>
         </Box>
       </Button>
       <Button>

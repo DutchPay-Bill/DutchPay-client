@@ -1,2 +1,2 @@
-export { default as LoginForm } from "./LoginForm";
+export { default as LoginMenu } from "./AppLoading";
 export { default as RegisterForm } from "./RegisterForm";
