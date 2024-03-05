@@ -7,7 +7,8 @@ $yellow : #E4FF63;
     padding: 8px;
     margin: 0px auto 16px;
     height: 50px;
-    max-width: calc(100% - 40px);
+    max-width: 330px;
+    width: 100%;
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
@@ -21,6 +22,11 @@ $yellow : #E4FF63;
 
 .iconBlack {
     color: $black;
+}
+
+.textHome {
+    color: $black;
+    margin-left: 1rem;
 }
 
 .iconWhite {
@@ -54,10 +60,3 @@ $yellow : #E4FF63;
     align-items: center;
     background: $backgroundColor;
 }
-
-// @media screen and (min-width: 600px) {
-//     .container {
-//         max-width: calc(100% - 40px);
-//         min-width: none;
-//     }
-// }
