@@ -2,7 +2,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./themes/CustomTheme";
 import PublicLayout from "./layout/PublicLayout";
-import { LoginDashBoardPage, RegisterDashboardPage, NotFoundPage } from "./pages";
+import {
+  LoginDashBoardPage,
+  RegisterDashboardPage,
+  NotFoundPage,
+  ChangeProfilePage,
+} from "./pages";
 
 const App = () => {
   return (
@@ -22,6 +27,7 @@ const App = () => {
           <Route path="/register" element={<RegisterDashboardPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/change-profile" element={<ChangeProfilePage />} />
         </Routes>
       </Router>
     </ThemeProvider>
