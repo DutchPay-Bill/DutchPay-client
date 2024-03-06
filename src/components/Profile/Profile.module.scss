@@ -1,0 +1,28 @@
+.profileInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  flex-grow: 1; 
+  margin-left: 16px;
+}
+
+.profileName {
+  color: #ffffff;
+}
+
+.profileEmail {
+  color: #ffffff;
+  margin-top: 5px; 
+}
+
+.profilePhone {
+  display: flex;
+  align-items: center;
+  margin-top: 8px; 
+  color: #ffffff;
+}
+
+.editButton { 
+  color: #fff; 
+  margin-top: 6px; 
+  }
