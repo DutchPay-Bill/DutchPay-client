@@ -38,8 +38,7 @@ export default function AppLoading() {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       return () => clearInterval(intervalId);
     }, []);
-    
-  
+
   const renderCurrentComponent = () => {
     return (
       <div className={`fade ${fadeIn ? "fade-in" : "fade-out"}`}>

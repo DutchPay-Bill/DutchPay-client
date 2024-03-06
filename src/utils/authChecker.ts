@@ -18,6 +18,8 @@ const useCookiesChecker = () => {
     setTimeout(() => {
       if (!storedAccessToken) {
         navigate('/login');
+      }else {
+        navigate('/dashboard');
       }
     }, 5200)
   }, [navigate]);
