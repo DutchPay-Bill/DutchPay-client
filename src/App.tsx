@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./themes/CustomTheme";
-// import PublicLayout from "./layout/PublicLayout";
-import { LoginDashBoardPage, RegisterDashboardPage, NotFoundPage } from "./pages";
+import { LoginDashBoardPage, RegisterDashboardPage, NotFoundPage, MyAccount } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
+import PublicLayout from "./layout/PublicLayout";
 
 const App = () => {
   return (
@@ -22,6 +22,7 @@ const App = () => {
             />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
+            <Route path="/myaccount" element={<><MyAccount/><PublicLayout/></>}/>
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
