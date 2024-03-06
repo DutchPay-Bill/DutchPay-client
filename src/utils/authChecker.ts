@@ -11,13 +11,15 @@ const useCookiesChecker = () => {
 
     const storedAccessToken = document.cookie
       .split('; ')
-      .find((row) => row.startsWith('accessToken='))
+      .find((row) => row.startsWith('access_token='))
       ?.split('=')[1];
 
     setAccessToken(storedAccessToken || null);
     setTimeout(() => {
       if (!storedAccessToken) {
         navigate('/login');
+      }else {
+        navigate('/dashboard');
       }
     }, 5200)
   }, [navigate]);
