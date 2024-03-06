@@ -1,13 +1,18 @@
-$backgroundColor : #131313ee;
+$backgroundColor : #ffff;
 
 .root{
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
 }
 
-.profile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(30vh - 5rem);
-  color: #FFFF;
-}
+
+  .header{
+    
+  }
+
+  .profile {
+    margin-top: 5px;
+  }

@@ -9,11 +9,10 @@ const Header: React.FC = () => {
     <Box component="header" className={styles.root}> 
       <Box component="nav" className={styles.toolbar}> 
         <RouterLink to="#" className={styles.backbutton}><ArrowBackIosIcon/> </RouterLink>
-
-        <Typography variant="h6" className={styles.title}>
-          My Account
-        </Typography>
       </Box>
+      <Typography variant="h6" className={styles.title}>
+          My Account
+      </Typography>
     </Box>
   );
 };

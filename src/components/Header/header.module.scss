@@ -7,16 +7,23 @@
 .root { 
   background-color: var(--background-color); 
   border-radius: 16px !important; 
-  margin-left: 295px; 
-  margin-right: 295px; 
-  margin-bottom: auto; 
-  margin-top: 10px; 
+  padding: 8px;
+  margin: 5px auto 16px;
+  height: 50px;
+  max-width: 330px;
+  width: 100%;
+  position: absolute;
+  top: 0; 
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .title { 
   flex-grow: 1; 
-  color: #fff; 
-  padding-left: 10px; 
+  color: #fff;  
 }
 
 .backbutton { 

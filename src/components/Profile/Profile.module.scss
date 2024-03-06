@@ -1,28 +1,38 @@
-.profileInfo {
+.profile {
   display: flex;
   align-items: center;
-  justify-content: space-between; 
-  flex-grow: 1; 
-  margin-left: 16px;
 }
+
+.profileInfo {
+  display: flex;
+  flex-grow: 1;
+  margin-left: 5px;
+  width: 100%; 
+}
+
+.profilePicture {
+  flex-shrink: 0; 
+}
+
 
 .profileName {
   color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 
 .profileEmail {
   color: #ffffff;
-  margin-top: 5px; 
+
 }
 
 .profilePhone {
   display: flex;
-  align-items: center;
   margin-top: 8px; 
-  color: #ffffff;
+  color: #f0eeee;
 }
 
 .editButton { 
-  color: #fff; 
+  color: #f0eeee; 
   margin-top: 6px; 
   }

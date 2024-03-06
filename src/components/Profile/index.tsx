@@ -18,31 +18,31 @@ interface ProfileProps {
 
 const Profile: React.FC<ProfileProps> = ({ userProfile }) => {
   return (
-    <Box className={styles.profile}>
+    <Box>
       {userProfile ? (
-        <Grid container spacing={3}>
+        <Grid container spacing={1}>
             <Grid item>
-              <Avatar alt={userProfile.name} src={userProfile.pictureUrl} className={styles.profilePicture} />
+              <Avatar sx={{ width: 56, height: 56 }} alt={userProfile.name} src={userProfile.pictureUrl} className={styles.profilePicture} />
             </Grid>
             <Grid item>
               <Box className={styles.profileInfo}>
-                <Typography className={styles.profileName}>
+                <Typography className={styles.profileName} color={'white'}>
                   {userProfile.name}
                 </Typography>
                 <Grid>
-                    <Typography className={styles.profileEmail} >
+                    <Typography className={styles.profileEmail} color={'white'} >
                       {userProfile.email}
                     </Typography>
                 </Grid>
               </Box>
               <Box className={styles.profilePhone}>
-                <PhoneAndroidIcon />
-                <Typography className={styles.profilePhone}>{userProfile.phone}</Typography>
+                <PhoneAndroidIcon/>
+                <Typography color={'white'} className={styles.profilePhone}>{userProfile.phone} </Typography>
               </Box>
               </Grid>
-          <Grid item xs>
-          <RouterLink to="#" className={styles.editButton}><BorderColorIcon/></RouterLink>
-          </Grid>
+            <Grid item xs>
+              <RouterLink to="#" className={styles.editButton}><BorderColorIcon/></RouterLink>
+            </Grid>
         </Grid>
       ) : (
         <Typography>Loading...</Typography>
