@@ -5,8 +5,8 @@ $white : #fff;
 $yellow : #E4FF63;
 
 .toolbar {
-  position: fixed;
-  top: 10vh;
+  margin-bottom: 1vh;
+  padding-bottom: 1vh;
   width: 100%;
   max-width: 330px;
 }
@@ -19,7 +19,8 @@ $yellow : #E4FF63;
 
 .backIcon {
   color: $textColor;
-  padding-top: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .registerMenu {
@@ -97,6 +98,7 @@ $yellow : #E4FF63;
         padding: 8px 20px;
         background-color: $white;
         color: $textColor;
+        margin: 0px -10px;
       }
 
   }
@@ -165,16 +167,6 @@ $yellow : #E4FF63;
       padding-left: 10px;
       color: $white;
     }
-
-    .phoneNumberInput {
-      border-radius: 16px;
-      width: 100%;
-      max-width: 230px;
-      height: 42px;
-      background-color: $buttonColor;
-      padding-left: 20px;
-      color: $white;
-    }
     }
 
   .otpSection {
@@ -225,12 +217,12 @@ $yellow : #E4FF63;
       padding: 8px 20px;
       background-color: $white;
       color: $textColor;
+      margin: 0px -10px;
     }
   }
 
   .buttonContainer {
-    position: fixed;
-    bottom: 10vh;
+    margin-top: 5vh;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -243,6 +235,7 @@ $yellow : #E4FF63;
       box-shadow: 0 4px 5px rgba(0, 0, 0, 0.158);
       color: $textColor;
       background-color: $yellow;
+      text-transform: none;
     }
 
     .verifyButton {
@@ -252,6 +245,7 @@ $yellow : #E4FF63;
       box-shadow: 0 4px 5px rgba(0, 0, 0, 0.158);
       color: $white;
       background-color: $textColor;
+      text-transform: none;
     }
   }
 }
