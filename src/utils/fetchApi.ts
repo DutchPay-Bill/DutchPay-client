@@ -1,4 +1,4 @@
-import { API_URL } from "./url"
+import { API_URL } from "./access"
 
 interface PhoneLogin {
     phoneNumber: string;
