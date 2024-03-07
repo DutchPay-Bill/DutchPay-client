@@ -1,37 +1,84 @@
 import * as React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Box, Button, IconButton, SelectChangeEvent, Typography } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
 import OTPForm from "./OTPForm";
 import styles from "./RegisterForm.module.scss";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { auth } from "../../config/firebaseAuth";
 
 const steps = ["Personal Info", "Phone Number", "OTP Verification"];
 
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return <PersonalInfoForm />;
-    case 1:
-      return <PhoneNumberForm />;
-    case 2:
-      return <OTPForm />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
-
 export default function RegisterForm() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [ countryCode, setCountryCode ] = React.useState('+62');
+  const [ phone , setPhone ] = React.useState("")
+  const [ isLoading, setIsloading ] = React.useState(false)
+
+  const navigate = useNavigate()
+
+  const sendOtp = async ()=> {
+    try {
+      const phoneNumber = countryCode + phone;
+      const recaptcha = new RecaptchaVerifier(auth, "captcha", {
+        'size': 'invisible',
+        'callback': function(response: unknown) {
+          console.log(response);
+        },
+      })
+      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptcha)
+      if(confirmation){        
+        setTimeout(()=> {
+          navigate('/dashboard')
+        }, 1000)
+      }
+      console.log('phone', phoneNumber )
+      console.log('confirm', confirmation )
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleCountryCodeChange = (event: SelectChangeEvent) => {
+    setCountryCode(event.target.value);
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>)=> {
+    const {name, value} = event.target
+    if(name === "phone"){
+      setPhone(value)
+    }
+  }
 
   const handleNext = () => {
+    if(activeStep === 1){
+      setIsloading(true)
+      setTimeout(()=>{
+        setActiveStep(activeStep + 1);
+      }, 1000)
+    }
     setActiveStep(activeStep + 1);
+    setIsloading(false)
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+
+  function getStepContent(step: number) {
+    switch (step) {
+      case 0:
+        return <PersonalInfoForm />;
+      case 1:
+        return <PhoneNumberForm handleCountryCodeChange={handleCountryCodeChange} handleInputChange={handleInputChange} countryCode={countryCode} phone={phone} />;
+      case 2:
+        return <OTPForm />;
+      default:
+        throw new Error("Unknown step");
+    }
+  }
 
   return (
     <React.Fragment>
@@ -73,9 +120,10 @@ export default function RegisterForm() {
             <Box className={styles.buttonContainer}>
               {activeStep !== 2 && (
                 <Button
+                  disabled={isLoading}
                   className={styles.nextButton}
                   variant="contained"
-                  onClick={handleNext}
+                  onClick={activeStep === 1 ? ()=>{sendOtp(); handleNext();} : handleNext}
                 >
                   {activeStep === 0 ? "Next" : "Send OTP"}
                 </Button>

@@ -52,6 +52,25 @@ $textColor : #DADADA;
     }
   }
 
+  .password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 330px;
+    border-radius: 16px;
+    width: 100%;
+    margin: 10px 0;
+
+    .passwordInput{
+      border-radius: 16px;
+      height: 43px;
+      background-color: $buttonColor;
+      color: $textColor;
+    }
+
+  }
+
   .divider {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

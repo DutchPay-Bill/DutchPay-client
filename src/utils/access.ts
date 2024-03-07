@@ -1,0 +1,11 @@
+// Url
+export const API_URL = import.meta.env.VITE_API_URL
+
+// Firebase key
+export const API_KEY = import.meta.env.VITE_API_KEY
+export const AUTH_DOMAIN = import.meta.env.VITE_AUTH_DOMAIN
+export const PROJECT_ID = import.meta.env.VITE_PROJECT_ID
+export const STORAGE_BUCKET = import.meta.env.VITE_STOREAGE_BUCKET
+export const SENDER_ID = import.meta.env.VITE_SENDER_ID
+export const APP_ID = import.meta.env.VITE_APP_ID
+export const MEASUREMENT_ID = import.meta.env.VITE_MEASUREMENT_ID

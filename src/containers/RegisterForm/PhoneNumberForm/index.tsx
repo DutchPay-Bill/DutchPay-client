@@ -3,18 +3,28 @@ import {
   // Input,
   MenuItem,
   Select,
+  SelectChangeEvent,
   TextField,
   Typography,
 } from "@mui/material";
 import styles from "../RegisterForm.module.scss";
+import { ChangeEvent,  } from "react";
 
-export default function PhoneNumberForm() {
-  const dummyCodes = [
-    { value: "+62" },
-    { value: "+1" },
-    { value: "+44" },
-    { value: "+81" },
-  ];
+const dummyCodes = [
+  { value: "+62" },
+  { value: "+1" },
+  { value: "+44" },
+  { value: "+81" },
+];
+
+interface PhoneNumberFormProps {
+  countryCode: string;
+  handleCountryCodeChange: (e: SelectChangeEvent) => void;
+  phone: string;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function PhoneNumberForm({countryCode, handleCountryCodeChange, phone, handleInputChange }: PhoneNumberFormProps) {
 
   return (
     <>
@@ -27,7 +37,7 @@ export default function PhoneNumberForm() {
         </Typography>
         <Typography className={styles.inputLabel}>Phone Number</Typography>
         <Box className={styles.inputContainer}>
-          <Select defaultValue={"+62"} className={styles.phoneNumberSelect}>
+          <Select defaultValue={"+62"} className={styles.phoneNumberSelect} value={countryCode} onChange={handleCountryCodeChange}>
             {dummyCodes.map((country) => (
               <MenuItem key={country.value} value={country.value}>
                 {country.value}
@@ -41,6 +51,8 @@ export default function PhoneNumberForm() {
             name="phoneNumber"
             placeholder="xxx-xxxx-xxxx"
             variant="filled"
+            value={phone}
+            onChange={handleInputChange}
             InputProps={{
               classes: {
                 input: styles.phoneInput2,
