@@ -6,8 +6,7 @@ import appleLogo from '../../assets/images/apple.svg';
 import styles from './LoginMenu.module.scss';
 import { ButtonCustom } from '../../components';
 import { ChangeEvent, useState } from 'react';
-import { auth } from '../../config/firebaseAuth';
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { phoneLogin } from '../../utils/fetchApi';
 
 const dummyCodes = [
   { value: '+62' },
@@ -17,11 +16,12 @@ const dummyCodes = [
 ];
 
 export default function LoginMenu() {
-  const [ phone , setPhone ] = useState("")
   const [ countryCode, setCountryCode ] = useState('+62');
+  const [ phone , setPhone ] = useState("")
+  const [ password , setPasword ] = useState("")
 
   const navigate = useNavigate()
-
+  
   const handleCountryCodeChange = (event: SelectChangeEvent) => {
     setCountryCode(event.target.value);
   };
@@ -30,31 +30,25 @@ export default function LoginMenu() {
     const {name, value} = event.target
     if(name === "phone"){
       setPhone(value)
+    }else if(name === "password"){
+      setPasword(value)
     }
   }
 
-  const sendOtp = async ()=> {
+  const handleLoginSubmit = async () => {
     try {
-      const phoneNumber = countryCode + phone;
-      const recaptcha = new RecaptchaVerifier(auth, "captcha", {
-        'size': 'invisible',
-        'callback': function(response: unknown) {
-          console.log(response);
-        },
-      })
-      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptcha)
-      if(confirmation){        
-        setTimeout(()=> {
-          navigate('/dashboard')
-        }, 1000)
+      const phoneNumber = countryCode + phone
+      const value = {phoneNumber, password}
+      const response = await phoneLogin(value)
+      if(response?.ok) {
+        alert('ok')
+        navigate('/dashboard')
       }
-      console.log('phone', phoneNumber )
-      console.log('confirm', confirmation )
     } catch (error) {
       console.error(error)
     }
   }
-  
+
   return (
     <Box className={styles.loginMenu}>
       <img className={styles.logo} src={logo} alt="Dutch Pay Logo" />
@@ -77,7 +71,26 @@ export default function LoginMenu() {
           onChange={handleInputChange}
         />
       </Box>
-      <ButtonCustom buttonText="Log in" onClick={sendOtp} id='captcha'/>
+
+      <Box className={styles.password}>
+        <Input
+          fullWidth
+          placeholder='Input Password'
+          autoComplete='off'
+          disableUnderline
+          aria-label='password'
+          type='password'
+          name='password'
+          value={password}
+          className={styles.passwordInput}
+          onChange={handleInputChange}
+          inputProps={{
+            style: { textAlign: "center" }
+          }}
+        />
+      </Box>
+
+      <ButtonCustom buttonText="Log in" onClick={handleLoginSubmit} id='captcha'/>
       
       <Divider className={styles.divider}>or</Divider>
 
