@@ -8,14 +8,14 @@
   background-color: var(--background-color); 
   border-radius: 16px !important; 
   padding: 8px;
-  margin: 5px auto 16px;
   height: 50px;
   max-width: 330px;
   width: 100%;
-  position: absolute;
-  top: 0; 
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto 16px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -35,15 +35,5 @@ margin-top: 6px;
   display: flex; 
   justify-content: flex-start; 
   align-items: center; 
-  margin: 10px; }
+  }
 
-@media screen and (max-width: 768px) { 
-  
-.root { 
-  margin-left: 20px; 
-  margin-right: 20px; } 
-
-.title{
-  margin: 0;
-}
-}

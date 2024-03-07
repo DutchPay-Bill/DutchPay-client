@@ -7,11 +7,15 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "rewrites": [ {
+      "source": "**",
+      "destination": "/index.html"
+    } ],
     "headers" : [ 
       {
         "source": "**",
         "headers": [
-          { "key": "Access-Control-Allow-Origin", "value": "*" },
+          { "key": "Access-Control-Allow-Origin", "value": "https://dutchpay-bill-server.vercel.app" },
           { "key": "X-Frame-Options", "value": "deny" },
           { "key": "X-Content-Type-Options", "value": "nosniff" },
           { "key": "X-XSS-Protection", "value": "1; mode=block" },

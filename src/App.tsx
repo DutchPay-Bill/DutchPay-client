@@ -12,14 +12,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Router>
           <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <LoadingAppPage />
-                </>
-              }
-            />
+            <Route path="/" element={<LoadingAppPage />} />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
             <Route path="/myaccount" element={<><MyAccount/><PublicLayout/></>}/>

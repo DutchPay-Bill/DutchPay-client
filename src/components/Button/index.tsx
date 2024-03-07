@@ -6,15 +6,19 @@ import styles from './Button.module.scss';
 
 interface ButtonLoginProps {
   buttonText: string;
-  to?: string; // Route to navigate to
+  to?: string;
+  onClick : ()=> void
+  id : string
 }
 
-const ButtonCustom: React.FC<ButtonLoginProps> = ({ buttonText, to }) => {
+const ButtonCustom: React.FC<ButtonLoginProps> = ({ buttonText, to, onClick, id }) => {
   return (
     <Button
+      id={id}
       className={styles.button}
       component={to ? Link : 'button'}
       to={to}
+      onClick={onClick}
       variant="contained"
       fullWidth
     >

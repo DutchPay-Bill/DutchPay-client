@@ -5,6 +5,7 @@ interface Props {
 }
 
 interface User{
+    user_id: number;
     username: string;
     phone_number: string;
     fullname: string;
