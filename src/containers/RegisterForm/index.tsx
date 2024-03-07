@@ -1,100 +1,146 @@
 import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Box, Button, IconButton, SelectChangeEvent, Typography } from "@mui/material";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
 import OTPForm from "./OTPForm";
+import styles from "./RegisterForm.module.scss";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { auth } from "../../config/firebaseAuth";
 
 const steps = ["Personal Info", "Phone Number", "OTP Verification"];
 
-function getStepContent(step: number) {
-  switch (step) {
-    case 0:
-      return <PersonalInfoForm />;
-    case 1:
-      return <PhoneNumberForm />;
-    case 2:
-      return <OTPForm />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
-
 export default function RegisterForm() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [ countryCode, setCountryCode ] = React.useState('+62');
+  const [ phone , setPhone ] = React.useState("")
+  const [ isLoading, setIsloading ] = React.useState(false)
+
+  const navigate = useNavigate()
+
+  const sendOtp = async ()=> {
+    try {
+      const phoneNumber = countryCode + phone;
+      const recaptcha = new RecaptchaVerifier(auth, "captcha", {
+        'size': 'invisible',
+        'callback': function(response: unknown) {
+          console.log(response);
+        },
+      })
+      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptcha)
+      if(confirmation){        
+        setTimeout(()=> {
+          navigate('/dashboard')
+        }, 1000)
+      }
+      console.log('phone', phoneNumber )
+      console.log('confirm', confirmation )
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const handleCountryCodeChange = (event: SelectChangeEvent) => {
+    setCountryCode(event.target.value);
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>)=> {
+    const {name, value} = event.target
+    if(name === "phone"){
+      setPhone(value)
+    }
+  }
 
   const handleNext = () => {
+    if(activeStep === 1){
+      setIsloading(true)
+      setTimeout(()=>{
+        setActiveStep(activeStep + 1);
+      }, 1000)
+    }
     setActiveStep(activeStep + 1);
+    setIsloading(false)
   };
 
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
+  function getStepContent(step: number) {
+    switch (step) {
+      case 0:
+        return <PersonalInfoForm />;
+      case 1:
+        return <PhoneNumberForm handleCountryCodeChange={handleCountryCodeChange} handleInputChange={handleInputChange} countryCode={countryCode} phone={phone} />;
+      case 2:
+        return <OTPForm />;
+      default:
+        throw new Error("Unknown step");
+    }
+  }
+
   return (
     <React.Fragment>
-      <CssBaseline />
-      <AppBar
-        position="absolute"
-        color="default"
-        elevation={0}
-        sx={{
-          position: "relative",
-          borderBottom: (t) => `1px solid ${t.palette.divider}`,
-        }}
-      >
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Company name
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper
-          variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-        >
-          <Typography component="h1" variant="h4" align="center">
-            Register Form
-          </Typography>
-          {activeStep === steps.length ? (
-            <React.Fragment>
-              <Typography variant="h5" gutterBottom>
-                Thank you for your order.
-              </Typography>
-              <Typography variant="subtitle1">
-                Your order number is #2001539. We have emailed your order
-                confirmation, and will send you an update when your order has
-                shipped.
-              </Typography>
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              {getStepContent(activeStep)}
-              <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                {activeStep !== 0 && (
-                  <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                    Back
-                  </Button>
-                )}
+      <Box className={styles.registerMenu}>
+        <Box className={styles.toolbar}>
+          {activeStep === 0 && (
+            <RouterLink to="/login">
+              <ArrowBackIosNewIcon className={styles.backIcon} />
+            </RouterLink>
+          )}
+          {activeStep !== 0 && (
+            <IconButton
+              onClick={handleBack}
+              className={styles.arrowContainer}
+              disableTouchRipple
+              disableFocusRipple
+              disableRipple
+            >
+              <ArrowBackIosNewIcon className={styles.backIcon} />
+            </IconButton>
+          )}
+        </Box>
+        {activeStep === steps.length ? (
+          <React.Fragment>
+            {/* ini belum di set marginnya*/}
+            <Typography variant="h5" gutterBottom>
+              you're now settled!
+            </Typography>
+            <Typography variant="h3" gutterBottom>
+              Dinda Yasmin
+            </Typography>
+            <Typography variant="h5" gutterBottom>
+              welcome to dutchpay!
+            </Typography>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            {getStepContent(activeStep)}
+            <Box className={styles.buttonContainer}>
+              {activeStep !== 2 && (
                 <Button
+                  disabled={isLoading}
+                  className={styles.nextButton}
+                  variant="contained"
+                  onClick={activeStep === 1 ? ()=>{sendOtp(); handleNext();} : handleNext}
+                >
+                  {activeStep === 0 ? "Next" : "Send OTP"}
+                </Button>
+              )}
+              {activeStep === 2 && (
+                <Button
+                  className={styles.verifyButton}
                   variant="contained"
                   onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
                 >
-                  {activeStep === steps.length - 1 ? "Place order" : "Next"}
+                  Verify OTP
                 </Button>
-              </Box>
-            </React.Fragment>
-          )}
-        </Paper>
-      </Container>
+              )}
+            </Box>
+          </React.Fragment>
+        )}
+      </Box>
     </React.Fragment>
   );
 }

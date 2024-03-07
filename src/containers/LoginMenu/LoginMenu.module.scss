@@ -9,7 +9,7 @@ $textColor : #DADADA;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-image: url(../../assets/images/app-background.jpg);
+  background-image: url(../../assets/images/app-background.webp);
   background-size: cover;
   background-position: center;
 
@@ -50,6 +50,25 @@ $textColor : #DADADA;
     .loginButton {
       margin-top: 15px;
     }
+  }
+
+  .password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 330px;
+    border-radius: 16px;
+    width: 100%;
+    margin: 10px 0;
+
+    .passwordInput{
+      border-radius: 16px;
+      height: 43px;
+      background-color: $buttonColor;
+      color: $textColor;
+    }
+
   }
 
   .divider {
