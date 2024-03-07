@@ -7,7 +7,7 @@ import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
 import OTPForm from "./OTPForm";
 import styles from "./RegisterForm.module.scss";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { ConfirmationResult, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../config/firebaseAuth";
 
 const steps = ["Personal Info", "Phone Number", "OTP Verification"];
@@ -18,7 +18,7 @@ export default function RegisterForm() {
   const [ phone , setPhone ] = React.useState("")
   const [ isLoading, setIsloading ] = React.useState(false)
 
-  let confirmationResult: any;
+  let confirmationResult: ConfirmationResult | null = null;
 
   const sendOtp = async () => {
     try {
@@ -39,9 +39,9 @@ export default function RegisterForm() {
 
   const verifyOtp = async () => {
     try {
-        const userCredential = await confirmationResult.confirm(otp);
+        const userCredential = await confirmationResult?.confirm(otp);
         console.log("OTP verified successfully");
-        console.log("User signed in successfully", userCredential.user);
+        console.log("User signed in successfully", userCredential?.user);
     } catch (error) {
         console.error("OTP verification failed", error);
     }
