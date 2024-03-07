@@ -22,6 +22,7 @@ export default function RegisterForm() {
   const sendOtp = async ()=> {
     try {
       const phoneNumber = countryCode + phone;
+      console.log('phone', phoneNumber)
       const recaptcha = new RecaptchaVerifier(auth, "captcha", {
         'size': 'invisible',
         'callback': function(response: unknown) {
@@ -47,20 +48,21 @@ export default function RegisterForm() {
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>)=> {
     const {name, value} = event.target
-    if(name === "phone"){
+    if(name === "phoneNumber"){
       setPhone(value)
     }
   }
 
   const handleNext = () => {
-    if(activeStep === 1){
+    if(activeStep == 1){
       setIsloading(true)
       setTimeout(()=>{
         setActiveStep(activeStep + 1);
-      }, 1000)
+      }, 4000)
+    }else {
+      setActiveStep(activeStep + 1);
+      setIsloading(false)
     }
-    setActiveStep(activeStep + 1);
-    setIsloading(false)
   };
 
   const handleBack = () => {
@@ -120,6 +122,7 @@ export default function RegisterForm() {
             <Box className={styles.buttonContainer}>
               {activeStep !== 2 && (
                 <Button
+                  id="captcha"
                   disabled={isLoading}
                   className={styles.nextButton}
                   variant="contained"
