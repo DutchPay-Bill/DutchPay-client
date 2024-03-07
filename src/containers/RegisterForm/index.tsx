@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Box, Button, IconButton, SelectChangeEvent, Typography } from "@mui/material";
@@ -17,30 +18,34 @@ export default function RegisterForm() {
   const [ phone , setPhone ] = React.useState("")
   const [ isLoading, setIsloading ] = React.useState(false)
 
-  const navigate = useNavigate()
+  let confirmationResult: any;
 
-  const sendOtp = async ()=> {
+  const sendOtp = async () => {
     try {
-      const phoneNumber = countryCode + phone;
-      console.log('phone', phoneNumber)
-      const recaptcha = new RecaptchaVerifier(auth, "captcha", {
-        'size': 'invisible',
-        'callback': function(response: unknown) {
-          console.log(response);
-        },
-      })
-      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptcha)
-      if(confirmation){        
-        setTimeout(()=> {
-          navigate('/dashboard')
-        }, 1000)
-      }
-      console.log('phone', phoneNumber )
-      console.log('confirm', confirmation )
+        const phoneNumber = countryCode + phone;
+        console.log('phone', phoneNumber);
+        const recaptcha = new RecaptchaVerifier(auth, "captcha", {
+          'size': 'invisible',
+          'callback': function(response : any) {
+            console.log(response);
+          },
+        });
+        confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptcha);
+        console.log("OTP sent successfully");
     } catch (error) {
-      console.error(error)
+        console.error(error);
     }
-  }
+  };
+
+  const verifyOtp = async () => {
+    try {
+        const userCredential = await confirmationResult.confirm(otp);
+        console.log("OTP verified successfully");
+        console.log("User signed in successfully", userCredential.user);
+    } catch (error) {
+        console.error("OTP verification failed", error);
+    }
+  };
 
   const handleCountryCodeChange = (event: SelectChangeEvent) => {
     setCountryCode(event.target.value);
