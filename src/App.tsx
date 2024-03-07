@@ -3,7 +3,12 @@ import { ThemeProvider } from "@emotion/react";
 import theme from "./themes/CustomTheme";
 // import PublicLayout from "./layout/PublicLayout";
 
-import { LoginDashBoardPage, RegisterDashboardPage, NotFoundPage, ChangeProfilePage } from "./pages";
+import {
+  LoginDashBoardPage,
+  RegisterDashboardPage,
+  NotFoundPage,
+  ChangeProfilePage,
+} from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
 

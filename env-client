@@ -1,0 +1,9 @@
+VITE_API_URL="http://localhost:3000"
+# firebase auth key
+VITE_API_KEY="AIzaSyCjcuGcnoDgtBAIyiNhzJ7i74SNicNYiJM",
+VITE_AUTH_DOMAIN="dutchpay-bill.firebaseapp.com",
+VITE_PROJECT_ID="dutchpay-bill",
+VITE_STOREAGE_BUCKET="dutchpay-bill.appspot.com",
+VITE_SENDER_ID="222654780212",
+VITE_APP_ID="1:222654780212:web:80d0619ef30e3356990b61",
+VITE_MEASUREMENT_ID="G-VS4DNCEJ3T"
