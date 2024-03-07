@@ -37,8 +37,9 @@ export default function LoginMenu() {
 
   const handleLoginSubmit = async () => {
     try {
-      const phoneNumber = countryCode + phone
-      const value = {phoneNumber, password}
+      const selectedValue = countryCode.replace('+', '');
+      const phone_number = selectedValue + phone
+      const value = {phone_number, password}
       const response = await phoneLogin(value)
       if(response?.ok) {
         alert('ok')
