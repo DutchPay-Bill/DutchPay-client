@@ -3,6 +3,7 @@ import styles from './Profile.module.scss';
 import { Avatar, Typography, Box, Grid } from '@mui/material';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
+import EmailIcon from '@mui/icons-material/Email';
 import { Link as RouterLink } from 'react-router-dom';
 
 interface UserProfile {
@@ -10,6 +11,7 @@ interface UserProfile {
   email: string;
   pictureUrl: string;
   phone: string;
+  EmailConnect: string;
 }
 
 interface ProfileProps {
@@ -22,24 +24,32 @@ const Profile: React.FC<ProfileProps> = ({ userProfile }) => {
       {userProfile ? (
         <Grid container spacing={1}>
             <Grid item>
-              <Avatar sx={{ width: 56, height: 56 }} alt={userProfile.name} src={userProfile.pictureUrl} className={styles.profilePicture} />
+              <Avatar sx={{ width: 80, height: 80 }} alt={userProfile.name} src={userProfile.pictureUrl} className={styles.profilePicture} />
             </Grid>
             <Grid item>
-              <Box className={styles.profileInfo}>
-                <Typography className={styles.profileName} color={'white'}>
-                  {userProfile.name}
-                </Typography>
-                <Grid>
-                    <Typography className={styles.profileEmail} color={'white'} >
-                      {userProfile.email}
-                    </Typography>
-                </Grid>
-              </Box>
-              <Box className={styles.profilePhone}>
-                <PhoneAndroidIcon/>
-                <Typography color={'white'} className={styles.profilePhone}>{userProfile.phone} </Typography>
-              </Box>
-              </Grid>
+                <Box className={styles.profileInfo}>
+                  <Typography className={styles.profileName} color={'white'}>
+                    {userProfile.name}
+                  </Typography>
+                  <Grid >
+                      <Typography className={styles.profileEmail} color={'white'} >
+                        {userProfile.email}
+                      </Typography>
+                  </Grid>
+                </Box>
+                <Grid container alignItems="center" spacing={1}>
+                      <Grid item><PhoneAndroidIcon className={styles.profileIconPhone} /></Grid>
+                      <Grid item>
+                        <Typography className={styles.profilePhone} color={'white'}>{userProfile.phone}</Typography>
+                      </Grid>
+                  </Grid>
+                <Grid container alignItems="center" spacing={1}>
+                      <Grid item><EmailIcon className={styles.profileIconPhone} /></Grid>
+                      <Grid item>
+                        <Typography color={'white'} className={styles.profileEmailConnect}>{userProfile.EmailConnect}</Typography>
+                      </Grid>
+                 </Grid>
+            </Grid>
             <Grid item xs>
               <RouterLink to="#" className={styles.editButton}><BorderColorIcon/></RouterLink>
             </Grid>

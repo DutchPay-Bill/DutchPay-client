@@ -4,6 +4,18 @@
   --yellow: #E4FF63; 
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Regular.woff2') format('woff2'), 
+       url('/fonts/Inter-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-family: 'Inter', sans-serif; 
+}
+
 .root { 
   background-color: var(--background-color); 
   border-radius: 16px !important; 
@@ -24,6 +36,7 @@
 .title { 
   flex-grow: 1; 
   color: #fff;  
+  font-family: var(--font-family);
 }
 
 .backbutton { 
