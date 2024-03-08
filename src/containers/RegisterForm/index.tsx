@@ -14,7 +14,7 @@ import PhoneNumberForm from "./PhoneNumberForm";
 import OTPForm from "./OTPForm";
 import styles from "./RegisterForm.module.scss";
 import {
-  ConfirmationResult,
+  // ConfirmationResult,
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from "firebase/auth";
@@ -24,7 +24,7 @@ import { auth } from "../../config/firebaseAuth";
 const steps = ["Personal Info", "Phone Number", "OTP Verification"];
 
 export default function RegisterForm() {
-  const [activeStep, setActiveStep] = React.useState(2); //testing atau develop step otp verif
+  const [activeStep, setActiveStep] = React.useState(0); //testing atau develop step otp verif
   const [fullName, setFullName] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPass, setConfirmPass] = React.useState("");
@@ -32,9 +32,65 @@ export default function RegisterForm() {
   const [phone, setPhone] = React.useState("");
   const [otp, setOtp] = React.useState("");
   const [isLoading, setIsloading] = React.useState(false);
+  const [errors, setErrors] = React.useState({
+    fullName: "",
+    password: "",
+    confirmPass: "",
+    phone: "",
+    otp: "",
+  });
 
-  let confirmationResult: ConfirmationResult | null = null;
+  let confirmationResult: any;
   const navigate = useNavigate();
+
+  const validateField = (name: string, value: string) => {
+    let valid = true;
+    const newErrors = { ...errors, [name]: "" };
+    switch (name) {
+      case "fullName":
+        // eslint-disable-next-line no-case-declarations
+        const fullNameRegex = /^[a-zA-Z\s]*$/;
+        if (value.length < 3 || !fullNameRegex.test(value)) {
+          newErrors.fullName =
+            "Full name must contain only alphabets and have a minimum length of 3 characters.";
+          valid = false;
+        }
+        break;
+      case "password":
+        if (value.length < 6) {
+          newErrors.password =
+            "Password must have a minimum length of 6 characters.";
+          valid = false;
+        }
+        break;
+      case "confirmPass":
+        if (value !== password) {
+          newErrors.confirmPass = "Password do not match.";
+          valid = false;
+        }
+        break;
+      case "phone":
+        // eslint-disable-next-line no-case-declarations
+        const phoneRegex = /^[0-9]{9,}$/;
+        if (!phoneRegex.test(value)) {
+          newErrors.phone =
+            "Phone Number must contain only numbers and have a minimum length of 9";
+        }
+        break;
+      case "otp":
+        // eslint-disable-next-line no-case-declarations
+        const otpRegex = /^[0-9]{4,}$/;
+        if (!otpRegex.test(value)) {
+          newErrors.otp =
+            "OTP Code must contain only numbers and have a minimum length of 4";
+        }
+        break;
+      default:
+        break;
+    }
+    setErrors(newErrors);
+    return valid;
+  };
 
   const sendOtp = async () => {
     try {
@@ -52,7 +108,6 @@ export default function RegisterForm() {
         recaptcha
       );
       console.log("OTP sent successfully");
-      navigate("/dashboard");
     } catch (error) {
       console.error(error);
     }
@@ -62,7 +117,10 @@ export default function RegisterForm() {
     try {
       const userCredential = await confirmationResult?.confirm(otp);
       console.log("OTP verified successfully");
-      console.log("User signed in successfully", userCredential?.user);
+      console.log("User signed in successfully", userCredential);
+      if (userCredential) {
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error("OTP verification failed", error);
     }
@@ -93,6 +151,7 @@ export default function RegisterForm() {
       default:
         break;
     }
+    validateField(name, value);
   };
 
   const handleNext = () => {
@@ -176,22 +235,37 @@ export default function RegisterForm() {
           <React.Fragment>
             {getStepContent(activeStep)}
             <Box className={styles.buttonContainer}>
-              {activeStep !== 2 && (
+              {activeStep === 0 && (
                 <Button
-                  id="captcha"
-                  disabled={isLoading}
+                  disabled={
+                    Boolean(errors.fullName) ||
+                    Boolean(errors.password) ||
+                    Boolean(errors.confirmPass) ||
+                    !fullName ||
+                    !password ||
+                    !confirmPass
+                  }
+                  type="submit"
                   className={styles.nextButton}
                   variant="contained"
-                  onClick={
-                    activeStep === 1
-                      ? () => {
-                          sendOtp();
-                          handleNext();
-                        }
-                      : handleNext
-                  }
+                  onClick={handleNext}
                 >
-                  {activeStep === 0 ? "Next" : "Send OTP"}
+                  Next
+                </Button>
+              )}
+              {activeStep === 1 && (
+                <Button
+                  id="captcha"
+                  disabled={isLoading || !phone || Boolean(errors.phone)}
+                  type="submit"
+                  className={styles.nextButton}
+                  variant="contained"
+                  onClick={() => {
+                    sendOtp();
+                    handleNext();
+                  }}
+                >
+                  Send OTP
                 </Button>
               )}
               {activeStep === 2 && (
