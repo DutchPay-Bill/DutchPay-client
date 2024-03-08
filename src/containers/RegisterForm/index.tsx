@@ -1,49 +1,70 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { Box, Button, IconButton, SelectChangeEvent, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
 import OTPForm from "./OTPForm";
 import styles from "./RegisterForm.module.scss";
-import { ConfirmationResult, RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {
+  ConfirmationResult,
+  RecaptchaVerifier,
+  signInWithPhoneNumber,
+} from "firebase/auth";
 import { auth } from "../../config/firebaseAuth";
+// import { set } from "firebase/database";
 
 const steps = ["Personal Info", "Phone Number", "OTP Verification"];
 
 export default function RegisterForm() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [ countryCode, setCountryCode ] = React.useState('+62');
-  const [ phone , setPhone ] = React.useState("")
-  const [ isLoading, setIsloading ] = React.useState(false)
+  const [activeStep, setActiveStep] = React.useState(2); //testing atau develop step otp verif
+  const [fullName, setFullName] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPass, setConfirmPass] = React.useState("");
+  const [countryCode, setCountryCode] = React.useState("+62");
+  const [phone, setPhone] = React.useState("");
+  const [otp, setOtp] = React.useState("");
+  const [isLoading, setIsloading] = React.useState(false);
 
   let confirmationResult: ConfirmationResult | null = null;
+  const navigate = useNavigate();
 
   const sendOtp = async () => {
     try {
-        const phoneNumber = countryCode + phone;
-        console.log('phone', phoneNumber);
-        const recaptcha = new RecaptchaVerifier(auth, "captcha", {
-          'size': 'invisible',
-          'callback': function(response : any) {
-            console.log(response);
-          },
-        });
-        confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, recaptcha);
-        console.log("OTP sent successfully");
+      const phoneNumber = countryCode + phone;
+      console.log("phone", phoneNumber);
+      const recaptcha = new RecaptchaVerifier(auth, "captcha", {
+        size: "invisible",
+        callback: function (response: any) {
+          console.log(response);
+        },
+      });
+      confirmationResult = await signInWithPhoneNumber(
+        auth,
+        phoneNumber,
+        recaptcha
+      );
+      console.log("OTP sent successfully");
+      navigate("/dashboard");
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
   };
 
   const verifyOtp = async () => {
     try {
-        const userCredential = await confirmationResult?.confirm(otp);
-        console.log("OTP verified successfully");
-        console.log("User signed in successfully", userCredential?.user);
+      const userCredential = await confirmationResult?.confirm(otp);
+      console.log("OTP verified successfully");
+      console.log("User signed in successfully", userCredential?.user);
     } catch (error) {
-        console.error("OTP verification failed", error);
+      console.error("OTP verification failed", error);
     }
   };
 
@@ -51,22 +72,38 @@ export default function RegisterForm() {
     setCountryCode(event.target.value);
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>)=> {
-    const {name, value} = event.target
-    if(name === "phoneNumber"){
-      setPhone(value)
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case "phoneNumber":
+        setPhone(value);
+        break;
+      case "fullName":
+        setFullName(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+      case "confirmPass":
+        setConfirmPass(value);
+        break;
+      case "otp":
+        setOtp(value);
+        break;
+      default:
+        break;
     }
-  }
+  };
 
   const handleNext = () => {
-    if(activeStep == 1){
-      setIsloading(true)
-      setTimeout(()=>{
+    if (activeStep == 1) {
+      setIsloading(true);
+      setTimeout(() => {
         setActiveStep(activeStep + 1);
-      }, 4000)
-    }else {
+      }, 4000);
+    } else {
       setActiveStep(activeStep + 1);
-      setIsloading(false)
+      setIsloading(false);
     }
   };
 
@@ -77,11 +114,25 @@ export default function RegisterForm() {
   function getStepContent(step: number) {
     switch (step) {
       case 0:
-        return <PersonalInfoForm />;
+        return (
+          <PersonalInfoForm
+            handleInputChange={handleInputChange}
+            fullName={fullName}
+            password={password}
+            confirmPass={confirmPass}
+          />
+        );
       case 1:
-        return <PhoneNumberForm handleCountryCodeChange={handleCountryCodeChange} handleInputChange={handleInputChange} countryCode={countryCode} phone={phone} />;
+        return (
+          <PhoneNumberForm
+            handleCountryCodeChange={handleCountryCodeChange}
+            handleInputChange={handleInputChange}
+            countryCode={countryCode}
+            phone={phone}
+          />
+        );
       case 2:
-        return <OTPForm />;
+        return <OTPForm otp={otp} handleInputChange={handleInputChange} />;
       default:
         throw new Error("Unknown step");
     }
@@ -131,7 +182,14 @@ export default function RegisterForm() {
                   disabled={isLoading}
                   className={styles.nextButton}
                   variant="contained"
-                  onClick={activeStep === 1 ? ()=>{sendOtp(); handleNext();} : handleNext}
+                  onClick={
+                    activeStep === 1
+                      ? () => {
+                          sendOtp();
+                          handleNext();
+                        }
+                      : handleNext
+                  }
                 >
                   {activeStep === 0 ? "Next" : "Send OTP"}
                 </Button>
@@ -140,7 +198,7 @@ export default function RegisterForm() {
                 <Button
                   className={styles.verifyButton}
                   variant="contained"
-                  onClick={handleNext}
+                  onClick={verifyOtp}
                 >
                   Verify OTP
                 </Button>
