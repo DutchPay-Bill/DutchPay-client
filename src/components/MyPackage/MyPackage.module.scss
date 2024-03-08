@@ -24,10 +24,12 @@
 
 .title{
   color: #ffff;
-  margin-right: 50px;
+  margin: 0; 
+  white-space: nowrap; 
+  overflow: show; 
+  text-overflow: ellipsis;
 }
 
 .plans {
-  color: #ffffff;
-  margin-left: 50px;
+  color: #ffffff; 
 }

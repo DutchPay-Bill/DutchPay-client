@@ -24,7 +24,7 @@ const Profile: React.FC<ProfileProps> = ({ userProfile }) => {
       {userProfile ? (
         <Grid container spacing={1}>
             <Grid item>
-              <Avatar sx={{ width: 80, height: 80 }} alt={userProfile.name} src={userProfile.pictureUrl} className={styles.profilePicture} />
+              <Avatar sx={{ width: 90, height: 90 }} alt={userProfile.name} src={userProfile.pictureUrl} className={styles.profilePicture} />
             </Grid>
             <Grid item>
                 <Box className={styles.profileInfo}>
