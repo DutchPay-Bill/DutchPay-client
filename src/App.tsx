@@ -6,6 +6,7 @@ import {
   LoginDashBoardPage,
   RegisterDashboardPage,
   NotFoundPage,
+  DashboardPage,
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
@@ -20,7 +21,7 @@ const App = () => {
             <Route path="/" element={<LoadingAppPage />} />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
-            <Route path="/payment" element={<PaymentUrlPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
