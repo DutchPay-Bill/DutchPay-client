@@ -3,6 +3,7 @@ import styles from './Dashboard.module.scss'
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg'
+import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
   return (
@@ -11,7 +12,7 @@ export default function Dashboard() {
         <Box className={styles.profileContainer}>
           <Grid container spacing={0} className={styles.notificationGrid}>
             <Grid item xs={6}>
-              <NotificationsIcon className={styles.icons} />
+              <NotificationsIcon className={styles.notificationIcon} />
             </Grid>
             <Grid item xs={6} className={styles.gridItem}>
               <Box className={styles.notificationBox}>
@@ -19,7 +20,9 @@ export default function Dashboard() {
               </Box>
             </Grid>
             <Grid item xs={6}>
-              <SettingsIcon className={styles.icons} />
+              <Link to='/myaccount'>
+                <SettingsIcon className={styles.settingIcon} />
+              </Link>
             </Grid>
             <Grid item xs={6}>
               <Typography className={styles.notificationText}>
@@ -34,11 +37,13 @@ export default function Dashboard() {
               <Typography className={styles.userHandle}>@dindayasmin</Typography>
             </Box>
             <Box>
-              <Avatar
-                className={styles.avatar}
-                src={dummyAvatar}
-                alt="avatar"
-              />
+              <Link to="/myaccount">
+                <Avatar
+                  className={styles.avatar}
+                  src={dummyAvatar}
+                  alt="avatar"
+                />
+              </Link>
               {/* Status color */}
               <Box className={styles.status}>
                 <Box className={styles.status2}>
