@@ -81,7 +81,7 @@ $color5: #767676;
       }
 
       .pendingInfo {
-        height: 60px;
+        height: auto;
         max-width: 105px;
         width: 50%;
         display: flex;
@@ -146,6 +146,7 @@ $color5: #767676;
       .date {
         color: $color5;
         font-size: 8px;
+        min-width: 55px;
       }
     }
   }

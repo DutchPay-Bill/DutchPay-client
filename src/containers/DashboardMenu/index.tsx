@@ -4,7 +4,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg'
 import { Link } from 'react-router-dom';
-import { RecentBill } from '../../components';
+import { RecentBill, BillHistory } from '../../components';
 
 export default function DashboardProfile() {
   return (
@@ -54,6 +54,7 @@ export default function DashboardProfile() {
           </Box>
         </Box>
         <RecentBill />
+        <BillHistory />
       </Box>
     </>
   )

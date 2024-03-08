@@ -1,16 +1,7 @@
-import { Avatar, Box, Typography } from '@mui/material';
+import { Avatar, Box, Grid, Typography } from '@mui/material';
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg';
 import styles from './RecentBill.module.scss';
-
-const dummyUserData = [
-  { id: 1, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 2, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 3, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 4, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 5, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 6, avatarSrc: dummyAvatar, alt: 'avatar' },
-];
 
 export default function RecentBill() {
   return (
@@ -61,16 +52,17 @@ export default function RecentBill() {
             </Box>
           </Box>
           <Box className={styles.userDetails}>
-            <Box className={styles.boxUser}>
+            <Grid container spacing={0.2} className={styles.boxUser}>
               {dummyUserData.map((user) => (
-                <Avatar
-                  key={user.id}
-                  className={styles.user}
-                  src={user.avatarSrc}
-                  alt={user.alt}
-                />
+                <Grid item key={user.id}>
+                  <Avatar
+                    className={styles.user}
+                    src={user.avatarSrc}
+                    alt={`avatar-${user.alt}`}
+                  />
+                </Grid>
               ))}
-            </Box>
+            </Grid>
             <Typography className={styles.date}>
               21-12-2023
             </Typography>
@@ -80,3 +72,12 @@ export default function RecentBill() {
     </>
   );
 }
+
+const dummyUserData = [
+  { id: 1, avatarSrc: dummyAvatar, alt: 'avatar' },
+  { id: 2, avatarSrc: dummyAvatar, alt: 'avatar' },
+  { id: 3, avatarSrc: dummyAvatar, alt: 'avatar' },
+  { id: 4, avatarSrc: dummyAvatar, alt: 'avatar' },
+  { id: 5, avatarSrc: dummyAvatar, alt: 'avatar' },
+  { id: 6, avatarSrc: dummyAvatar, alt: 'avatar' },
+];
