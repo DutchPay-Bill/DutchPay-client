@@ -10,7 +10,7 @@ import {
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
-import PaymentUrlPage from "./pages/PaymentUrl";
+// import PaymentUrlPage from "./pages/PaymentUrl";
 
 const App = () => {
   return (

@@ -51,7 +51,7 @@ $yellow : #E4FF63;
         font-size: 17px;
         align-self: flex-start ;
         font-weight: 400;
-        margin-bottom: 70px;
+        margin-bottom: 20px;
     }
 
     .headingBig {
@@ -83,14 +83,14 @@ $yellow : #E4FF63;
     .personalInfoInput {
         width: 100%;
         max-width: 400px;
-        background-color: $white;
+        background-color: transparent;
       }
 
     .personalInfoInput:nth-child(odd) {
         margin-bottom: 40px;
         width: 100%;
         max-width: 400px;
-        background-color: $white;
+        background-color: transparent;
       }
 
     .personalInfoInput2 {
@@ -100,6 +100,10 @@ $yellow : #E4FF63;
         color: $textColor;
         margin: 0px -10px;
       }
+
+    .helperText {
+      background-color: transparent;
+    }
 
   }
 
