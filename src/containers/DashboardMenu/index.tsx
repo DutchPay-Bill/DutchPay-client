@@ -4,8 +4,9 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg'
 import { Link } from 'react-router-dom';
+import { RecentBill } from '../../components';
 
-export default function Dashboard() {
+export default function DashboardProfile() {
   return (
     <>
       <Box className={styles.dashboardMenu}>
@@ -52,16 +53,7 @@ export default function Dashboard() {
             </Box>
           </Box>
         </Box>
-
-        <Typography>
-
-        </Typography>
-
-        <Box>
-          <Typography>
-
-          </Typography>
-        </Box>
+        <RecentBill />
       </Box>
     </>
   )

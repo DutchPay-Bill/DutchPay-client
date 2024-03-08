@@ -1,0 +1,152 @@
+$color1: #FFFFFF;
+$color2: #131313;
+$color3: #E4FF63;
+$color4: #1E1E1E;
+$color5: #767676;
+
+.recentBill {
+  max-width: 330px;
+  width: 100%;
+  margin: 20px 0px;
+
+  .title {
+    color: $color1;
+    font-size: 20px;
+    margin: 8px 0px;
+  }
+
+  .billDetails {
+    background-color: $color2;
+    border-radius: 16px;
+    padding: 5px 12px;
+
+    .billInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px;
+
+      .billName {
+        color: $color1;
+        font-size: 16px;
+      }
+
+      .viewDetails {
+        color: $color3;
+        font-size: 8px;
+        cursor: pointer;
+      }
+    }
+
+    .receivables {
+      display: flex;
+
+      .receivablesInfo {
+        max-width: 185px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $color4;
+        border-radius: 12px;
+        padding: 8px 12px;
+        margin-right: 8px;
+
+        .receivablesTitle {
+          color: $color1;
+          font-size: 8px;
+        }
+
+        .boxAmounts {
+          display: flex;
+          justify-content: space-between;
+
+          .receivablesAmount1 {
+            color: $color3;
+            font-size: 10px;
+          }
+
+          .receivablesText {
+            color: $color5;
+            font-size: 8px;
+          }
+
+          .receivablesAmount2 {
+            color: $color1;
+            font-size: 8px;
+          }
+
+        }
+      }
+
+      .pendingInfo {
+        height: 60px;
+        max-width: 105px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $color4;
+        border-radius: 12px;
+        padding: 8px 12px;
+
+        .pendingTitle {
+          color: $color1;
+          font-size: 8px;
+        }
+
+        .pendingCount {
+          color: $color1;
+          font-size: 14px;
+        }
+
+        .copyBillUrl {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: $color5;
+          font-size: 8px;
+        }
+
+        .backgroundIcon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $color3;
+          width: 18px;
+          height: 18px;
+          border-radius: 4px;
+          margin-left: 5px;
+          cursor: pointer;
+
+          .icon {
+            color: $color2;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .userDetails {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px;
+
+      .boxUser {
+        display: flex;
+        gap: 2px;
+
+        .user {
+          width: 16px;
+          height: 16px;
+        }
+      }
+
+      .date {
+        color: $color5;
+        font-size: 8px;
+      }
+    }
+  }
+}

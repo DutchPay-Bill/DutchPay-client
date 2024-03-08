@@ -5,7 +5,7 @@ export default function DashboardPage() {
   return (
     <>
       <DashboardMenu />
-      <PublicLayout/>
+      <PublicLayout />
     </>
   )
 }
