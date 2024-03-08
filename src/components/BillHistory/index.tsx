@@ -42,7 +42,7 @@ export default function BillHistory() {
               {FullScreen ? (
                 <>
                   <KeyboardArrowLeftIcon className={styles.arrowIcon} />
-                  Back
+                  Hide All
                 </>
               ) : (
                 <>
@@ -92,6 +92,8 @@ export default function BillHistory() {
               </Box>
             ))}
           </Box>
+        </Box>
+        <Box className={styles.shadow}>
         </Box>
       </Box >
     </>
