@@ -6,16 +6,15 @@ $backgroundColor : #1E1E1E;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  min-height: 600px;
   background-image: url(../../assets/images/dashboard-background.webp);
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
-
-
-  .header{
-    
-  }
 
   .profile {
     margin-top: 5px;
+    margin-right: 5px;
+    
   }
