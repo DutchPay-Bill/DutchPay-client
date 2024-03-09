@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import Box from '@mui/material/Box'
 import {
   LoadingBackground1,
   LoadingBackground2,
@@ -17,7 +17,7 @@ const loadingComponents = [
 ];
 
 export default function AppLoading() {
-  useCookiesChecker()
+  useCookiesChecker(5400)
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
 

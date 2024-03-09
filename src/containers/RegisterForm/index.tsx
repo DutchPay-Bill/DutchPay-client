@@ -2,12 +2,12 @@
 import * as React from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
-  Box,
   Button,
   IconButton,
   SelectChangeEvent,
   Typography,
 } from "@mui/material";
+import Box from '@mui/material/Box'
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";

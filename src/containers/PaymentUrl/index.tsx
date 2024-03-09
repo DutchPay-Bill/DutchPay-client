@@ -1,4 +1,5 @@
-import { Box, IconButton, MenuItem, Select, Typography } from "@mui/material";
+import { IconButton, MenuItem, Select, Typography } from "@mui/material";
+import Box from '@mui/material/Box'
 import Notch from "../../components/Notch";
 import styles from "./PaymentUrl.module.scss";
 import DownloadIcon from "@mui/icons-material/Download";

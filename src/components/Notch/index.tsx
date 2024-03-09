@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import Box from '@mui/material/Box'
 import dutchpayLogo from "../../assets/images/favicon.png";
 import styles from "./Notch.module.scss";
 

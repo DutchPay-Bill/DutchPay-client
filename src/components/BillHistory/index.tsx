@@ -1,4 +1,5 @@
-import { Avatar, Box, Grid, Typography } from '@mui/material';
+import { Avatar, Grid, Typography } from '@mui/material';
+import Box from '@mui/material/Box'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import styles from './BillHistory.module.scss';

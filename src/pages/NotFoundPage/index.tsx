@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import Box from '@mui/material/Box'
 import styles from './NotFoundPage.module.scss';
 
 export default function NotFoundPage() {
-  const [countdown, setCountdown] = useState(9);
+  const [countdown, setCountdown] = useState(5);
   const navigate = useNavigate()
 
   useEffect(() => {

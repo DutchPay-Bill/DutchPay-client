@@ -1,4 +1,5 @@
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
+import Box from '@mui/material/Box'
 import { Add, FormatListBulleted, Home } from "@mui/icons-material";
 import styles from "./PublicLayout.module.scss";
 

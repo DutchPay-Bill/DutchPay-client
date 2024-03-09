@@ -1,4 +1,5 @@
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
+import Box from '@mui/material/Box'
 import styles from './LoadingBackground4.module.scss'
 import dutchpayLogo from '../../../assets/images/app-loading/logo-4.png'
 
