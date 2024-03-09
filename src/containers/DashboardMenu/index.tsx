@@ -9,7 +9,7 @@ import { RecentBill, BillHistory } from '../../components';
 import useCookiesChecker from '../../utils/authChecker';
 
 export default function DashboardProfile() {
-  useCookiesChecker(0)
+  useCookiesChecker(500)
   return (
     <>
       <Box className={styles.dashboardMenu}>
