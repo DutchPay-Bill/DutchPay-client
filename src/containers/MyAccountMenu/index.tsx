@@ -19,7 +19,7 @@ const MyAccountMenu: React.FC = () => {
   }
 
   return (
-    <Box className={`myAccountPage ${styles.root}`}>
+    <Box className={`myAccountPage ${styles.root}`} style={{ maxHeight: '100vh', overflowY: 'auto' }}>
       <Grid xs={6} md={8}>
         <Box className={styles.header}>
           <Header />

@@ -6,7 +6,9 @@ $backgroundColor : #1E1E1E;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: $backgroundColor;
+  background-image: url(../../assets/images/dashboard-background.webp);
+  background-size: cover;
+  background-position: center;
 }
 
 
