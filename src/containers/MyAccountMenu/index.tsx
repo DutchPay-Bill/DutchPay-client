@@ -1,5 +1,12 @@
   import React from 'react';
-  import { Header, Profile, MyPackage, UserType, SetUp } from '../../components';
+  import {  Header, 
+            Profile, 
+            MyPackage, 
+            UserType, 
+            SetUp, 
+            LogOut 
+         } 
+  from '../../components';
   import { Box } from '@mui/material';
   import styles from './MyAccountMenu.module.scss'; 
   import Grid from '@mui/material/Unstable_Grid2';
@@ -44,6 +51,11 @@
             <Grid xs={6} md={4}>
               <Box className={styles.package} style={{ marginTop: '2rem' }}>
                 <SetUp/>
+              </Box>
+            </Grid>
+            <Grid xs={6} md={4}>
+              <Box className={styles.logout} style={{ marginTop: '2rem' }}>
+                <LogOut/>
               </Box>
             </Grid>
         </Box>

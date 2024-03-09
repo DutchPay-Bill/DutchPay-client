@@ -12,9 +12,10 @@ $color6: #c20f45;
     margin: 0px auto 16px;
     max-width: 330px;
     background-color: $color3;
-    border-radius: 32px 32px 0 0;
+    border-radius: 32px 32px 32px 32px;
     height: 100%;
     z-index: 100;
+    
     
 
     .container{
@@ -34,8 +35,12 @@ $color6: #c20f45;
             margin-bottom: 20px;
         }
 
-        .content{
-            
+        .link {
+            text-decoration: none; 
+          }
+        
+        .walletlink{
+            color: $color1;
         }
 
         .ewallet{
