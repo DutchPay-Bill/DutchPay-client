@@ -1,0 +1,26 @@
+$black : #131313ee;
+$buttonColor : #1E1E1E;
+$white : #fff;
+$yellow : #E4FF63;
+
+.notchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 0 auto; 
+    padding: 1rem;
+    background-color: $yellow;
+    border-radius:0 0 30px 30px;
+}
+
+.notchLogo {
+    height: 100%; /* Set height to 100% to make it responsive */
+    max-height: 1.5rem; /* Set a maximum height for the image */
+    border-radius: 5px;
+}
+
+.notchText {
+    font-weight: bolder;
+    padding-left: .5rem;
+}

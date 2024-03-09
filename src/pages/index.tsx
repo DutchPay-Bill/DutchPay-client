@@ -2,3 +2,4 @@ export { default as LoginDashBoardPage } from "./LoginDashboardPage";
 export { default as RegisterDashboardPage } from "./RegisterDashboardPage";
 export { default as NotFoundPage } from "./NotFoundPage";
 export { default as MyAccount } from "./MyAccount";
+export { default as DashboardPage } from "./DashboardPage";
