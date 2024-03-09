@@ -51,7 +51,7 @@ const Profile: React.FC<ProfileProps> = ({ userProfile }) => {
                  </Grid>
             </Grid>
             <Grid item xs>
-              <RouterLink to="#" className={styles.editButton}><BorderColorIcon/></RouterLink>
+              <RouterLink to="/change-profile" className={styles.editButton}><BorderColorIcon/></RouterLink>
             </Grid>
         </Grid>
       ) : (

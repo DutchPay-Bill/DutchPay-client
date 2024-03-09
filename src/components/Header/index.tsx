@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   return (
     <Box component="header" className={styles.root}> 
       <Box component="nav" className={styles.toolbar}> 
-        <RouterLink to="#" className={styles.backbutton}><ArrowBackIosIcon/> </RouterLink>
+        <RouterLink to="/dashboard" className={styles.backbutton}><ArrowBackIosIcon/> </RouterLink>
       </Box>
       <Typography variant="h6" className={styles.title}>
           My Account

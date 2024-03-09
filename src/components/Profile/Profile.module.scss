@@ -26,22 +26,19 @@
   align-items: center;
 }
 
-/* Menghapus margin-top pada .profilePhone dan .profileEmail */
 .profilePhone 
 .profileEmail {
   color: #ffffff;
 }
 
-/* Memberikan margin-top pada .profilePhone dan .profileEmail */
 .profilePhone {
   display: flex;
   color: #f0eeee;
-  margin-top: 16px; /* Tambahkan margin atas di sini */
+  margin-top: 16px; 
 }
 
 .profileEmail {
   color: #ffffff;
-  /* margin-top: 16px; */ /* Hapus baris ini */
 }
 
 .editButton { 

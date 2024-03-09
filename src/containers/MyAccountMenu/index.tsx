@@ -13,6 +13,11 @@ const MyAccountMenu: React.FC = () => {
     EmailConnect: 'Not connected'
   };
 
+  const userType = {
+    pictureUrl1:'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg',
+    pictureUrl2:'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg'
+  }
+
   return (
     <Box className={`myAccountPage ${styles.root}`}>
       <Grid xs={6} md={8}>
@@ -30,11 +35,11 @@ const MyAccountMenu: React.FC = () => {
           <MyPackage />
         </Box>
       </Grid>
-      {/* <Grid xs={6} md={4}>
+      <Grid xs={6} md={4}>
         <Box className={styles.package} style={{ marginTop: '2rem' }}>
-          <UserType />
+          <UserType type={userType} />
         </Box>
-      </Grid> */}
+      </Grid>
     </Box>
   );
 };
