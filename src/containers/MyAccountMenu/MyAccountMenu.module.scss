@@ -1,4 +1,4 @@
-$backgroundColor : #ffff;
+$backgroundColor : #1E1E1E;
 
 .root{
   display: flex;
@@ -6,6 +6,7 @@ $backgroundColor : #ffff;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: $backgroundColor;
 }
 
 

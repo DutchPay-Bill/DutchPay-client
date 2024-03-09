@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Profile, MyPackage } from '../../components';
+import { Header, Profile, MyPackage, UserType } from '../../components';
 import { Box } from '@mui/material';
 import styles from './MyAccountMenu.module.scss'; 
 import Grid from '@mui/material/Unstable_Grid2';
@@ -30,6 +30,11 @@ const MyAccountMenu: React.FC = () => {
           <MyPackage />
         </Box>
       </Grid>
+      {/* <Grid xs={6} md={4}>
+        <Box className={styles.package} style={{ marginTop: '2rem' }}>
+          <UserType />
+        </Box>
+      </Grid> */}
     </Box>
   );
 };
