@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const useCookiesChecker = () => {
+const useCookiesChecker = (interval: number) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -15,14 +15,16 @@ const useCookiesChecker = () => {
       ?.split('=')[1];
 
     setAccessToken(storedAccessToken || null);
-    setTimeout(() => {
-      if (!storedAccessToken) {
+    if (!storedAccessToken) {
+        setTimeout(() => {
         navigate('/login');
+      }, interval)
       }else {
-        navigate('/dashboard');
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, interval)
       }
-    }, 5200)
-  }, [navigate]);
+  }, [interval, navigate]);
 
   const isAuthenticated = () => {
     return !!accessToken;
