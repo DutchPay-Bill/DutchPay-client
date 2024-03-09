@@ -18,7 +18,7 @@ export default function NotFoundPage() {
 
   useEffect(() => {
     if (countdown === 0) {
-      navigate('');
+      navigate('/dashboard');
     }
   }, [countdown, navigate]);
 
