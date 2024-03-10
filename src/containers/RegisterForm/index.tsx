@@ -7,20 +7,21 @@ import {
   SelectChangeEvent,
   Typography,
 } from "@mui/material";
-import Box from '@mui/material/Box'
+import Box from "@mui/material/Box";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
 import OTPForm from "./OTPForm";
 import styles from "./RegisterForm.module.scss";
+import { register, validatePhone } from "../../utils/fetchApi";
 import {
   PhoneAuthProvider,
-  // ConfirmationResult,
   RecaptchaVerifier,
   signInWithCredential,
   signInWithPhoneNumber,
 } from "firebase/auth";
 import { auth } from "../../config/firebaseAuth";
+import CustomAlert from "../../components/Alert";
 // import { set } from "firebase/database";
 
 const steps = ["Personal Info", "Phone Number", "OTP Verification"];
@@ -99,21 +100,30 @@ export default function RegisterForm() {
     try {
       const phoneNumber = countryCode + phone;
       console.log("phone", phoneNumber);
-      // disini hit endpoint check phone_number uda kedaftar belum
-      // if uda kedaftar nomor yg uda dipake kasih notif/ messagenya uda dari BE
-      const recaptcha = new RecaptchaVerifier(auth, "captcha", {
-        size: "invisible",
-        callback: function (response: any) {
-          console.log(response);
-        },
-      });
-      confirmationResult = await signInWithPhoneNumber(
-        auth,
-        phoneNumber,
-        recaptcha
-      );
-      setVerificationId(confirmationResult.verificationId);
-      console.log("OTP sent successfully");
+      const value = { phone_number: phoneNumber };
+      const response = await validatePhone(value);
+      if (!response?.ok) {
+        const responseJson = await response?.json();
+        const errorMessage = responseJson.message;
+        return <CustomAlert severity="error" message={errorMessage} />;
+      } else {
+        const recaptcha = new RecaptchaVerifier(auth, "captcha", {
+          size: "invisible",
+          callback: function (response: any) {
+            console.log(response);
+          },
+        });
+        confirmationResult = await signInWithPhoneNumber(
+          auth,
+          phoneNumber,
+          recaptcha
+        );
+        setVerificationId(confirmationResult.verificationId);
+        console.log("OTP sent successfully");
+      }
+      const responseJson = await response?.json();
+      const successMessage = responseJson.message;
+      return <CustomAlert severity="success" message={successMessage} />;
     } catch (error) {
       console.error(error);
     }
@@ -125,11 +135,18 @@ export default function RegisterForm() {
       await signInWithCredential(auth, credential);
       console.log("OTP verified successfully");
       console.log("User signed in successfully", credential);
-      // setelah ini hit register endpoint, dengan req.body fullname, password, phone_number
-      // kalo register success navigate ke /dashboard
+      const value = {
+        fullname: fullName,
+        password: password,
+        phone_number: phone,
+      };
+      const response = await register(value);
+      if (response?.ok) {
+        navigate("/dashboard");
+      }
     } catch (error) {
       console.error("OTP verification failed", error);
-      // kasih notif kalo otp ga cocok
+      return <CustomAlert severity="error" message="Wrong OTP Code" />;
     }
   };
 
