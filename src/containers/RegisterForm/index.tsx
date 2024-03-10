@@ -11,9 +11,8 @@ import Box from "@mui/material/Box";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
-import OTPForm from "./OTPForm";
 import styles from "./RegisterForm.module.scss";
-import { register, validatePhone } from "../../utils/fetchApi";
+import { phoneLogin, register, validatePhone } from "../../utils/fetchApi";
 import {
   PhoneAuthProvider,
   RecaptchaVerifier,
@@ -24,7 +23,7 @@ import { auth } from "../../config/firebaseAuth";
 import CustomAlert from "../../components/Alert";
 // import { set } from "firebase/database";
 
-const steps = ["Personal Info", "Phone Number", "OTP Verification"];
+const steps = ["Personal Info", "Phone Number"];
 
 export default function RegisterForm() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -43,6 +42,10 @@ export default function RegisterForm() {
     phone: "",
     otp: "",
   });
+  const [alertSeverity, setAlertSeverity] = React.useState<
+    "success" | "error" | "info" | "warning" | undefined
+  >(undefined);
+  const [alertMessage, setAlertMessage] = React.useState<string>("");
 
   let confirmationResult: any;
   const navigate = useNavigate();
@@ -96,36 +99,42 @@ export default function RegisterForm() {
     return valid;
   };
 
+  const showAlert = (
+    severity: "success" | "error" | "info" | "warning",
+    message: string
+  ) => {
+    setAlertSeverity(severity);
+    setAlertMessage(message);
+  };
+
   const sendOtp = async () => {
     try {
       const phoneNumber = countryCode + phone;
       console.log("phone", phoneNumber);
-      const value = { phone_number: phoneNumber };
+      const value = { phone_number: phoneNumber }; //format nomor hpnya kyk apa? 62/+62/8~~?
       const response = await validatePhone(value);
-      if (!response?.ok) {
-        const responseJson = await response?.json();
-        const errorMessage = responseJson.message;
-        return <CustomAlert severity="error" message={errorMessage} />;
-      } else {
-        const recaptcha = new RecaptchaVerifier(auth, "captcha", {
-          size: "invisible",
-          callback: function (response: any) {
-            console.log(response);
-          },
-        });
-        confirmationResult = await signInWithPhoneNumber(
-          auth,
-          phoneNumber,
-          recaptcha
-        );
-        setVerificationId(confirmationResult.verificationId);
-        console.log("OTP sent successfully");
+      if (response?.ok) {
+        showAlert("success", "OTP sent successfully");
       }
-      const responseJson = await response?.json();
-      const successMessage = responseJson.message;
-      return <CustomAlert severity="success" message={successMessage} />;
+      const recaptcha = new RecaptchaVerifier(auth, "captcha", {
+        size: "invisible",
+        callback: function (response: any) {
+          console.log(response);
+        },
+      });
+      confirmationResult = await signInWithPhoneNumber(
+        auth,
+        phoneNumber,
+        recaptcha
+      );
+      setVerificationId(confirmationResult.verificationId);
+      console.log("OTP sent successfully");
     } catch (error) {
       console.error(error);
+      showAlert(
+        "error",
+        "This phone number is already in use. Please use a different phone number."
+      );
     }
   };
 
@@ -142,11 +151,22 @@ export default function RegisterForm() {
       };
       const response = await register(value);
       if (response?.ok) {
-        navigate("/dashboard");
+        showAlert("success", "Registration successful");
+        const loginValue = {
+          phone_number: phone,
+          password: password,
+        };
+        const loginResponse = await phoneLogin(loginValue);
+        if (loginResponse?.ok) {
+          navigate("/dashboard");
+        }
       }
     } catch (error) {
       console.error("OTP verification failed", error);
-      return <CustomAlert severity="error" message="Wrong OTP Code" />;
+      showAlert(
+        "error",
+        "The OTP code you entered is incorrect. Please double-check and try again."
+      );
     }
   };
 
@@ -212,10 +232,9 @@ export default function RegisterForm() {
             handleInputChange={handleInputChange}
             countryCode={countryCode}
             phone={phone}
+            otp={otp}
           />
         );
-      case 2:
-        return <OTPForm otp={otp} handleInputChange={handleInputChange} />;
       default:
         throw new Error("Unknown step");
     }
@@ -240,6 +259,9 @@ export default function RegisterForm() {
             >
               <ArrowBackIosNewIcon className={styles.backIcon} />
             </IconButton>
+          )}
+          {alertSeverity && alertMessage && (
+            <CustomAlert severity={alertSeverity} message={alertMessage} />
           )}
         </Box>
         {activeStep === steps.length ? (
@@ -278,28 +300,28 @@ export default function RegisterForm() {
                 </Button>
               )}
               {activeStep === 1 && (
-                <Button
-                  id="captcha"
-                  disabled={isLoading || !phone || Boolean(errors.phone)}
-                  type="submit"
-                  className={styles.nextButton}
-                  variant="contained"
-                  onClick={() => {
-                    sendOtp();
-                    handleNext();
-                  }}
-                >
-                  Send OTP
-                </Button>
-              )}
-              {activeStep === 2 && (
-                <Button
-                  className={styles.verifyButton}
-                  variant="contained"
-                  onClick={verifyOtp}
-                >
-                  Verify OTP
-                </Button>
+                <Box className={styles.buttonContainer2}>
+                  <Button
+                    id="captcha"
+                    disabled={isLoading || !phone || Boolean(errors.phone)}
+                    type="submit"
+                    className={styles.nextButton}
+                    variant="contained"
+                    onClick={sendOtp}
+                  >
+                    Send OTP
+                  </Button>
+                  <Button
+                    className={styles.verifyButton}
+                    disabled={
+                      isLoading || !phone || !otp || Boolean(errors.otp)
+                    }
+                    variant="contained"
+                    onClick={verifyOtp}
+                  >
+                    Verify OTP
+                  </Button>
+                </Box>
               )}
             </Box>
           </React.Fragment>

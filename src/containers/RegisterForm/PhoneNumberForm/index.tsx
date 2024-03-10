@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Box from '@mui/material/Box'
+import Box from "@mui/material/Box";
 import styles from "../RegisterForm.module.scss";
 import { ChangeEvent } from "react";
 
@@ -22,15 +22,17 @@ interface PhoneNumberFormProps {
   handleCountryCodeChange: (e: SelectChangeEvent) => void;
   phone: string;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  otp: string;
 }
 
 export default function PhoneNumberForm({
   countryCode,
   handleCountryCodeChange,
   phone,
+  otp,
   handleInputChange,
 }: PhoneNumberFormProps) {
-  const handlePhoneInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleNumberInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     if (/^\d*$/.test(value)) {
       handleInputChange(e);
@@ -41,37 +43,59 @@ export default function PhoneNumberForm({
     <>
       <Box className={styles.phoneNumberSection}>
         <Typography className={styles.headingBig}>
-          Take the next step!
+          Take the last step!
         </Typography>
         <Typography className={styles.headingSmall}>
           Add your phone number to link it with your account
         </Typography>
         <Typography className={styles.inputLabel}>Phone Number</Typography>
         <Box className={styles.inputContainer}>
-          <Select
-            defaultValue={"+62"}
-            className={styles.phoneNumberSelect}
-            value={countryCode}
-            onChange={handleCountryCodeChange}
-          >
-            {dummyCodes.map((country) => (
-              <MenuItem key={country.value} value={country.value}>
-                {country.value}
-              </MenuItem>
-            ))}
-          </Select>
+          <Box className={styles.inputContainer2}>
+            <Select
+              defaultValue={"+62"}
+              className={styles.phoneNumberSelect}
+              value={countryCode}
+              onChange={handleCountryCodeChange}
+            >
+              {dummyCodes.map((country) => (
+                <MenuItem key={country.value} value={country.value}>
+                  {country.value}
+                </MenuItem>
+              ))}
+            </Select>
+            <TextField
+              className={styles.phoneInput}
+              required
+              id="phoneNumber"
+              name="phoneNumber"
+              placeholder="xxx-xxxx-xxxx"
+              variant="filled"
+              value={phone}
+              onChange={handleNumberInputChange}
+              InputProps={{
+                classes: {
+                  input: styles.phoneInput2,
+                },
+                disableUnderline: true,
+              }}
+              InputLabelProps={{
+                shrink: true,
+                className: styles.inputLabel2,
+              }}
+            />
+          </Box>
+          <Typography className={styles.inputLabel}>OTP Code</Typography>
           <TextField
-            className={styles.phoneInput}
+            className={styles.otpInput}
             required
-            id="phoneNumber"
-            name="phoneNumber"
-            placeholder="xxx-xxxx-xxxx"
+            id="otp"
+            name="otp"
+            value={otp}
+            onChange={handleNumberInputChange}
             variant="filled"
-            value={phone}
-            onChange={handlePhoneInputChange}
             InputProps={{
               classes: {
-                input: styles.phoneInput2,
+                input: styles.otpInput2,
               },
               disableUnderline: true,
             }}

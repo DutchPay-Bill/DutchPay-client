@@ -11,8 +11,8 @@ interface ValidatePhone {
 
 interface Register {
   fullname: string;
-  password: string;
   phone_number: string;
+  password: string;
 }
 
 export const phoneLogin = async (value: PhoneLogin) => {
