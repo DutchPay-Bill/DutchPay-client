@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Regular.woff2') format('woff2'), 
+       url('/fonts/Inter-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --font-family: 'Inter', sans-serif; 
+}
+
+.root {
+  margin: 0px auto 16px;
+  max-width: 330px;
+  display: flex;
+}
+
+.plansgrid{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.title{
+  color: #ffff;
+  margin: 0; 
+  white-space: nowrap; 
+  overflow: show; 
+  text-overflow: ellipsis;
+}
+
+.plans {
+  color: #ffffff; 
+}
