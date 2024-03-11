@@ -1,7 +1,21 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
+import Box from '@mui/material/Box'
 import styles from "../RegisterForm.module.scss";
+import { ChangeEvent } from "react";
 
-export default function OTPForm() {
+interface OTPFormProps {
+  otp: string;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export default function OTPForm({ otp, handleInputChange }: OTPFormProps) {
+  const handleOtpInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (/^\d*$/.test(value)) {
+      handleInputChange(e);
+    }
+  };
+
   return (
     <>
       <Box className={styles.otpSection}>
@@ -13,8 +27,10 @@ export default function OTPForm() {
         <TextField
           className={styles.otpInput}
           required
-          id="otpCode"
-          name="otpCode"
+          id="otp"
+          name="otp"
+          value={otp}
+          onChange={handleOtpInputChange}
           variant="filled"
           InputProps={{
             classes: {

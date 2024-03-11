@@ -1,0 +1,79 @@
+$color1: #FFFFFF;
+$color2: #131313;
+$color3: #E4FF63;
+$color4: #1E1E1E;
+$color5: #767676;
+
+.root {
+  max-width: 280px;
+  display: flex;
+  align-items: center;
+  margin: 0px auto 16px;
+  border-radius: 12px;
+  padding: 18px 30px;
+  background-color: $color5;
+
+    .type{
+      color: $color4;
+      text-align: center;
+    }
+    
+    .freeuser{
+      color: $color1;
+      text-align: center;
+    }
+
+    .billperday{
+      white-space: nowrap; 
+      text-align: center;
+      color: $color4;
+    }
+  
+    .bill {
+      white-space: nowrap; 
+      text-align: center;
+      color: $color4;
+    }
+
+    .avatar1{
+      display: flex;
+      justify-content: center;
+    }
+
+    .avatar2{
+      margin-left: 12px;
+      align-items: center;
+    }
+
+    .fee{
+      text-align: center;
+      font-size: 13px;
+      margin-top: 4px;
+      color: $color4;
+    }
+
+    .fee1{
+      text-align: center;
+      color: $color1;
+      margin-top: 9px;
+    }
+
+    .fee2{
+      color: $color4;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .fee3{
+      color: $color4;
+      text-align: center;
+      color: $color1;
+      font-size: 11px;
+    }
+  
+
+  
+
+
+
+}  

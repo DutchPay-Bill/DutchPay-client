@@ -7,7 +7,9 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #858585;
+  background-image: url(/src/assets/images/app-background.webp);
+  background-size: cover;
+  background-position: center;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

@@ -1,5 +1,6 @@
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Box, Button, Divider, Input, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import { Button, Divider, Input, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import Box from '@mui/material/Box'
 import logo from '../../assets/images/app-loading/logo-4.png';
 import googleLogo from '../../assets/images/google.svg';
 import appleLogo from '../../assets/images/apple.svg';

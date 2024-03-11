@@ -1,0 +1,48 @@
+.profile {
+  display: flex;
+  align-items: center;
+  margin: 0px auto 16px;
+  max-width: 330px;
+}
+
+.profileInfo {
+  display: flex;
+  flex-grow: 1;
+  margin-left: 5px;
+  width: 100%; 
+}
+
+.profilePicture {
+  flex-shrink: 0; 
+}
+
+.profileIconPhone {
+  margin-top: 7px;
+}
+
+.profileName {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.profilePhone 
+.profileEmail {
+  color: #ffffff;
+  padding: 5px;
+}
+
+.profilePhone {
+  display: flex;
+  color: #f0eeee;
+  margin-top: 16px; 
+}
+
+.profileEmail {
+  color: #ffffff;
+}
+
+.editButton { 
+  color: #f0eeee; 
+  margin-top: 6px; 
+}

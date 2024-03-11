@@ -1,5 +1,4 @@
 import {
-  Box,
   // Input,
   MenuItem,
   Select,
@@ -7,8 +6,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import Box from '@mui/material/Box'
 import styles from "../RegisterForm.module.scss";
-import { ChangeEvent,  } from "react";
+import { ChangeEvent } from "react";
 
 const dummyCodes = [
   { value: "+62" },
@@ -24,7 +24,18 @@ interface PhoneNumberFormProps {
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function PhoneNumberForm({countryCode, handleCountryCodeChange, phone, handleInputChange }: PhoneNumberFormProps) {
+export default function PhoneNumberForm({
+  countryCode,
+  handleCountryCodeChange,
+  phone,
+  handleInputChange,
+}: PhoneNumberFormProps) {
+  const handlePhoneInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (/^\d*$/.test(value)) {
+      handleInputChange(e);
+    }
+  };
 
   return (
     <>
@@ -37,7 +48,12 @@ export default function PhoneNumberForm({countryCode, handleCountryCodeChange, p
         </Typography>
         <Typography className={styles.inputLabel}>Phone Number</Typography>
         <Box className={styles.inputContainer}>
-          <Select defaultValue={"+62"} className={styles.phoneNumberSelect} value={countryCode} onChange={handleCountryCodeChange}>
+          <Select
+            defaultValue={"+62"}
+            className={styles.phoneNumberSelect}
+            value={countryCode}
+            onChange={handleCountryCodeChange}
+          >
             {dummyCodes.map((country) => (
               <MenuItem key={country.value} value={country.value}>
                 {country.value}
@@ -52,7 +68,7 @@ export default function PhoneNumberForm({countryCode, handleCountryCodeChange, p
             placeholder="xxx-xxxx-xxxx"
             variant="filled"
             value={phone}
-            onChange={handleInputChange}
+            onChange={handlePhoneInputChange}
             InputProps={{
               classes: {
                 input: styles.phoneInput2,
