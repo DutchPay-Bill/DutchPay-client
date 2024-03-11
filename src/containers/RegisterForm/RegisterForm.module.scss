@@ -1,8 +1,8 @@
-$textColor : #131313ee;
-$buttonColor : #1E1E1E;
-$backgroundColor : #f1f1f1;
-$white : #fff;
-$yellow : #E4FF63;
+$textColor: #131313ee;
+$buttonColor: #1e1e1e;
+$backgroundColor: #f1f1f1;
+$white: #fff;
+$yellow: #e4ff63;
 
 .toolbar {
   position: fixed;
@@ -14,7 +14,8 @@ $yellow : #E4FF63;
 .arrowContainer {
   padding: 0px !important;
   :hover {
-  background-color: $backgroundColor;}
+    background-color: $backgroundColor;
+  }
 }
 
 .backIcon {
@@ -40,65 +41,64 @@ $yellow : #E4FF63;
     width: 100%;
 
     .headingSmall {
-        font-size: 17px;
-        align-self: flex-start ;
-        font-weight: 400;
-        margin-bottom: 10px;
+      font-size: 17px;
+      align-self: flex-start;
+      font-weight: 400;
+      margin-bottom: 10px;
     }
 
     .headingSmall:nth-child(even) {
-        font-size: 17px;
-        align-self: flex-start ;
-        font-weight: 400;
-        margin-bottom: 70px;
+      font-size: 17px;
+      align-self: flex-start;
+      font-weight: 400;
+      margin-bottom: 70px;
     }
 
     .headingBig {
-        font-size: 25px;
-        align-self: flex-start;
-        font-weight: bold;
+      font-size: 25px;
+      align-self: flex-start;
+      font-weight: bold;
     }
 
     .headingBig:nth-child(odd) {
-        font-size: 25px;
-        align-self: flex-start;
-        font-weight: bold;
-        margin-bottom: 16px;
-      }
+      font-size: 25px;
+      align-self: flex-start;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
 
     .inputLabel {
-        align-self: flex-start;
-        font-size: 12px;
-        font-weight: 400;
-        color: $textColor;
-        margin-top: 25px;
-        margin-bottom: 5px;
+      align-self: flex-start;
+      font-size: 12px;
+      font-weight: 400;
+      color: $textColor;
+      margin-top: 25px;
+      margin-bottom: 5px;
     }
 
     .inputLabel2 {
-        padding: 0;
+      padding: 0;
     }
 
     .personalInfoInput {
-        width: 100%;
-        max-width: 400px;
-        background-color: $white;
-      }
+      width: 100%;
+      max-width: 400px;
+      background-color: $white;
+    }
 
     .personalInfoInput:nth-child(odd) {
-        margin-bottom: 40px;
-        width: 100%;
-        max-width: 400px;
-        background-color: $white;
-      }
+      margin-bottom: 40px;
+      width: 100%;
+      max-width: 400px;
+      background-color: $white;
+    }
 
     .personalInfoInput2 {
-        border-radius: 8px;
-        padding: 8px 20px;
-        background-color: $white;
-        color: $textColor;
-      }
-
+      border-radius: 8px;
+      padding: 8px 20px;
+      background-color: $white;
+      color: $textColor;
+    }
   }
 
   .phoneNumberSection {
@@ -111,49 +111,49 @@ $yellow : #E4FF63;
     width: 100%;
 
     .headingBig {
-        font-size: 25px;
-        align-self: flex-start;
-        font-weight: bold;
-        margin-bottom: 1rem;
+      font-size: 25px;
+      align-self: flex-start;
+      font-weight: bold;
+      margin-bottom: 1rem;
     }
 
     .headingSmall {
-        font-size: 17px;
-        align-self: flex-start;
-        font-weight: 400;
-        margin-bottom: 10vh;
+      font-size: 17px;
+      align-self: flex-start;
+      font-weight: 400;
+      margin-bottom: 10vh;
     }
 
     .inputLabel {
-        align-self: flex-start;
-        font-size: 12px;
-        font-weight: 400;
-        color: $textColor;
-        margin-top: 25px;
-        margin-bottom: 5px;
+      align-self: flex-start;
+      font-size: 12px;
+      font-weight: 400;
+      color: $textColor;
+      margin-top: 25px;
+      margin-bottom: 5px;
     }
 
     .inputContainer {
-        display: flex;
+      display: flex;
     }
 
     .inputLabel2 {
-        padding: 0;
+      padding: 0;
     }
 
     .phoneInput {
-        width: 100%;
-        max-width: 400px;
-        background-color: $buttonColor;
-        border-radius: 16px;
-        padding-top: 1px;
-      }
+      width: 100%;
+      max-width: 400px;
+      background-color: $buttonColor;
+      border-radius: 16px;
+      padding-top: 1px;
+    }
     .phoneInput2 {
-        border-radius: 16px;
-        padding: 8px 20px;
-        background-color: $buttonColor;
-        color: $white;
-      }
+      border-radius: 16px;
+      padding: 8px 20px;
+      background-color: $buttonColor;
+      color: $white;
+    }
 
     .phoneNumberSelect {
       background-color: $buttonColor;
@@ -175,7 +175,7 @@ $yellow : #E4FF63;
       padding-left: 20px;
       color: $white;
     }
-    }
+  }
 
   .otpSection {
     display: flex;
@@ -191,26 +191,26 @@ $yellow : #E4FF63;
       align-self: flex-start;
       font-weight: bold;
       margin-bottom: 1rem;
-  }
+    }
 
     .headingSmall {
-        font-size: 17px;
-        align-self: flex-start;
-        font-weight: 400;
-        margin-bottom: 10vh;
+      font-size: 17px;
+      align-self: flex-start;
+      font-weight: 400;
+      margin-bottom: 10vh;
     }
 
     .inputLabel {
-        align-self: flex-start;
-        font-size: 12px;
-        font-weight: 400;
-        color: $textColor;
-        margin-top: 25px;
-        margin-bottom: 5px;
+      align-self: flex-start;
+      font-size: 12px;
+      font-weight: 400;
+      color: $textColor;
+      margin-top: 25px;
+      margin-bottom: 5px;
     }
 
     .inputLabel2 {
-        padding: 0;
+      padding: 0;
     }
 
     .otpInput {

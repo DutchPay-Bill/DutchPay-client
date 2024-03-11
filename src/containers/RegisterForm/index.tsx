@@ -1,6 +1,12 @@
 import * as React from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { Box, Button, IconButton, SelectChangeEvent, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
@@ -13,54 +19,58 @@ const steps = ["Personal Info", "Phone Number", "OTP Verification"];
 
 export default function RegisterForm() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [ countryCode, setCountryCode ] = React.useState('+62');
-  const [ phone , setPhone ] = React.useState("")
-  const [ isLoading, setIsloading ] = React.useState(false)
+  const [countryCode, setCountryCode] = React.useState("+62");
+  const [phone, setPhone] = React.useState("");
+  const [isLoading, setIsloading] = React.useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const sendOtp = async ()=> {
+  const sendOtp = async () => {
     try {
       const phoneNumber = countryCode + phone;
       const recaptcha = new RecaptchaVerifier(auth, "captcha", {
-        'size': 'invisible',
-        'callback': function(response: unknown) {
+        size: "invisible",
+        callback: function (response: unknown) {
           console.log(response);
         },
-      })
-      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptcha)
-      if(confirmation){        
-        setTimeout(()=> {
-          navigate('/dashboard')
-        }, 1000)
+      });
+      const confirmation = await signInWithPhoneNumber(
+        auth,
+        phoneNumber,
+        recaptcha
+      );
+      if (confirmation) {
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
       }
-      console.log('phone', phoneNumber )
-      console.log('confirm', confirmation )
+      console.log("phone", phoneNumber);
+      console.log("confirm", confirmation);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   const handleCountryCodeChange = (event: SelectChangeEvent) => {
     setCountryCode(event.target.value);
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>)=> {
-    const {name, value} = event.target
-    if(name === "phone"){
-      setPhone(value)
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (name === "phone") {
+      setPhone(value);
     }
-  }
+  };
 
   const handleNext = () => {
-    if(activeStep === 1){
-      setIsloading(true)
-      setTimeout(()=>{
+    if (activeStep === 1) {
+      setIsloading(true);
+      setTimeout(() => {
         setActiveStep(activeStep + 1);
-      }, 1000)
+      }, 1000);
     }
     setActiveStep(activeStep + 1);
-    setIsloading(false)
+    setIsloading(false);
   };
 
   const handleBack = () => {
@@ -72,7 +82,14 @@ export default function RegisterForm() {
       case 0:
         return <PersonalInfoForm />;
       case 1:
-        return <PhoneNumberForm handleCountryCodeChange={handleCountryCodeChange} handleInputChange={handleInputChange} countryCode={countryCode} phone={phone} />;
+        return (
+          <PhoneNumberForm
+            handleCountryCodeChange={handleCountryCodeChange}
+            handleInputChange={handleInputChange}
+            countryCode={countryCode}
+            phone={phone}
+          />
+        );
       case 2:
         return <OTPForm />;
       default:
@@ -123,7 +140,14 @@ export default function RegisterForm() {
                   disabled={isLoading}
                   className={styles.nextButton}
                   variant="contained"
-                  onClick={activeStep === 1 ? ()=>{sendOtp(); handleNext();} : handleNext}
+                  onClick={
+                    activeStep === 1
+                      ? () => {
+                          sendOtp();
+                          handleNext();
+                        }
+                      : handleNext
+                  }
                 >
                   {activeStep === 0 ? "Next" : "Send OTP"}
                 </Button>

@@ -1,15 +1,137 @@
-// body {
-//   background-color: #131313;
-//   color: #fff;
-//   min-height: 100vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+$backgroundColor: #131313;
+$textColor: #ffffff;
+$container: #1e1e1e;
+$confirm: #e4ff63;
 
-.photoCameraInput {
+.toolbar {
+  position: fixed;
+  top: 10vh;
+  width: 100%;
+  max-width: 330px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh; // Mengatur tinggi untuk memposisikan input di tengah
+  justify-content: flex-start;
+
+  .backIcon {
+    color: $textColor;
+  }
+
+  .changeProfileText {
+    color: $textColor;
+    margin-left: 12px;
+    font-size: 22px;
+    padding-bottom: 3px;
+    font-weight: 600;
+  }
+}
+
+.changeProfileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: $backgroundColor;
+
+  .avatarContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+    margin-bottom: 1rem;
+
+    .attachmentIcon {
+      color: #ffffff;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .profileInfoSection1 {
+    background-color: $container;
+    width: 100%;
+    max-width: auto;
+    border-radius: 50px;
+    padding: 5px;
+
+    .profileInfoSection2 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 2rem;
+      height: 60vh;
+      max-width: 320px;
+      width: 100%;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+
+      .containerTitle {
+        font-size: 16px;
+        color: $textColor;
+        margin-bottom: 15px;
+      }
+
+      .inputWrapper {
+        display: flex;
+        align-items: center;
+        // margin-bottom: 15px;
+        width: 100%;
+      }
+
+      .inputLabel {
+        align-self: flex-start;
+        font-size: 13px;
+        font-weight: 400;
+        color: #767676;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 150px;
+      }
+
+      .inputLabel2 {
+        padding: 0;
+      }
+
+      .personalInfoInput {
+        width: 100%;
+        max-width: 400px;
+        background-color: transparent;
+      }
+
+      .personalInfoInput:nth-child(odd) {
+        background-color: transparent;
+      }
+
+      .personalInfoInput2 {
+        font-size: 13px;
+        border-radius: 8px;
+        padding: 8px 20px;
+        background-color: transparent;
+        color: $textColor;
+      }
+
+      .inputButton {
+        margin-top: 40px;
+        width: 100%;
+
+        .confirmButton {
+          width: 100%;
+          text-transform: none;
+          background-color: $confirm;
+          color: $backgroundColor;
+        }
+
+        .deleteButton {
+          width: 100%;
+          margin-top: 15px;
+          text-transform: none;
+          background-color: $backgroundColor;
+          color: #767676;
+        }
+      }
+    }
+  }
 }
