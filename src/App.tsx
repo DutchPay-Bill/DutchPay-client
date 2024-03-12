@@ -8,6 +8,7 @@ import {
   NotFoundPage,
   DashboardPage,
   MyAccount,
+  ChangeProfilePage,
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import PublicLayout from "./layout/PublicLayout";
@@ -32,6 +33,7 @@ const App = () => {
                 </>
               }
             />
+            <Route path="/change-profile" element={<ChangeProfilePage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

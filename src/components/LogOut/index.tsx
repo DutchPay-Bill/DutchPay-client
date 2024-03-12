@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import styles from "./LogOut.module.scss";
 
