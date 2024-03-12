@@ -8,7 +8,7 @@ const MyPackage: React.FC = () => {
     <Box className={styles.root}>
       <Grid container spacing={16} columns={16}>
         <Grid item xs={8}>
-          <h2 className={styles.title}>My Package</h2>
+          <h3 className={styles.title}>My Package</h3>
         </Grid>
         <Grid item xs={8} className={styles.plansgrid}>
             <RouterLink className={styles.plans}  to="#">View Plans</RouterLink>

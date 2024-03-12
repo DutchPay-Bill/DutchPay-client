@@ -16,7 +16,7 @@ const UserType: React.FC<UserTypeProps> = ({ type }) => {
           <Typography className={styles.type}>Type</Typography>
           <Grid item>
             <Grid className={styles.avatar1}>
-                <Avatar sx={{ width: 50, height: 50 }} alt="User Avatar" src={type.pictureUrl1}  />
+                <Avatar sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl1}  />
             </Grid>
             <Grid item>
                 <Typography className={styles.freeuser}>Free User</Typography>
@@ -26,7 +26,7 @@ const UserType: React.FC<UserTypeProps> = ({ type }) => {
         <Grid item xs={4}>
             <Typography className={styles.bill}>Bill Entries</Typography>
             <Grid item className={styles.avatar2}>
-                <Avatar sx={{ width: 50, height: 50 }} alt="User Avatar" src={type.pictureUrl2}/>
+                <Avatar sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl2}/>
             </Grid>
             <Grid item>
                 <Typography className={styles.billperday}>bill per day</Typography>

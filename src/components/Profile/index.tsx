@@ -31,7 +31,7 @@ const Profile: React.FC<ProfileProps> = ({ userProfile }) => {
                   <Typography className={styles.profileName} color={'white'}>
                     {userProfile.name}
                   </Typography>
-                  <Grid >
+                  <Grid>
                       <Typography className={styles.profileEmail} color={'white'} >
                         {userProfile.email}
                       </Typography>
