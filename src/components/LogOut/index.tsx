@@ -1,7 +1,7 @@
-import React from 'react';
-import { Box, Typography } from '@material-ui/core'; 
-import { Link as RouterLink } from 'react-router-dom';
-import styles from './LogOut.module.scss';
+import React from "react";
+import { Box, Typography } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
+import styles from "./LogOut.module.scss";
 
 const LogOut: React.FC = () => {
   return (
