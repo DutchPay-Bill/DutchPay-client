@@ -144,16 +144,20 @@ export default function RegisterForm() {
       await signInWithCredential(auth, credential);
       console.log("OTP verified successfully");
       console.log("User signed in successfully", credential);
+      const selectedValue = countryCode.replace("+", "");
+      const phone_number = selectedValue + phone;
       const value = {
         fullname: fullName,
         password: password,
-        phone_number: phone,
+        phone_number,
       };
       const response = await register(value);
       if (response?.ok) {
         showAlert("success", "Registration successful");
+        const selectedValue = countryCode.replace("+", "");
+        const phone_number = selectedValue + phone;
         const loginValue = {
-          phone_number: phone,
+          phone_number,
           password: password,
         };
         const loginResponse = await phoneLogin(loginValue);
