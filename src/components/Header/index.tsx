@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core'; 
+import { Box, Typography } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import styles from './header.module.scss';
 import { Link as RouterLink } from 'react-router-dom';

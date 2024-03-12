@@ -1,6 +1,6 @@
 $color1: #FFFFFF;
 $color2: #131313;
-$color3: #E4FF63;
+$color3: #767676;
 $color4: #1E1E1E;
 $color5: #767676;
 
@@ -11,28 +11,32 @@ $color5: #767676;
   margin: 0px auto 16px;
   border-radius: 12px;
   padding: 18px 30px;
-  background-color: $color5;
+  background-color: $color4;
 
     .type{
-      color: $color4;
+      color: $color3;
       text-align: center;
     }
     
     .freeuser{
       color: $color1;
+      margin-top: 3px;
+      margin-left: 5px;
       text-align: center;
+      white-space: nowrap; 
     }
 
     .billperday{
       white-space: nowrap; 
       text-align: center;
-      color: $color4;
+      color: $color3;
+      margin-top: 3px;
     }
   
     .bill {
       white-space: nowrap; 
       text-align: center;
-      color: $color4;
+      color: $color3;
     }
 
     .avatar1{
@@ -41,25 +45,25 @@ $color5: #767676;
     }
 
     .avatar2{
-      margin-left: 12px;
+      margin-left: 19px;
       align-items: center;
     }
 
     .fee{
       text-align: center;
-      font-size: 13px;
+      font-size: 15px;
       margin-top: 4px;
-      color: $color4;
+      color: $color3;
     }
 
     .fee1{
       text-align: center;
       color: $color1;
-      margin-top: 9px;
+      margin-top: 3px;
     }
 
     .fee2{
-      color: $color4;
+      color: $color3;
       text-align: center;
       font-size: 13px;
     }
