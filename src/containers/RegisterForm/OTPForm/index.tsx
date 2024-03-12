@@ -1,4 +1,5 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
+import Box from '@mui/material/Box'
 import styles from "../RegisterForm.module.scss";
 import { ChangeEvent } from "react";
 

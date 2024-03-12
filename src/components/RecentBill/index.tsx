@@ -1,4 +1,5 @@
-import { Avatar, Box, Grid, Typography } from '@mui/material';
+import { Avatar, Grid, Typography } from '@mui/material';
+import Box from '@mui/material/Box'
 import InsertLinkIcon from '@mui/icons-material/InsertLink';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg';
 import styles from './RecentBill.module.scss';

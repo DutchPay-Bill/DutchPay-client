@@ -1,12 +1,15 @@
-import { Avatar, Box, Grid, Typography } from '@mui/material'
+import { Avatar, Grid, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
 import styles from './Dashboard.module.scss'
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg'
 import { Link } from 'react-router-dom';
 import { RecentBill, BillHistory } from '../../components';
+import useCookiesChecker from '../../utils/authChecker';
 
 export default function DashboardProfile() {
+  useCookiesChecker(500)
   return (
     <>
       <Box className={styles.dashboardMenu}>

@@ -2,20 +2,22 @@
 import * as React from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
-  Box,
   Button,
   IconButton,
   SelectChangeEvent,
   Typography,
 } from "@mui/material";
+import Box from '@mui/material/Box'
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PhoneNumberForm from "./PhoneNumberForm";
 import OTPForm from "./OTPForm";
 import styles from "./RegisterForm.module.scss";
 import {
+  PhoneAuthProvider,
   // ConfirmationResult,
   RecaptchaVerifier,
+  signInWithCredential,
   signInWithPhoneNumber,
 } from "firebase/auth";
 import { auth } from "../../config/firebaseAuth";
@@ -24,13 +26,14 @@ import { auth } from "../../config/firebaseAuth";
 const steps = ["Personal Info", "Phone Number", "OTP Verification"];
 
 export default function RegisterForm() {
-  const [activeStep, setActiveStep] = React.useState(0); //testing atau develop step otp verif
+  const [activeStep, setActiveStep] = React.useState(0);
   const [fullName, setFullName] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPass, setConfirmPass] = React.useState("");
   const [countryCode, setCountryCode] = React.useState("+62");
   const [phone, setPhone] = React.useState("");
   const [otp, setOtp] = React.useState("");
+  const [verificationId, setVerificationId] = React.useState("");
   const [isLoading, setIsloading] = React.useState(false);
   const [errors, setErrors] = React.useState({
     fullName: "",
@@ -96,6 +99,8 @@ export default function RegisterForm() {
     try {
       const phoneNumber = countryCode + phone;
       console.log("phone", phoneNumber);
+      // disini hit endpoint check phone_number uda kedaftar belum
+      // if uda kedaftar nomor yg uda dipake kasih notif/ messagenya uda dari BE
       const recaptcha = new RecaptchaVerifier(auth, "captcha", {
         size: "invisible",
         callback: function (response: any) {
@@ -107,6 +112,7 @@ export default function RegisterForm() {
         phoneNumber,
         recaptcha
       );
+      setVerificationId(confirmationResult.verificationId);
       console.log("OTP sent successfully");
     } catch (error) {
       console.error(error);
@@ -115,14 +121,15 @@ export default function RegisterForm() {
 
   const verifyOtp = async () => {
     try {
-      const userCredential = await confirmationResult?.confirm(otp);
+      const credential = PhoneAuthProvider.credential(verificationId, otp);
+      await signInWithCredential(auth, credential);
       console.log("OTP verified successfully");
-      console.log("User signed in successfully", userCredential);
-      if (userCredential) {
-        navigate("/dashboard");
-      }
+      console.log("User signed in successfully", credential);
+      // setelah ini hit register endpoint, dengan req.body fullname, password, phone_number
+      // kalo register success navigate ke /dashboard
     } catch (error) {
       console.error("OTP verification failed", error);
+      // kasih notif kalo otp ga cocok
     }
   };
 
