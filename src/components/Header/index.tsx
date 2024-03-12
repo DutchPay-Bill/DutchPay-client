@@ -10,7 +10,7 @@ const Header: React.FC = () => {
       <Box component="nav" className={styles.toolbar}> 
         <RouterLink to="/dashboard" className={styles.backbutton}><ArrowBackIosIcon/> </RouterLink>
       </Box>
-      <Typography variant="h6" className={styles.title}>
+      <Typography variant="h6" className={styles.title} color='white'>
           My Account
       </Typography>
     </Box>
