@@ -23,7 +23,15 @@ const App = () => {
             <Route path="/" element={<LoadingAppPage />} />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
-            <Route path="/myaccount" element={<><MyAccount/><PublicLayout/></>}/>
+            <Route
+              path="/myaccount"
+              element={
+                <>
+                  <MyAccount />
+                  <PublicLayout />
+                </>
+              }
+            />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
