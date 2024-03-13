@@ -68,11 +68,14 @@ $color6: #c20f45;
         max-height: 700px;
       }
 
-      // @media screen and (max-width: 768px) {
-      //   .fullscrollBox {
-      //     max-height: 350px;
-      //   }
-      // }
+      /* Hide scrollbar for WebKit browsers (e.g., Chrome, Safari) */
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      /* Hide scrollbar for Firefox */
+      scrollbar-width: none;
 
       .billContainer {
         background-color: $color4;

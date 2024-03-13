@@ -82,3 +82,34 @@ export const googleAuth = async () => {
   }
   return;
 };
+
+export const getUserProfile = async () => {
+  try {
+    const response = await fetch(API_URL + "/v1/user", {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
+
+export const userLogout = async () => {
+  try {
+    const response = await fetch(API_URL + "/v1/auth/logout", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("response", response);
+    return response;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
