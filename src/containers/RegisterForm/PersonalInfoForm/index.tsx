@@ -1,7 +1,7 @@
 import { TextField, Typography } from "@mui/material";
-import Box from '@mui/material/Box'
+import Box from "@mui/material/Box";
 import styles from "../RegisterForm.module.scss";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface PersonalInfoFormProps {
   fullName: string;
@@ -16,13 +16,36 @@ export default function PersonalInfoForm({
   confirmPass,
   handleInputChange,
 }: PersonalInfoFormProps) {
-  const isFullName = (str: string) => {
+  const [clicked, setClicked] = useState(false);
+
+  const nameValidation = (fullName: string) => {
     const regex = /^[a-zA-Z]{3,}$/;
-    return regex.test(str);
+    if (clicked && !regex.test(fullName)) {
+      return "Enter a valid name";
+    }
+    return undefined;
   };
 
-  const isPasswordMatch = () => {
-    return password === confirmPass;
+  const passwordValidation = (password: string) => {
+    const regex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
+    if (clicked && (password.length < 6 || !regex.test(password))) {
+      return password.length < 6
+        ? "Password must have a minimum length of 6 characters."
+        : "Password must be alphanumeric.";
+    }
+    return undefined;
+  };
+
+  const confirmPassValidation = (confirmPass: string) => {
+    if (clicked && confirmPass !== password) {
+      return "Passwords do not match.";
+    }
+    return undefined;
+  };
+
+  const handleInputClicked = (e: ChangeEvent<HTMLInputElement>) => {
+    handleInputChange(e);
+    setClicked(true);
   };
 
   return (
@@ -42,17 +65,10 @@ export default function PersonalInfoForm({
           id="fullName"
           name="fullName"
           value={fullName}
-          onChange={handleInputChange}
+          onChange={handleInputClicked}
           placeholder="e.g, John Kuzcak"
-          error={!isFullName(fullName)}
-          helperText={
-            !isFullName(fullName) ? "Enter your full name" : undefined
-          }
-          FormHelperTextProps={{
-            className: isFullName(fullName)
-              ? styles.helperText
-              : `${styles.helperText} ${styles.helperText}`,
-          }}
+          error={!!nameValidation(fullName)}
+          helperText={nameValidation(fullName)}
           variant="filled"
           InputProps={{
             classes: {
@@ -73,8 +89,10 @@ export default function PersonalInfoForm({
           name="password"
           type="password"
           value={password}
-          onChange={handleInputChange}
+          onChange={handleInputClicked}
           variant="filled"
+          error={!!passwordValidation(password)}
+          helperText={passwordValidation(password)}
           InputProps={{
             classes: {
               input: styles.personalInfoInput2,
@@ -94,15 +112,10 @@ export default function PersonalInfoForm({
           name="confirmPass"
           type="password"
           value={confirmPass}
-          onChange={handleInputChange}
+          onChange={handleInputClicked}
           variant="filled"
-          error={!isPasswordMatch()}
-          helperText={!isPasswordMatch() ? "Passwords do not match" : undefined}
-          FormHelperTextProps={{
-            className: isPasswordMatch()
-              ? styles.helperText
-              : `${styles.helperText} ${styles.helperText}`,
-          }}
+          error={!!confirmPassValidation(confirmPass)}
+          helperText={confirmPassValidation(confirmPass)}
           InputProps={{
             classes: {
               input: styles.personalInfoInput2,
