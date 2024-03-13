@@ -43,19 +43,17 @@ const GlobalState = ({ children }: Props) => {
     const login = async () => {
         const response = await getUserProfile()
         const data = await response?.json()
-        if(response?.ok){
+        if(response?.status === 400){
+            setAuthenticated(false)
+        }else {
             setUserData(data)
             setAuthenticated(true);
-        }else {
-            setAuthenticated(false)
         }
     };
 
     const logout = async () => {
-        const response = await userLogout()
-        if(response?.ok){
+        await userLogout()
             setAuthenticated(false);
-        }
     };
 
     return (

@@ -92,6 +92,7 @@ export const userLogout = async () => {
                 "Content-Type": "application/json",
             },
         });
+      console.log('response', response)
         return response
     } catch (error) {
         console.error("An error occurred:", error);
