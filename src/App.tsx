@@ -8,6 +8,8 @@ import {
   NotFoundPage,
   DashboardPage,
   MyAccount,
+  GoogleAuthFail,
+  GoogleAuthSuccess,
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import PublicLayout from "./layout/PublicLayout";
@@ -23,6 +25,11 @@ const App = () => {
             <Route path="/" element={<LoadingAppPage />} />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
+            <Route path="/google-auth/failed" element={<GoogleAuthFail />} />
+            <Route
+              path="/google-auth/success"
+              element={<GoogleAuthSuccess />}
+            />
             <Route
               path="/myaccount"
               element={

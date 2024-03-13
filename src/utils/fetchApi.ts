@@ -66,3 +66,19 @@ export const register = async (value: Register) => {
   }
   return;
 };
+
+export const googleAuth = async () => {
+  try {
+    const response = await fetch(API_URL + "/v1/auth/google", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    return response;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+  return;
+};
