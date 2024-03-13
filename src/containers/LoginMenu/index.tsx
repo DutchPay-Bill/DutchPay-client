@@ -16,6 +16,7 @@ import styles from "./LoginMenu.module.scss";
 import { ButtonCustom } from "../../components";
 import { ChangeEvent, useState } from "react";
 import { googleAuth, phoneLogin } from "../../utils/fetchApi";
+import CustomAlert from "../../components/Alert";
 
 const dummyCodes = [
   { value: "+62" },
@@ -28,6 +29,10 @@ export default function LoginMenu() {
   const [countryCode, setCountryCode] = useState("+62");
   const [phone, setPhone] = useState("");
   const [password, setPasword] = useState("");
+  const [alertSeverity, setAlertSeverity] = useState<
+    "success" | "error" | "info" | "warning" | undefined
+  >(undefined);
+  const [alertMessage, setAlertMessage] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -51,16 +56,24 @@ export default function LoginMenu() {
       const value = { phone_number, password };
       const response = await phoneLogin(value);
       if (response?.ok) {
-        alert("ok");
-        navigate("/dashboard");
+        setAlertSeverity("success");
+        setAlertMessage("Login successful. Redirecting to dashboard");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 3000);
       }
     } catch (error) {
       console.error(error);
+      setAlertSeverity("error");
+      setAlertMessage("An error occurred while logging in. Please try again.");
     }
   };
 
   return (
     <Box className={styles.loginMenu}>
+      {alertSeverity && alertMessage && (
+        <CustomAlert severity={alertSeverity} message={alertMessage} />
+      )}
       <img className={styles.logo} src={logo} alt="Dutch Pay Logo" />
 
       <Box className={styles.phoneNumberSection}>
