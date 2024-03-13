@@ -24,7 +24,7 @@ export default function DashboardProfile() {
               </Box>
             </Grid>
             <Grid item xs={6}>
-              <Link to='/myaccount'>
+              <Link to='/my-account'>
                 <SettingsIcon className={styles.settingIcon} />
               </Link>
             </Grid>
@@ -41,7 +41,7 @@ export default function DashboardProfile() {
               <Typography className={styles.userHandle}>@dindayasmin</Typography>
             </Box>
             <Box>
-              <Link to="/myaccount">
+              <Link to="/my-account">
                 <Avatar
                   className={styles.avatar}
                   src={dummyAvatar}

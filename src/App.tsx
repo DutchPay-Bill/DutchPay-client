@@ -10,7 +10,6 @@ import {
   MyAccount,
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
-import PublicLayout from "./layout/PublicLayout";
 import GlobalState from "./utils/globalState";
 // import PaymentUrlPage from "./pages/PaymentUrl";
 
@@ -23,15 +22,7 @@ const App = () => {
             <Route path="/" element={<LoadingAppPage />} />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
-            <Route
-              path="/myaccount"
-              element={
-                <>
-                  <MyAccount />
-                  <PublicLayout />
-                </>
-              }
-            />
+            <Route path="/my-account" element={<MyAccount />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
