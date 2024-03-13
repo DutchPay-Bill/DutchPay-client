@@ -7,7 +7,7 @@ import React from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Button, IconButton } from "@mui/material";
-import styles from "./NewBill.module.css";
+import styles from "./NewBill.module.scss";
 
 const steps = [
   "Add Bill",

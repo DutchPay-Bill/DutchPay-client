@@ -10,6 +10,7 @@ import {
   MyAccount,
   GoogleAuthFail,
   GoogleAuthSuccess,
+  NewBillDashboard,
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
@@ -40,6 +41,7 @@ const App = () => {
               }
             />
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/new-bill" element={<NewBillDashboard />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
