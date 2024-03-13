@@ -100,11 +100,14 @@ $color5: #767676;
           color: $color1;
           font-size: 14px;
         }
-
-        .copyBillUrl {
+        
+        .copyBillUrlContainer {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: end;
+        }
+
+        .copyBillUrl {
           color: $color5;
           font-size: 8px;
         }

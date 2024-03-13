@@ -1,24 +1,20 @@
-import { Avatar, Grid, Typography } from '@mui/material';
-import Box from '@mui/material/Box'
-import InsertLinkIcon from '@mui/icons-material/InsertLink';
-import dummyAvatar from '../../assets/images/dummyavatar.jpg';
-import styles from './RecentBill.module.scss';
+import { Avatar, Grid, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
+import dummyAvatar from "../../assets/images/dummyavatar.jpg";
+import styles from "./RecentBill.module.scss";
 
 export default function RecentBill() {
   return (
     <>
       <Box className={styles.recentBill}>
-        <Typography className={styles.title}>
-          Recent Bill
-        </Typography>
+        <Typography className={styles.title}>Recent Bill</Typography>
         <Box className={styles.billDetails}>
           <Box className={styles.billInfo}>
             <Typography className={styles.billName}>
               Hangout Resto Jakarta
             </Typography>
-            <Typography className={styles.viewDetails}>
-              View Details
-            </Typography>
+            <Typography className={styles.viewDetails}>View Details</Typography>
           </Box>
           <Box className={styles.receivables}>
             <Box className={styles.receivablesInfo}>
@@ -41,15 +37,15 @@ export default function RecentBill() {
               <Typography className={styles.pendingTitle}>
                 Pending Participant
               </Typography>
-              <Typography className={styles.pendingCount}>
-                4/6
-              </Typography>
-              <Typography className={styles.copyBillUrl}>
-                Copy Bill URL
+              <Typography className={styles.pendingCount}>4/6</Typography>
+              <Box className={styles.copyBillUrlContainer}>
+                <Typography className={styles.copyBillUrl}>
+                  Copy Bill URL
+                </Typography>
                 <Box className={styles.backgroundIcon}>
                   <InsertLinkIcon className={styles.icon} />
                 </Box>
-              </Typography>
+              </Box>
             </Box>
           </Box>
           <Box className={styles.userDetails}>
@@ -64,9 +60,7 @@ export default function RecentBill() {
                 </Grid>
               ))}
             </Grid>
-            <Typography className={styles.date}>
-              21-12-2023
-            </Typography>
+            <Typography className={styles.date}>21-12-2023</Typography>
           </Box>
         </Box>
       </Box>
@@ -75,10 +69,10 @@ export default function RecentBill() {
 }
 
 const dummyUserData = [
-  { id: 1, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 2, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 3, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 4, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 5, avatarSrc: dummyAvatar, alt: 'avatar' },
-  { id: 6, avatarSrc: dummyAvatar, alt: 'avatar' },
+  { id: 1, avatarSrc: dummyAvatar, alt: "avatar" },
+  { id: 2, avatarSrc: dummyAvatar, alt: "avatar" },
+  { id: 3, avatarSrc: dummyAvatar, alt: "avatar" },
+  { id: 4, avatarSrc: dummyAvatar, alt: "avatar" },
+  { id: 5, avatarSrc: dummyAvatar, alt: "avatar" },
+  { id: 6, avatarSrc: dummyAvatar, alt: "avatar" },
 ];
