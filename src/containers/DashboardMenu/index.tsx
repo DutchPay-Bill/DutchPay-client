@@ -6,10 +6,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg'
 import { Link } from 'react-router-dom';
 import { RecentBill, BillHistory } from '../../components';
-import useCookiesChecker from '../../utils/authChecker';
+import useAuthChecker from '../../utils/authChecker';
 
 export default function DashboardProfile() {
-  useCookiesChecker(500)
+  useAuthChecker(0)
   return (
     <>
       <Box className={styles.dashboardMenu}>

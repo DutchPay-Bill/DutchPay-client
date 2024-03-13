@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import Box from '@mui/material/Box'
 import {
@@ -7,7 +8,7 @@ import {
   LoadingBackground4,
 } from "../../components";
 import "./AppLoading.scss";
-import useCookiesChecker from "../../utils/authChecker";
+import useAuthChecker from "../../utils/authChecker";
 
 const loadingComponents = [
   <LoadingBackground1 />,
@@ -17,10 +18,10 @@ const loadingComponents = [
 ];
 
 export default function AppLoading() {
-  useCookiesChecker(5400)
+  useAuthChecker(5400)
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
-
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
       setFadeIn(false);
@@ -35,10 +36,9 @@ export default function AppLoading() {
         });
       }, 300);
     }, 1200);
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      return () => clearInterval(intervalId);
-    }, []);
-
+    return () => clearInterval(intervalId);
+  }, []);
+  
   const renderCurrentComponent = () => {
     return (
       <div className={`fade ${fadeIn ? "fade-in" : "fade-out"}`}>
