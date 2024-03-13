@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import {
   Button,
   IconButton,
@@ -48,7 +48,7 @@ export default function RegisterForm() {
   const [alertMessage, setAlertMessage] = React.useState<string>("");
 
   let confirmationResult: any;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const validateField = (name: string, value: string) => {
     let valid = true;
