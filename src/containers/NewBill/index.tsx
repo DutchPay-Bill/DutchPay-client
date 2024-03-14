@@ -9,13 +9,13 @@ import { Link as RouterLink } from "react-router-dom";
 import { Box, Button, IconButton } from "@mui/material";
 import styles from "./NewBill.module.scss";
 
-const steps = [
-  "Add Bill",
-  "Add Participant",
-  "Input Bills",
-  "Payment Method",
-  "Finalize",
-];
+// const steps = [
+//   "Add Bill",
+//   "Add Participant",
+//   "Input Bills",
+//   "Payment Method",
+//   "Finalize",
+// ];
 
 function getStepContent(step: number) {
   switch (step) {

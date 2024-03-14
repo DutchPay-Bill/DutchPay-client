@@ -8,11 +8,7 @@ interface AlertProps {
   autoCloseDuration?: number;
 }
 
-const CustomAlert: React.FC<AlertProps> = ({
-  severity,
-  message,
-  autoCloseDuration = 3000,
-}) => {
+const CustomAlert: React.FC<AlertProps> = ({ severity, message, autoCloseDuration = 3000,}) => {
   const [open, setOpen] = useState(true);
 
   useEffect(() => {

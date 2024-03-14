@@ -15,8 +15,9 @@ import appleLogo from "../../assets/images/apple.svg";
 import styles from "./LoginMenu.module.scss";
 import { ButtonCustom } from "../../components";
 import { ChangeEvent, useState } from "react";
-import { googleAuth, phoneLogin } from "../../utils/fetchApi";
+import { phoneLogin } from "../../utils/fetchApi";
 import CustomAlert from "../../components/Alert";
+import { API_URL } from "../../utils/access";
 
 const dummyCodes = [
   { value: "+62" },
@@ -55,19 +56,28 @@ export default function LoginMenu() {
       const phone_number = selectedValue + phone;
       const value = { phone_number, password };
       const response = await phoneLogin(value);
-      if (response?.ok) {
-        setAlertSeverity("success");
-        setAlertMessage("Login successful. Redirecting to dashboard");
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 3000);
-      }
+      setTimeout(() => {
+        if (response?.ok) {
+          setAlertSeverity("success");
+          setAlertMessage("Login successful. Redirecting to dashboard");
+          setTimeout(()=>{
+            navigate("/dashboard");
+          }, 2000)
+        }
+      }, 1500);
     } catch (error) {
-      console.error(error);
-      setAlertSeverity("error");
-      setAlertMessage("An error occurred while logging in. Please try again.");
+      console.error(error)      
+      if(error instanceof Response){
+        const result = await error.json()
+        setAlertSeverity("error");
+        setAlertMessage(result.message);
+      }
     }
   };
+
+  const handleGoogleLogin = () => {
+    window.location.href = API_URL + "/v1/auth/google";
+  }
 
   return (
     <Box className={styles.loginMenu}>
@@ -126,7 +136,7 @@ export default function LoginMenu() {
       <Divider className={styles.divider}>or</Divider>
 
       <Box className={styles.socialLoginSection}>
-        <Button className={styles.socialLoginButton} onClick={googleAuth}>
+        <Button className={styles.socialLoginButton} onClick={handleGoogleLogin}>
           <img className={styles.icon} src={googleLogo} alt="Google Logo" />{" "}
           Login with Gmail
         </Button>

@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-catch */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { API_URL } from "./access";
 
 interface PhoneLogin {
@@ -26,9 +28,12 @@ export const phoneLogin = async (value: PhoneLogin) => {
       credentials: "include",
       body: JSON.stringify(value),
     });
+    if (!response.ok) {
+      throw response;
+    }
     return response;
-  } catch (error) {
-    console.error("An error occurred:", error);
+  } catch (error: any) {
+    throw error
   }
 };
 
@@ -69,13 +74,7 @@ export const register = async (value: Register) => {
 
 export const googleAuth = async () => {
   try {
-    const response = await fetch(API_URL + "/v1/auth/google", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
+    const response = await fetch(API_URL + "/v1/auth/google", {});
     return response;
   } catch (error) {
     console.error("An error occurred:", error);
