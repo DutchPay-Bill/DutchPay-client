@@ -11,6 +11,7 @@ import {
   GoogleAuthFail,
   GoogleAuthSuccess,
   NewBillDashboard,
+  ChangeProfilePage,
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
@@ -36,6 +37,15 @@ const App = () => {
               element={
                 <>
                   <MyAccount />
+                  <PublicLayout />
+                </>
+              }
+            />
+            <Route
+              path="/change-profile"
+              element={
+                <>
+                  <ChangeProfilePage />
                   <PublicLayout />
                 </>
               }
