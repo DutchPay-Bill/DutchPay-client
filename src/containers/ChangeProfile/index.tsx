@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { Button, Box, TextField, Typography, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import AttachmentIcon from "@mui/icons-material/Attachment";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 import InputAdornment from "@mui/material/InputAdornment";
 import Badge from "@mui/material/Badge";
 import Avatar from "@mui/material/Avatar";
@@ -85,7 +85,7 @@ const ChangeProfile: React.FC = () => {
                 onClick={handleAvatarClick}
                 className={styles.attachmentIcon}
               >
-                <AttachmentIcon />
+                <BorderColorIcon />
               </IconButton>
             }
           >

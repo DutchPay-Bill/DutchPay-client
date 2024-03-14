@@ -11,9 +11,16 @@ $confirm: #e4ff63;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  @media (max-width: 320px) {
+    max-width: 320px;
+    margin-left: 30px;
+  }
 
   .backIcon {
     color: $textColor;
+    @media (max-width: 320px) {
+      font-size: 18px;
+    }
   }
 
   .changeProfileText {
@@ -22,6 +29,10 @@ $confirm: #e4ff63;
     font-size: 22px;
     padding-bottom: 3px;
     font-weight: 600;
+
+    @media (max-width: 320px) {
+      font-size: 18px;
+    }
   }
 }
 
@@ -50,6 +61,10 @@ $confirm: #e4ff63;
   }
 
   .profileInfoSection1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: $container;
     width: 100%;
     max-width: auto;
@@ -57,16 +72,10 @@ $confirm: #e4ff63;
     padding: 5px;
 
     .profileInfoSection2 {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 2rem;
-      height: 60vh;
-      max-width: 320px;
-      width: 100%;
-      margin-left: 2rem;
-      margin-right: 2rem;
-      margin-bottom: 2rem;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+      padding: 20px;
 
       .containerTitle {
         font-size: 16px;
@@ -77,7 +86,6 @@ $confirm: #e4ff63;
       .inputWrapper {
         display: flex;
         align-items: center;
-        // margin-bottom: 15px;
         width: 100%;
       }
 
@@ -130,6 +138,46 @@ $confirm: #e4ff63;
           text-transform: none;
           background-color: $backgroundColor;
           color: #767676;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .avatarContainer {
+      margin-top: 5rem;
+
+      .avatar {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    .profileInfoSection1 {
+      .profileInfoSection2 {
+        .containerTitle {
+          font-size: 14px;
+        }
+        .inputLabel {
+          width: 80px;
+          font-size: 12px;
+        }
+
+        .personalInfoInput,
+        .personalInfoInput2 {
+          width: calc(100% - 40px);
+          font-size: 12px;
+        }
+
+        .inputButton {
+          margin-top: 20px;
+
+          .confirmButton {
+            font-size: 12px;
+          }
+          .deleteButton {
+            font-size: 12px;
+          }
         }
       }
     }
