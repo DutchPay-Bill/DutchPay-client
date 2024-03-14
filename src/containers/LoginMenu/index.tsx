@@ -34,6 +34,7 @@ export default function LoginMenu() {
     "success" | "error" | "info" | "warning" | undefined
   >(undefined);
   const [alertMessage, setAlertMessage] = useState<string>("");
+  const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -58,17 +59,19 @@ export default function LoginMenu() {
       const response = await phoneLogin(value);
       setTimeout(() => {
         if (response?.ok) {
+          setOpen(true);
           setAlertSeverity("success");
           setAlertMessage("Login successful. Redirecting to dashboard");
-          setTimeout(()=>{
+          setTimeout(() => {
             navigate("/dashboard");
-          }, 2000)
+          }, 2000);
         }
       }, 1500);
     } catch (error) {
-      console.error(error)      
-      if(error instanceof Response){
-        const result = await error.json()
+      console.error(error);
+      if (error instanceof Response) {
+        const result = await error.json();
+        setOpen(true);
         setAlertSeverity("error");
         setAlertMessage(result.message);
       }
@@ -77,12 +80,17 @@ export default function LoginMenu() {
 
   const handleGoogleLogin = () => {
     window.location.href = API_URL + "/v1/auth/google";
-  }
+  };
 
   return (
     <Box className={styles.loginMenu}>
       {alertSeverity && alertMessage && (
-        <CustomAlert severity={alertSeverity} message={alertMessage} />
+        <CustomAlert
+          severity={alertSeverity}
+          message={alertMessage}
+          open={open}
+          setOpen={setOpen}
+        />
       )}
       <img className={styles.logo} src={logo} alt="Dutch Pay Logo" />
 
@@ -136,7 +144,10 @@ export default function LoginMenu() {
       <Divider className={styles.divider}>or</Divider>
 
       <Box className={styles.socialLoginSection}>
-        <Button className={styles.socialLoginButton} onClick={handleGoogleLogin}>
+        <Button
+          className={styles.socialLoginButton}
+          onClick={handleGoogleLogin}
+        >
           <img className={styles.icon} src={googleLogo} alt="Google Logo" />{" "}
           Login with Gmail
         </Button>
