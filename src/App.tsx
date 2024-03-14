@@ -8,6 +8,7 @@ import {
   NotFoundPage,
   DashboardPage,
   MyAccount,
+  Ewallet
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import PublicLayout from "./layout/PublicLayout";
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
             <Route path="/myaccount" element={<><MyAccount/><PublicLayout/></>}/>
+            <Route path="/ewallet" element={<><Ewallet/><PublicLayout/></>}/>
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

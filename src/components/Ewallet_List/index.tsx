@@ -1,72 +1,80 @@
-import { Box, Grid, Typography } from '@mui/material';
-import styles from './SetUp.module.scss';
-import WalletIcon from '@mui/icons-material/Wallet';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import { Box, Grid, Typography, Avatar } from '@mui/material';
+import styles from './Ewallet_List.module.scss';
 import LockIcon from '@mui/icons-material/Lock';
 import LanguageIcon from '@mui/icons-material/Language';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link as RouterLink } from 'react-router-dom';
 
-const SetUp: React.FC = () => {
+interface EwalletListProps {
+    type: {
+      pictureUrl1: string;
+      pictureUrl2: string;
+      pictureUrl3: string;
+      pictureUrl4: string;
+      pictureUrl5: string;
+    };
+  }
+
+  const Ewallet_List: React.FC<EwalletListProps> = ({ type }) => {
   return (
     <Box className={styles.root}>
       <Box className={styles.container}>
         <Box className={styles.header}>  
-            <Typography className={styles.title}>Settings</Typography>
+            <Typography className={styles.title}>E Wallet List</Typography>
+        </Box>
+        <Box className={styles.header}>  
+            <Typography className={styles.title2}>connect your instant payment gateway using various e-wallet services</Typography>
         </Box>
         <Box className={styles.content}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={2}>
-                    <RouterLink to="#" className={styles.walletlink}>
-                        <WalletIcon/>
+                    <RouterLink to="#">
+                    <Avatar className={styles.walletlink} sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl1} />
                     </RouterLink>
                 </Grid>
                 <Grid item xs={1} maxWidth={120}>
-                  <RouterLink to="/ewallet" className={styles.link}>
-                    <Typography className={styles.ewallet}>E-Wallet</Typography>
-                    <Typography className={styles.ewallet2} >connect your instant payment gateway</Typography>
-                    <Typography className={styles.ewallet2}> using various e-wallet services</Typography>
+                  <RouterLink to="#" className={styles.link}>
+                    <Typography className={styles.ewallet}>GOPAY</Typography>
+                    <Typography className={styles.ewallet2} >+6281242050172 (Dinda Yasmin)</Typography>
+                  </RouterLink>
+                </Grid>
+            </Grid>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item xs={2}>
+                    <RouterLink to="#" >
+                    <Avatar className={styles.walletlink} sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl2} />
+                    </RouterLink>
+                </Grid>
+                <Grid item xs={1}>
+                  <RouterLink to="#" className={styles.link}>
+                    <Typography className={styles.ewallet}>OVO</Typography>
+                    <Typography className={styles.ewallet2}>+6281242050172 (Dinda Yasmin)</Typography>
                   </RouterLink>
                 </Grid>
             </Grid>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={2}>
                     <RouterLink to="#" className={styles.walletlink}>
-                        <AccountBalanceIcon/>
+                    <Avatar className={styles.walletlink} sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl3} />
                     </RouterLink>
                 </Grid>
                 <Grid item xs={1}>
                   <RouterLink to="#" className={styles.link}>
-                    <Typography className={styles.ewallet}>Bank Account</Typography>
-                    <Typography className={styles.ewallet2}>payment gateway using manual transfer</Typography>
-                    <Typography className={styles.ewallet2}>to your bank account</Typography>
+                    <Typography className={styles.ewallet}>Shopeepay/ Spay Later</Typography>
+                    <Typography className={styles.ewallet2}>+6281242050172 (Dinda Yasmin)</Typography>
                   </RouterLink>
                 </Grid>
             </Grid>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={2}>
                     <RouterLink to="#" className={styles.walletlink}>
-                        <LockIcon/>
+                    <Avatar className={styles.walletlink} sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl4} />
                     </RouterLink>
                 </Grid>
                 <Grid item xs={1}>
                   <RouterLink to="#" className={styles.link}>
-                    <Typography className={styles.ewallet}>Account Security</Typography>
-                    <Typography className={styles.ewallet2}>Password, and self verifications</Typography>
-                  </RouterLink>
-                </Grid>
-            </Grid>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid item xs={2}>
-                    <RouterLink to="#" className={styles.walletlink}>
-                        <NotificationsIcon/>
-                    </RouterLink>
-                </Grid>
-                <Grid item xs={1}>
-                  <RouterLink to="#" className={styles.link}>
-                    <Typography className={styles.ewallet}>Notifications</Typography>
-                    <Typography className={styles.ewallet2}>Set & manage your notificatoins pop up,</Typography>
-                    <Typography className={styles.ewallet2}>messaages, etc.</Typography>
+                    <Typography className={styles.ewallet}>DANA</Typography>
+                    <Typography className={styles.ewallet2}>+6281242050172 (Dinda Yasmin)</Typography>
                   </RouterLink>
                 </Grid>
             </Grid>
@@ -74,14 +82,13 @@ const SetUp: React.FC = () => {
 
                 <Grid item xs={2}>
                     <RouterLink to="#" className={styles.walletlink}>
-                        <LanguageIcon/>
+                    <Avatar className={styles.walletlink} sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl5} />
                     </RouterLink>
                 </Grid>
                 <Grid item xs={1}>
                   <RouterLink to="#" className={styles.link}>
-                    <Typography className={styles.ewallet}>Privacy</Typography>
-                    <Typography className={styles.ewallet2}>Set your privacy & self information in</Typography>
-                    <Typography className={styles.ewallet2}>DutchPay</Typography>
+                    <Typography className={styles.ewallet}>Link Aja</Typography>
+                    <Typography className={styles.ewallet2}>Not Activated</Typography>
                   </RouterLink>
                 </Grid>
             </Grid>
@@ -91,4 +98,4 @@ const SetUp: React.FC = () => {
   );
 }
 
-export default SetUp;
+export default Ewallet_List;
