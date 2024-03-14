@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import styles from "./GoogleAuth.module.scss";
+import logo from "../../assets/images/app-loading/logo-4.png";
 
 export default function GoogleAuthSuccess() {
   const [countdown, setCountdown] = useState(3);
@@ -24,15 +25,18 @@ export default function GoogleAuthSuccess() {
 
   return (
     <Box className={styles.pageNotFound}>
-      <Typography variant="h2" className={styles.text}>
-        Welcome!
-      </Typography>
-      <Typography variant="h2" className={styles.text2}>
-        Authentication Successful
-      </Typography>
-      <Typography variant="h2" className={styles.countdown}>
-        Redirecting in {countdown} seconds...
-      </Typography>
+      <Box className={styles.textContainer}>
+        <Typography variant="h2" className={styles.text}>
+          Welcome!
+        </Typography>
+        <img src={logo} alt="Dutch Pay Logo" className={styles.logo} />
+        <Typography variant="h2" className={styles.text2}>
+          Authentication Successful
+        </Typography>
+        <Typography variant="h2" className={styles.countdown}>
+          Redirecting in {countdown} seconds...
+        </Typography>
+      </Box>
     </Box>
   );
 }
