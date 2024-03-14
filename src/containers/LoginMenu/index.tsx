@@ -45,7 +45,9 @@ export default function LoginMenu() {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     if (name === "phone") {
-      setPhone(value);
+      if (/^\d*$/.test(value)) {
+        setPhone(value);
+      }
     } else if (name === "password") {
       setPasword(value);
     }
