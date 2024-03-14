@@ -11,13 +11,13 @@
 // export const MEASUREMENT_ID = import.meta.env.VITE_MEASUREMENT_ID
 
 // Url
-export const API_URL = "http://localhost:3000"
+export const API_URL = "https://dutchpay-bill-server.vercel.app";
 
 // Firebase key
-export const API_KEY = "AIzaSyCjcuGcnoDgtBAIyiNhzJ7i74SNicNYiJM"
-export const AUTH_DOMAIN = "dutchpay-bill.firebaseapp.com"
-export const PROJECT_ID = "dutchpay-bill"
-export const STORAGE_BUCKET = "dutchpay-bill.appspot.com"
-export const SENDER_ID = "222654780212"
-export const APP_ID = "1:222654780212:web:80d0619ef30e3356990b61"
-export const MEASUREMENT_ID = "G-VS4DNCEJ3T"
+export const API_KEY = "AIzaSyCjcuGcnoDgtBAIyiNhzJ7i74SNicNYiJM";
+export const AUTH_DOMAIN = "dutchpay-bill.firebaseapp.com";
+export const PROJECT_ID = "dutchpay-bill";
+export const STORAGE_BUCKET = "dutchpay-bill.appspot.com";
+export const SENDER_ID = "222654780212";
+export const APP_ID = "1:222654780212:web:80d0619ef30e3356990b61";
+export const MEASUREMENT_ID = "G-VS4DNCEJ3T";
