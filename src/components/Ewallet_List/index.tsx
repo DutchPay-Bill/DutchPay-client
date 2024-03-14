@@ -1,6 +1,7 @@
 import { Box, Grid, Typography, Avatar } from '@mui/material';
 import styles from './Ewallet_List.module.scss';
 import { Link as RouterLink } from 'react-router-dom';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 interface EwalletListProps {
     type: {
@@ -29,13 +30,17 @@ interface EwalletListProps {
                     <Avatar className={styles.walletlink} sx={{ width: 30, height: 30 }} alt="User Avatar" src={type.pictureUrl1} />
                     </RouterLink>
                 </Grid>
-                <Grid item xs={1} maxWidth={120}>
+                <Grid item xs={1}>
                   <RouterLink to="#" className={styles.link}>
                     <Typography className={styles.ewallet}>GOPAY</Typography>
                     <Typography className={styles.ewallet2} >+6281242050172 (Dinda Yasmin)</Typography>
                   </RouterLink>
                 </Grid>
+                <Grid item xs={9} container justifyContent="flex-end" alignItems="center"> 
+                    <NavigateNextIcon className={styles.icon}/>
+                </Grid>
             </Grid>
+
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={2}>
                     <RouterLink to="#" >
@@ -48,6 +53,9 @@ interface EwalletListProps {
                     <Typography className={styles.ewallet2}>+6281242050172 (Dinda Yasmin)</Typography>
                   </RouterLink>
                 </Grid>
+                <Grid item xs={9} container justifyContent="flex-end" alignItems="center"> 
+                    <NavigateNextIcon className={styles.icon}/>
+                </Grid>
             </Grid>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={2}>
@@ -57,9 +65,12 @@ interface EwalletListProps {
                 </Grid>
                 <Grid item xs={1}>
                   <RouterLink to="#" className={styles.link}>
-                    <Typography className={styles.ewallet}>Shopeepay/ Spay Later</Typography>
+                    <Typography className={styles.ewallet}>Shopeepay / Spay Later</Typography>
                     <Typography className={styles.ewallet2}>+6281242050172 (Dinda Yasmin)</Typography>
                   </RouterLink>
+                </Grid>
+                <Grid item xs={9} container justifyContent="flex-end" alignItems="center"> 
+                    <NavigateNextIcon className={styles.icon}/>
                 </Grid>
             </Grid>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -74,6 +85,9 @@ interface EwalletListProps {
                     <Typography className={styles.ewallet2}>+6281242050172 (Dinda Yasmin)</Typography>
                   </RouterLink>
                 </Grid>
+                <Grid item xs={9} container justifyContent="flex-end" alignItems="center"> 
+                    <NavigateNextIcon className={styles.icon}/>
+                </Grid>
             </Grid>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
@@ -87,6 +101,9 @@ interface EwalletListProps {
                     <Typography className={styles.ewallet}>Link Aja</Typography>
                     <Typography className={styles.ewallet2}>Not Activated</Typography>
                   </RouterLink>
+                </Grid>
+                <Grid item xs={9} container justifyContent="flex-end" alignItems="center"> 
+                    <NavigateNextIcon className={styles.icon}/>
                 </Grid>
             </Grid>
         </Box>
