@@ -46,6 +46,7 @@ export default function RegisterForm() {
     "success" | "error" | "info" | "warning" | undefined
   >(undefined);
   const [alertMessage, setAlertMessage] = React.useState<string>("");
+  const [open, setOpen] = React.useState(false);
 
   let confirmationResult: any;
   const navigate = useNavigate();
@@ -109,11 +110,12 @@ export default function RegisterForm() {
 
   const sendOtp = async () => {
     try {
-      const phoneNumber = countryCode + phone;
-      console.log("phone", phoneNumber);
+      const selectedValue = countryCode.replace("+", "");
+      const phoneNumber = selectedValue + phone;
       const value = { phone_number: phoneNumber }; //format nomor hpnya kyk apa? 62/+62/8~~?
       const response = await validatePhone(value);
       if (response?.ok) {
+        setOpen(true);
         showAlert("success", "OTP sent successfully");
       }
       const recaptcha = new RecaptchaVerifier(auth, "captcha", {
@@ -128,13 +130,14 @@ export default function RegisterForm() {
         recaptcha
       );
       setVerificationId(confirmationResult.verificationId);
-      console.log("OTP sent successfully");
     } catch (error) {
       console.error(error);
-      showAlert(
-        "error",
-        "This phone number is already in use. Please use a different phone number."
-      );
+      if (error instanceof Response) {
+        setOpen(true);
+        const result = await error.json();
+        setAlertSeverity("error");
+        setAlertMessage(result.message);
+      }
     }
   };
 
@@ -142,8 +145,6 @@ export default function RegisterForm() {
     try {
       const credential = PhoneAuthProvider.credential(verificationId, otp);
       await signInWithCredential(auth, credential);
-      console.log("OTP verified successfully");
-      console.log("User signed in successfully", credential);
       const selectedValue = countryCode.replace("+", "");
       const phone_number = selectedValue + phone;
       const value = {
@@ -265,7 +266,12 @@ export default function RegisterForm() {
             </IconButton>
           )}
           {alertSeverity && alertMessage && (
-            <CustomAlert severity={alertSeverity} message={alertMessage} />
+            <CustomAlert
+              severity={alertSeverity}
+              message={alertMessage}
+              open={open}
+              setOpen={setOpen}
+            />
           )}
         </Box>
         {activeStep === steps.length ? (
