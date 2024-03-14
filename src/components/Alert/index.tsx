@@ -1,29 +1,37 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import styles from "./Alert.module.scss";
+import { Box } from "@mui/material";
 
 interface AlertProps {
   severity: "error" | "warning" | "info" | "success";
   message: string;
-  autoCloseDuration?: number;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }
 
-const CustomAlert: React.FC<AlertProps> = ({ severity, message, autoCloseDuration = 3000,}) => {
-  const [open, setOpen] = useState(true);
-
+const CustomAlert: React.FC<AlertProps> = ({
+  severity,
+  message,
+  open,
+  setOpen,
+}) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setOpen(false);
-    }, autoCloseDuration);
+    }, 3000);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [autoCloseDuration]);
+  }, [open]);
   return open ? (
-    <Alert severity={severity} className={styles.alert}>
-      {message}
-    </Alert>
+    <Box className={styles.alertContainer}>
+      <Alert severity={severity} className={styles.alert}>
+        {message}
+      </Alert>
+    </Box>
   ) : null;
 };
 
