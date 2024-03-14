@@ -1,8 +1,5 @@
 import { Box, Grid, Typography, Avatar } from '@mui/material';
 import styles from './Ewallet_List.module.scss';
-import LockIcon from '@mui/icons-material/Lock';
-import LanguageIcon from '@mui/icons-material/Language';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link as RouterLink } from 'react-router-dom';
 
 interface EwalletListProps {
