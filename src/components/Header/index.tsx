@@ -12,7 +12,12 @@ const Header: React.FC = () => {
           <ArrowBackIosIcon />{" "}
         </RouterLink>
       </Box>
-      <Typography variant="h6" className={styles.title}>
+      <Typography
+        variant="h6"
+        fontWeight="bolder"
+        className={styles.title}
+        color="white"
+      >
         My Account
       </Typography>
     </Box>

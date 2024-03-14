@@ -22,7 +22,7 @@
 
     const userType = {
       pictureUrl1:'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg',
-      pictureUrl2:'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg'
+      pictureUrl2:'https://i.ibb.co/MpbYvMQ/Frame-570.png'
     }
 
     return (

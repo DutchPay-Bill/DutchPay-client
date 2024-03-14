@@ -1,16 +1,16 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React, { useContext } from "react";
+import { Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import styles from "./LogOut.module.scss";
+import { PublicData } from "../../utils/globalState";
 
 const LogOut: React.FC = () => {
+  const { logout } = useContext(PublicData);
   return (
-    <RouterLink to="/login" className={styles.root}>
-      <Box display="flex" alignItems="center">
-        <Typography variant="body1" className={styles.title}>
-          Log out
-        </Typography>
-      </Box>
+    <RouterLink onClick={logout} to="/login" className={styles.root}>
+      <Typography variant="body1" className={styles.title}>
+        Log out
+      </Typography>
     </RouterLink>
   );
 };
