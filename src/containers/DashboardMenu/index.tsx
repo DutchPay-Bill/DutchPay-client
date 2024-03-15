@@ -13,7 +13,7 @@ import CustomAlert from '../../components/Alert';
 
 export default function DashboardProfile() {
   const { open, setOpen } = useContext(PublicData);
-  useAuthChecker(2000)
+  useAuthChecker(1000)
   return (
     <>
       <Box className={styles.dashboardMenu}>

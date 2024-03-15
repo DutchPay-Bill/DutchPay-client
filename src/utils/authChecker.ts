@@ -14,8 +14,8 @@ const useAuthChecker = (interval: number) => {
     user()
     setTimeout(() => {
     if (!authenticated) {
+      setOpen(true)
       setTimeout(() => {
-        setOpen(true)
         navigate('/login');
       }, interval)
       } 

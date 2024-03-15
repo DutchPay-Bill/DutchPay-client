@@ -18,7 +18,7 @@ const loadingComponents = [
 ];
 
 export default function AppLoading() {
-  useAuthChecker(5400)
+  useAuthChecker(6400)
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
   
