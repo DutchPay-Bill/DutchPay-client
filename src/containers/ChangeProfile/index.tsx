@@ -66,7 +66,7 @@ const ChangeProfile: React.FC = () => {
   return (
     <Box className={styles.changeProfileMenu}>
       <Box className={styles.toolbar}>
-        <RouterLink to="/login">
+        <RouterLink to="/myaccount">
           <ArrowBackIosNewIcon className={styles.backIcon} />
         </RouterLink>
         <Typography className={styles.changeProfileText}>
