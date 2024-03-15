@@ -121,8 +121,8 @@ export default function RegisterForm() {
       }
       const recaptcha = new RecaptchaVerifier(auth, "captcha", {
         size: "invisible",
-        callback: function (response: any) {
-          console.log(response);
+        callback: function () {
+          console.log("");
         },
       });
       confirmationResult = await signInWithPhoneNumber(

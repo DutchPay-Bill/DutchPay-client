@@ -7,7 +7,6 @@ const LogOut: React.FC = () => {
   const handleLogout = async () => {
     try {
       const response = await userLogout();
-      console.log("test", response);
       if (response?.ok) {
         window.location.href = "/login";
       }
