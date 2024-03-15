@@ -75,7 +75,7 @@ const ChangeProfile: React.FC = () => {
       </Box>
 
       <form onSubmit={handleSubmit}>
-        {/* AVATAR PROFILE*/}
+        {/* AVATAR PHOTO PROFILE*/}
         <Box className={styles.avatarContainer}>
           <Badge
             overlap="circular"
@@ -199,34 +199,6 @@ const ChangeProfile: React.FC = () => {
             </div>
 
             <div className={styles.inputWrapper}>
-              <Typography className={styles.inputLabel}>User id</Typography>
-              <TextField
-                name="userId"
-                value={form.userId}
-                onChange={handleChange}
-                variant="filled"
-                className={styles.personalInfoInput}
-                InputProps={{
-                  classes: {
-                    input: styles.personalInfoInput2,
-                  },
-                  disableUnderline: true,
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <ArrowForwardIosIcon
-                        style={{ fontSize: "medium", color: "white" }}
-                      />
-                    </InputAdornment>
-                  ),
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: styles.inputLabel2,
-                }}
-              />
-            </div>
-
-            <div className={styles.inputWrapper}>
               <Typography className={styles.inputLabel}>Email</Typography>
               <TextField
                 name="email"
@@ -261,34 +233,6 @@ const ChangeProfile: React.FC = () => {
               <TextField
                 name="phone"
                 value={form.phone}
-                onChange={handleChange}
-                variant="filled"
-                className={styles.personalInfoInput}
-                InputProps={{
-                  classes: {
-                    input: styles.personalInfoInput2,
-                  },
-                  disableUnderline: true,
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <ArrowForwardIosIcon
-                        style={{ fontSize: "medium", color: "white" }}
-                      />
-                    </InputAdornment>
-                  ),
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: styles.inputLabel2,
-                }}
-              />
-            </div>
-
-            <div className={styles.inputWrapper}>
-              <Typography className={styles.inputLabel}>Pronounce</Typography>
-              <TextField
-                name="pronounce"
-                value={form.pronounce}
                 onChange={handleChange}
                 variant="filled"
                 className={styles.personalInfoInput}
