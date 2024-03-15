@@ -14,10 +14,8 @@ interface ProfileForm {
   name: string;
   username: string;
   bio: string;
-  userId: string;
   email: string;
   phone: string;
-  pronounce: string;
   dob: Date | string;
 }
 
@@ -27,10 +25,8 @@ const ChangeProfile: React.FC = () => {
     name: "Dinda Yasmin",
     username: "@dindayasmin",
     bio: "test",
-    userId: "@dindayasmin",
     email: "dindayasmin@gmail.com",
     phone: "+6281234567890",
-    pronounce: "She/her",
     dob: new Date("1998-05-30"),
   });
 
