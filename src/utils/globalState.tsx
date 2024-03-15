@@ -21,6 +21,8 @@ interface ContextProps {
     authenticated: boolean;
     login: () => void;
     logout: () => void;
+    open: boolean,
+    setOpen: Dispatch<SetStateAction<boolean>>
 }
 
 const defaultValue: ContextProps = {
@@ -30,7 +32,9 @@ const defaultValue: ContextProps = {
     setDataChanged: () => {},
     authenticated: true,
     login: () => {},
-    logout: () => {}
+    logout: () => {},
+    open: false,
+    setOpen: ()=> {}
 };
 
 export const PublicData = createContext<ContextProps>(defaultValue);
@@ -39,6 +43,7 @@ const GlobalState = ({ children }: Props) => {
     const [userData, setUserData] = useState<User[]>([]);
     const [dataChanged, setDataChanged] = useState<boolean>(true);
     const [authenticated, setAuthenticated] = useState<boolean>(true);
+    const [open, setOpen] = useState<boolean>(true);
 
     const login = async () => {
         const response = await getUserProfile()
@@ -57,7 +62,7 @@ const GlobalState = ({ children }: Props) => {
     };
 
     return (
-        <PublicData.Provider value={{ userData, setUserData, dataChanged, setDataChanged, authenticated, login, logout }}>
+        <PublicData.Provider value={{ userData, setUserData, dataChanged, setDataChanged, authenticated, login, logout, open, setOpen }}>
             {children}
         </PublicData.Provider>
     );

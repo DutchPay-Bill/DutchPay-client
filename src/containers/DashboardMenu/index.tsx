@@ -7,12 +7,17 @@ import dummyAvatar from '../../assets/images/dummyavatar.jpg'
 import { Link } from 'react-router-dom';
 import { RecentBill, BillHistory } from '../../components';
 import useAuthChecker from '../../utils/authChecker';
+import { PublicData } from '../../utils/globalState';
+import { useContext } from 'react';
+import CustomAlert from '../../components/Alert';
 
 export default function DashboardProfile() {
-  useAuthChecker(0)
+  const { open, setOpen } = useContext(PublicData);
+  useAuthChecker(2000)
   return (
     <>
       <Box className={styles.dashboardMenu}>
+        <CustomAlert severity={'error'} message={'Unauthorized, Redirecting to login page...'} open={open} setOpen={setOpen} />
         <Box className={styles.profileContainer}>
           <Grid container spacing={0} className={styles.notificationGrid}>
             <Grid item xs={6}>
