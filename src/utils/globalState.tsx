@@ -46,13 +46,17 @@ const GlobalState = ({ children }: Props) => {
     const [open, setOpen] = useState<boolean>(false);
 
     const login = async () => {
-        const response = await getUserProfile()
-        const data = await response?.json()
-        if(!response?.ok){
-            setAuthenticated(false)
-        }else {
-            setUserData(data)
-            setAuthenticated(true);
+        try {
+            const response = await getUserProfile()
+            const data = await response?.json()
+            if(response?.ok){
+                setAuthenticated(true);
+                setUserData(data)
+            }else {
+                setAuthenticated(false)
+            } 
+        } catch (error) {
+            console.error(error)
         }
     };
 

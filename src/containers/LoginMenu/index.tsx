@@ -14,10 +14,11 @@ import googleLogo from "../../assets/images/google.svg";
 import appleLogo from "../../assets/images/apple.svg";
 import styles from "./LoginMenu.module.scss";
 import { ButtonCustom } from "../../components";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { phoneLogin } from "../../utils/fetchApi";
 import CustomAlert from "../../components/Alert";
 import { API_URL } from "../../utils/access";
+import { PublicData } from "../../utils/globalState";
 
 const dummyCodes = [
   { value: "+62" },
@@ -27,6 +28,7 @@ const dummyCodes = [
 ];
 
 export default function LoginMenu() {
+  const {login} = useContext(PublicData)
   const [countryCode, setCountryCode] = useState("+62");
   const [phone, setPhone] = useState("");
   const [password, setPasword] = useState("");
@@ -59,16 +61,15 @@ export default function LoginMenu() {
       const phone_number = selectedValue + phone;
       const value = { phone_number, password };
       const response = await phoneLogin(value);
-      setTimeout(() => {
+      login()
         if (response?.ok) {
           setOpen(true);
           setAlertSeverity("success");
           setAlertMessage("Login successful. Redirecting to dashboard");
           setTimeout(() => {
-            navigate("/dashboard");
-          }, 2000);
+            navigate("/dashboard",{replace: true});
+          }, 1000);
         }
-      }, 1500);
     } catch (error) {
       console.error(error);
       if (error instanceof Response) {

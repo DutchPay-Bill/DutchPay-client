@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import styles from "./GoogleAuth.module.scss";
 import logo from "../../assets/images/app-loading/logo-4.png";
+import { PublicData } from "../../utils/globalState";
 
 export default function GoogleAuthSuccess() {
+  const {login} = useContext(PublicData)
   const [countdown, setCountdown] = useState(3);
   const navigate = useNavigate();
 
   useEffect(() => {
+    login()
     const timer = setInterval(() => {
       setCountdown((prevCount) => prevCount - 1);
     }, 1000);
