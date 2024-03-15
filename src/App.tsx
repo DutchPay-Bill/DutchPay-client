@@ -33,15 +33,6 @@ const App = () => {
               path="/google-auth/success"
               element={<GoogleAuthSuccess />}
             />
-            <Route
-              path="/myaccount"
-              element={
-                <>
-                  <MyAccount />
-                  <PublicLayout />
-                </>
-              }
-            />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/new-bill" element={<NewBillDashboard />} />
             <Route path="*" element={<NotFoundPage />} />
