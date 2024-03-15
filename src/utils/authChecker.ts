@@ -5,13 +5,14 @@ import { PublicData } from './globalState';
 import { getUserProfile } from './fetchApi';
 
 const useAuthChecker = (interval: number) => {
-  const { authenticated, setOpen, setAuthenticated } = useContext(PublicData);
+  const { authenticated, setOpen, setAuthenticated, setUserData } = useContext(PublicData);
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
         const response = await getUserProfile();
+        const data = await response?.json()
         if (!response?.ok) {
           setOpen(true);
           setAuthenticated(false);
@@ -20,6 +21,8 @@ const useAuthChecker = (interval: number) => {
           }, interval)
         } else {
           setAuthenticated(true);
+          setUserData(data)
+          console.log('user',data )
           setTimeout(() => {
             navigate('/dashboard');
           }, interval)
