@@ -22,7 +22,6 @@ const useAuthChecker = (interval: number) => {
         } else {
           setAuthenticated(true);
           setUserData(data)
-          console.log('user',data )
           setTimeout(() => {
             navigate('/dashboard');
           }, interval)
