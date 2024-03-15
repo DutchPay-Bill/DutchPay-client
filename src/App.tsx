@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./themes/CustomTheme";
-import PublicLayout from "./layout/PublicLayout";
 import {
   LoginDashBoardPage,
   RegisterDashboardPage,
@@ -15,7 +14,7 @@ import {
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
-// import PaymentUrlPage from "./pages/PaymentUrl";
+import BillHistoryPage from "./pages/BillHistoryPage";
 
 const App = () => {
   return (
@@ -26,32 +25,13 @@ const App = () => {
             <Route path="/" element={<LoadingAppPage />} />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
-            <Route path="/my-account" element={<MyAccount />} />
-            <Route path="/google-auth/failed" element={<GoogleAuthFail />} />
-            <Route
-              path="/google-auth/success"
-              element={<GoogleAuthSuccess />}
-            />
-            <Route
-              path="/myaccount"
-              element={
-                <>
-                  <MyAccount />
-                  <PublicLayout />
-                </>
-              }
-            />
-            <Route
-              path="/ewallet"
-              element={
-                <>
-                  <Ewallet />
-                  <PublicLayout />
-                </>
-              }
-            />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/new-bill" element={<NewBillDashboard />} />
+            <Route path="/history" element={<BillHistoryPage />} />
+            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/e-wallet" element={<Ewallet />} />
+            <Route path="/google-auth/failed" element={<GoogleAuthFail />} />
+            <Route path="/google-auth/success" element={<GoogleAuthSuccess />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
