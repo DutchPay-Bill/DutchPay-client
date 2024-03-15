@@ -1,11 +1,11 @@
-import { Avatar, Grid, Typography } from '@mui/material';
-import Box from '@mui/material/Box'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import styles from './BillHistory.module.scss';
-import dummyAvatar from '../../assets/images/dummyavatar.jpg';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { useState } from 'react';
+import { Avatar, Grid, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import styles from "./BillHistory.module.scss";
+import dummyAvatar from "../../assets/images/dummyavatar.jpg";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
 
 interface BillData {
   name: string;
@@ -32,13 +32,13 @@ export default function BillHistory() {
   return (
     <>
       <Box
-        className={`${styles.background} ${FullScreen ? styles.fullScreen : ''}`}
+        className={`${styles.background} ${
+          FullScreen ? styles.fullScreen : ""
+        }`}
       >
         <Box className={styles.container}>
           <Box className={styles.header}>
-            <Typography className={styles.title}>
-              Your bills history
-            </Typography>
+            <Typography className={styles.title}>Your bills history</Typography>
             <Typography className={styles.viewAll} onClick={viewAllDataClick}>
               {FullScreen ? (
                 <>
@@ -53,7 +53,11 @@ export default function BillHistory() {
               )}
             </Typography>
           </Box>
-          <Box className={`${styles.scrollbox} ${FullScreen ? styles.fullscrollBox : ''}`}>
+          <Box
+            className={`${styles.scrollbox} ${
+              FullScreen ? styles.fullscrollBox : ""
+            }`}
+          >
             {billData.map((bill, index) => (
               <Box key={index} className={styles.billContainer}>
                 <Box className={styles.billDetails}>
@@ -64,7 +68,10 @@ export default function BillHistory() {
                     <Typography className={styles.billDate}>
                       {bill.date}
                     </Typography>
-                    <Box className={styles.deleteBackground} onClick={() => handleDeleteClick(index)}>
+                    <Box
+                      className={styles.deleteBackground}
+                      onClick={() => handleDeleteClick(index)}
+                    >
                       <DeleteIcon className={styles.deleteIcon} />
                     </Box>
                   </Box>
@@ -94,96 +101,105 @@ export default function BillHistory() {
             ))}
           </Box>
         </Box>
-        <Box className={styles.shadow}>
-        </Box>
-      </Box >
+        <Box className={styles.shadow}></Box>
+      </Box>
     </>
   );
 }
 
 const dummyBillData: BillData[] = [
   {
-    name: 'Hangout Resto Jakarta',
-    date: '19-12-2023',
+    name: "Hangout Resto Jakarta",
+    date: "19-12-2023",
     avatars: [dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar],
-    value: 'Rp 320 k',
-    totalValue: '/ Rp 460 k',
+    value: "Rp 320 k",
+    totalValue: "/ Rp 460 k",
   },
   {
-    name: 'Hangout Resto Jakarta',
-    date: '19-12-2023',
+    name: "Hangout Resto Jakarta",
+    date: "19-12-2023",
     avatars: [dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar],
-    value: 'Rp 320 k',
-    totalValue: '/ Rp 460 k',
+    value: "Rp 320 k",
+    totalValue: "/ Rp 460 k",
   },
   {
-    name: 'Hangout Resto Jakarta',
-    date: '19-12-2023',
+    name: "Hangout Resto Jakarta",
+    date: "19-12-2023",
     avatars: [dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar],
-    value: 'Rp 320 k',
-    totalValue: '/ Rp 460 k',
+    value: "Rp 320 k",
+    totalValue: "/ Rp 460 k",
   },
   {
-    name: 'Hangout Resto Jakarta',
-    date: '19-12-2023',
+    name: "Hangout Resto Jakarta",
+    date: "19-12-2023",
     avatars: [dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar],
-    value: 'Rp 320 k',
-    totalValue: '/ Rp 460 k',
+    value: "Rp 320 k",
+    totalValue: "/ Rp 460 k",
   },
   {
-    name: 'Hangout Resto Jakarta',
-    date: '19-12-2023',
+    name: "Hangout Resto Jakarta",
+    date: "19-12-2023",
     avatars: [dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar],
-    value: 'Rp 320 k',
-    totalValue: '/ Rp 460 k',
+    value: "Rp 320 k",
+    totalValue: "/ Rp 460 k",
   },
   {
-    name: 'Hangout Resto Jakarta',
-    date: '19-12-2023',
+    name: "Hangout Resto Jakarta",
+    date: "19-12-2023",
     avatars: [dummyAvatar, dummyAvatar],
-    value: 'Rp 320 k',
-    totalValue: '/ Rp 460 k',
+    value: "Rp 320 k",
+    totalValue: "/ Rp 460 k",
   },
   {
-    name: 'Hangout Resto Jakarta',
-    date: '19-12-2023',
+    name: "Hangout Resto Jakarta",
+    date: "19-12-2023",
     avatars: [dummyAvatar, dummyAvatar, dummyAvatar],
-    value: 'Rp 320 k',
-    totalValue: '/ Rp 460 k',
+    value: "Rp 320 k",
+    totalValue: "/ Rp 460 k",
   },
   {
-    name: 'Another Place',
-    date: '20-12-2023',
+    name: "Another Place",
+    date: "20-12-2023",
     avatars: [dummyAvatar, dummyAvatar],
-    value: 'Rp 250 k',
-    totalValue: '/ Rp 400 k',
+    value: "Rp 250 k",
+    totalValue: "/ Rp 400 k",
   },
   {
-    name: 'Another Place',
-    date: '20-12-2023',
-    avatars: [dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar, dummyAvatar],
-    value: 'Rp 250 k',
-    totalValue: '/ Rp 400 k',
+    name: "Another Place",
+    date: "20-12-2023",
+    avatars: [
+      dummyAvatar,
+      dummyAvatar,
+      dummyAvatar,
+      dummyAvatar,
+      dummyAvatar,
+      dummyAvatar,
+      dummyAvatar,
+      dummyAvatar,
+      dummyAvatar,
+    ],
+    value: "Rp 250 k",
+    totalValue: "/ Rp 400 k",
   },
   {
-    name: 'Another Place',
-    date: '20-12-2023',
+    name: "Another Place",
+    date: "20-12-2023",
     avatars: [dummyAvatar, dummyAvatar],
-    value: 'Rp 250 k',
-    totalValue: '/ Rp 400 k',
+    value: "Rp 250 k",
+    totalValue: "/ Rp 400 k",
   },
   {
-    name: 'Another Place',
-    date: '20-12-2023',
+    name: "Another Place",
+    date: "20-12-2023",
     avatars: [dummyAvatar, dummyAvatar],
-    value: 'Rp 250 k',
-    totalValue: '/ Rp 400 k',
+    value: "Rp 250 k",
+    totalValue: "/ Rp 400 k",
   },
   {
-    name: 'Another Place',
-    date: '20-12-2023',
+    name: "Another Place",
+    date: "20-12-2023",
     avatars: [dummyAvatar, dummyAvatar],
-    value: 'Rp 250 k',
-    totalValue: '/ Rp 400 k',
+    value: "Rp 250 k",
+    totalValue: "/ Rp 400 k",
   },
 ];

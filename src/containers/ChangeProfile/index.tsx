@@ -303,6 +303,7 @@ const ChangeProfile: React.FC = () => {
           </Box>
         </Box>
       </form>
+      <Box className={styles.shadow}></Box>
     </Box>
   );
 };

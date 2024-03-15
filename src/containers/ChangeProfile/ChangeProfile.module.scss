@@ -3,46 +3,49 @@ $textColor: #ffffff;
 $container: #1e1e1e;
 $confirm: #e4ff63;
 
-.toolbar {
-  position: fixed;
-  top: 10vh;
-  width: 100%;
-  max-width: 330px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  @media (max-width: 320px) {
-    max-width: 320px;
-    margin-left: 30px;
-  }
-
-  .backIcon {
-    color: $textColor;
-    @media (max-width: 320px) {
-      font-size: 18px;
-    }
-  }
-
-  .changeProfileText {
-    color: $textColor;
-    margin-left: 12px;
-    font-size: 22px;
-    padding-bottom: 3px;
-    font-weight: 600;
-
-    @media (max-width: 320px) {
-      font-size: 18px;
-    }
-  }
-}
-
 .changeProfileMenu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   height: 100vh;
+  width: 100%;
   background-color: $backgroundColor;
+
+  .toolbar {
+    // position: fixed;
+    // top: 10vh;
+    width: 100%;
+    max-width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 65px;
+    padding: 10px;
+    @media (max-width: 320px) {
+      max-width: 320px;
+      margin-left: 30px;
+    }
+
+    .backIcon {
+      color: $textColor;
+      @media (max-width: 320px) {
+        font-size: 18px;
+      }
+    }
+
+    .changeProfileText {
+      color: $textColor;
+      margin-left: 12px;
+      font-size: 22px;
+      padding-bottom: 3px;
+      font-weight: 600;
+
+      @media (max-width: 320px) {
+        font-size: 18px;
+      }
+    }
+  }
 
   .avatarContainer {
     display: flex;
@@ -68,8 +71,10 @@ $confirm: #e4ff63;
     background-color: $container;
     width: 100%;
     max-width: auto;
+    // max-width: 330px;
     border-radius: 50px;
     padding: 5px;
+    margin-bottom: 100px;
 
     .profileInfoSection2 {
       margin-left: auto;
@@ -105,7 +110,7 @@ $confirm: #e4ff63;
 
       .personalInfoInput {
         width: 100%;
-        max-width: 400px;
+        max-width: auto;
         background-color: transparent;
       }
 
@@ -182,4 +187,21 @@ $confirm: #e4ff63;
       }
     }
   }
+}
+
+.shadow {
+  width: 100%;
+  max-width: 600px;
+  height: 130px;
+  position: fixed;
+  bottom: 0;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(19, 19, 19, 0.822) 20%,
+    rgba(19, 19, 19, 0.993) 55%,
+    rgba(19, 19, 19, 1) 100%
+  );
+  z-index: 120;
 }
