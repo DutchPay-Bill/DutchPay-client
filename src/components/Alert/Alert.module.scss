@@ -1,0 +1,13 @@
+.alertContainer {
+    position: absolute;
+    z-index: 99;
+    max-width: 330px;
+    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 40%);
+}
+
+.alert {
+    top: 5vh;
+}

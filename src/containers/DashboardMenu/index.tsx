@@ -6,10 +6,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import dummyAvatar from '../../assets/images/dummyavatar.jpg'
 import { Link } from 'react-router-dom';
 import { RecentBill, BillHistory } from '../../components';
-import useCookiesChecker from '../../utils/authChecker';
+import useAuthChecker from '../../utils/authChecker';
 
 export default function DashboardProfile() {
-  useCookiesChecker(500)
+  useAuthChecker(0)
   return (
     <>
       <Box className={styles.dashboardMenu}>
@@ -24,7 +24,7 @@ export default function DashboardProfile() {
               </Box>
             </Grid>
             <Grid item xs={6}>
-              <Link to='/myaccount'>
+              <Link to='/my-account'>
                 <SettingsIcon className={styles.settingIcon} />
               </Link>
             </Grid>
@@ -41,7 +41,7 @@ export default function DashboardProfile() {
               <Typography className={styles.userHandle}>@dindayasmin</Typography>
             </Box>
             <Box>
-              <Link to="/myaccount">
+              <Link to="/my-account">
                 <Avatar
                   className={styles.avatar}
                   src={dummyAvatar}

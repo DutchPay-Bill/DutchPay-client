@@ -9,7 +9,7 @@ $color6: #c20f45;
   width: 100%;
   max-width: 600px;
   height: 150px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background: rgb(255, 255, 255);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(19, 19, 19, 0.822) 20%, rgba(19, 19, 19, 0.993) 55%, rgba(19, 19, 19, 1) 100%);
@@ -68,11 +68,14 @@ $color6: #c20f45;
         max-height: 700px;
       }
 
-      // @media screen and (max-width: 768px) {
-      //   .fullscrollBox {
-      //     max-height: 350px;
-      //   }
-      // }
+      /* Hide scrollbar for WebKit browsers (e.g., Chrome, Safari) */
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      /* Hide scrollbar for Firefox */
+      scrollbar-width: none;
 
       .billContainer {
         background-color: $color4;
