@@ -112,7 +112,8 @@ export default function RegisterForm() {
     try {
       const selectedValue = countryCode.replace("+", "");
       const phoneNumber = selectedValue + phone;
-      const value = { phone_number: phoneNumber }; //format nomor hpnya kyk apa? 62/+62/8~~?
+      const value = { phone_number: phoneNumber };
+      const phone_number = countryCode + phone
       const response = await validatePhone(value);
       if (response?.ok) {
         setOpen(true);
@@ -126,7 +127,7 @@ export default function RegisterForm() {
       });
       confirmationResult = await signInWithPhoneNumber(
         auth,
-        phoneNumber,
+        phone_number,
         recaptcha
       );
       setVerificationId(confirmationResult.verificationId);
