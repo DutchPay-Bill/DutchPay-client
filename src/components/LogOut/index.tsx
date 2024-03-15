@@ -1,14 +1,19 @@
-import React, { useContext } from 'react';
-import { Typography } from '@mui/material';
-import styles from './LogOut.module.scss';
-import { PublicData } from '../../utils/globalState';
+import React from "react";
+import { Typography } from "@mui/material";
+import styles from "./LogOut.module.scss";
+import { userLogout } from "../../utils/fetchApi";
 
 const LogOut: React.FC = () => {
-  const { logout } = useContext(PublicData);
-
-  const handleLogout = () => {
-    logout();
-    window.location.href = "/login";
+  const handleLogout = async () => {
+    try {
+      const response = await userLogout();
+      console.log("test", response);
+      if (response?.ok) {
+        window.location.href = "/login";
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

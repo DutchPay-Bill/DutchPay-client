@@ -2,28 +2,35 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PublicData } from './globalState';
+import { getUserProfile } from './fetchApi';
 
 const useAuthChecker = (interval: number) => {
-  const { authenticated, setOpen } = useContext(PublicData);
+  const { authenticated, setOpen, setAuthenticated } = useContext(PublicData);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authenticated) {
-      setTimeout(() => {
-        navigate('/dashboard');
-      }, interval)
-    } 
-    setTimeout(() => {
-      if (!authenticated) {
-        setTimeout(() => {
-          setOpen(true)
-        }, 500)
-        setTimeout(() => {
-          navigate('/login');
-        }, interval)
+    const checkAuthentication = async () => {
+      try {
+        const response = await getUserProfile();
+        if (!response?.ok) {
+          setOpen(true);
+          setAuthenticated(false);
+          setTimeout(() => {
+            navigate('/login');
+          }, interval)
+        } else {
+          setAuthenticated(true);
+          setTimeout(() => {
+            navigate('/dashboard');
+          }, interval)
+        }
+      } catch (error) {
+        console.error('Error while checking authentication:', error);
       }
-    }, 1000)
-  }, [authenticated, interval]);
+    };
+
+    checkAuthentication();
+  }, [authenticated, setAuthenticated, setOpen, navigate]);
 };
 
 export default useAuthChecker;

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Avatar, Grid, Typography } from '@mui/material'
 import Box from '@mui/material/Box'
 import styles from './Dashboard.module.scss'

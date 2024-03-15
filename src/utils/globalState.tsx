@@ -1,5 +1,4 @@
 import { createContext, ReactNode, useState, Dispatch, SetStateAction } from 'react';
-import { getUserProfile, userLogout } from './fetchApi';
 
 interface Props {
     children: ReactNode;
@@ -19,10 +18,9 @@ interface ContextProps {
     dataChanged: boolean;
     setDataChanged: Dispatch<SetStateAction<boolean>>;
     authenticated: boolean;
-    login: () => void;
-    logout: () => void;
     open: boolean,
     setOpen: Dispatch<SetStateAction<boolean>>
+    setAuthenticated: Dispatch<SetStateAction<boolean>>
 }
 
 const defaultValue: ContextProps = {
@@ -30,11 +28,10 @@ const defaultValue: ContextProps = {
     setUserData: () => {},
     dataChanged: true,
     setDataChanged: () => {},
-    authenticated: true,
-    login: () => {},
-    logout: () => {},
+    authenticated: false,
     open: false,
-    setOpen: ()=> {}
+    setOpen: ()=> {},
+    setAuthenticated: ()=> {}
 };
 
 export const PublicData = createContext<ContextProps>(defaultValue);
@@ -42,31 +39,11 @@ export const PublicData = createContext<ContextProps>(defaultValue);
 const GlobalState = ({ children }: Props) => {
     const [userData, setUserData] = useState<User[]>([]);
     const [dataChanged, setDataChanged] = useState<boolean>(true);
-    const [authenticated, setAuthenticated] = useState<boolean>(true);
+    const [authenticated, setAuthenticated] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
 
-    const login = async () => {
-        try {
-            const response = await getUserProfile()
-            const data = await response?.json()
-            if(response?.ok){
-                setAuthenticated(true);
-                setUserData(data)
-            }else {
-                setAuthenticated(false)
-            } 
-        } catch (error) {
-            console.error(error)
-        }
-    };
-
-    const logout = async () => {
-        await userLogout()
-            setAuthenticated(false);
-    };
-
     return (
-        <PublicData.Provider value={{ userData, setUserData, dataChanged, setDataChanged, authenticated, login, logout, open, setOpen }}>
+        <PublicData.Provider value={{ userData, setUserData, dataChanged, setDataChanged, authenticated, setAuthenticated, open, setOpen }}>
             {children}
         </PublicData.Provider>
     );
