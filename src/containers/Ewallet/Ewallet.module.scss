@@ -1,0 +1,23 @@
+$backgroundColor : #131313;
+
+.root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  min-height: 600px;
+  background-color: $backgroundColor;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+  .profile {
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+
+  .logout{
+    margin-bottom: 100px;
+  }

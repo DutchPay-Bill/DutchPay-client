@@ -22,7 +22,7 @@ const SetUp: React.FC = () => {
                     </RouterLink>
                 </Grid>
                 <Grid item xs={1} maxWidth={120}>
-                  <RouterLink to="#" className={styles.link}>
+                  <RouterLink to="/ewallet" className={styles.link}>
                     <Typography className={styles.ewallet}>E-Wallet</Typography>
                     <Typography className={styles.ewallet2} >connect your instant payment gateway</Typography>
                     <Typography className={styles.ewallet2}> using various e-wallet services</Typography>
