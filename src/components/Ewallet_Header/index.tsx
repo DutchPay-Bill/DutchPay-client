@@ -8,7 +8,7 @@ const Ewallet_Header: React.FC = () => {
   return (
     <Box component="header" className={styles.root}> 
       <Box component="nav" className={styles.toolbar}> 
-        <RouterLink to="/myaccount" className={styles.backbutton}><ArrowBackIosIcon/> </RouterLink>
+        <RouterLink to="/my-account" className={styles.backbutton}><ArrowBackIosIcon/> </RouterLink>
       </Box>
       <Typography variant="h6" fontWeight='bolder' className={styles.title} color='white'>
           E Wallet
