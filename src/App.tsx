@@ -27,6 +27,7 @@ const App = () => {
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
             <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/ewallet" element={<Ewallet />} />
             <Route path="/google-auth/failed" element={<GoogleAuthFail />} />
             <Route
               path="/google-auth/success"
@@ -37,15 +38,6 @@ const App = () => {
               element={
                 <>
                   <MyAccount />
-                  <PublicLayout />
-                </>
-              }
-            />
-            <Route
-              path="/ewallet"
-              element={
-                <>
-                  <Ewallet />
                   <PublicLayout />
                 </>
               }
