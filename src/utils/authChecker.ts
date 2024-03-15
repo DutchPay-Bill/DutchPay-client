@@ -9,12 +9,14 @@ const useAuthChecker = (interval: number) => {
 
   useEffect(() => {
     const user = async () => {
-      login()
+      await login()
     }
     user()
     setTimeout(() => {
     if (!authenticated) {
-      setOpen(true)
+      setTimeout(() => {
+        setOpen(true)
+      }, 200)
       setTimeout(() => {
         navigate('/login');
       }, interval)
@@ -24,7 +26,7 @@ const useAuthChecker = (interval: number) => {
         navigate('/dashboard');
       }, interval)
     }
-  }, 500)
+  }, 1000)
   }, [authenticated, interval, navigate]);
 };
 
