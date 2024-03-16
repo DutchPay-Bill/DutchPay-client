@@ -18,7 +18,6 @@ interface Register {
 }
 
 export const phoneLogin = async (value: PhoneLogin) => {
-  console.log(JSON.stringify(value));
   try {
     const response = await fetch(API_URL + "/v1/auth/login", {
       method: "POST",
@@ -33,12 +32,11 @@ export const phoneLogin = async (value: PhoneLogin) => {
     }
     return response;
   } catch (error: any) {
-    throw error
+    throw error;
   }
 };
 
 export const validatePhone = async (value: ValidatePhone) => {
-  console.log(JSON.stringify(value));
   try {
     const response = await fetch(API_URL + "/v1/auth/check-number", {
       method: "POST",
@@ -48,14 +46,16 @@ export const validatePhone = async (value: ValidatePhone) => {
       credentials: "include",
       body: JSON.stringify(value),
     });
+    if (!response.ok) {
+      throw response;
+    }
     return response;
-  } catch (error) {
-    console.error("An error occurred:", error);
+  } catch (error: any) {
+    throw error;
   }
 };
 
 export const register = async (value: Register) => {
-  console.log(JSON.stringify(value));
   try {
     const response = await fetch(API_URL + "/v1/auth/register", {
       method: "POST",
@@ -106,7 +106,6 @@ export const userLogout = async () => {
         "Content-Type": "application/json",
       },
     });
-    console.log("response", response);
     return response;
   } catch (error) {
     console.error("An error occurred:", error);

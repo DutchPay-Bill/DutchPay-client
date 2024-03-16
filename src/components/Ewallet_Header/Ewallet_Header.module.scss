@@ -1,0 +1,54 @@
+:root { --background-color: #131313; 
+    --black: #131313; 
+    --white: #DADADA; 
+    --yellow: #E4FF63; 
+  }
+  
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter-Regular.woff2') format('woff2'), 
+         url('/fonts/Inter-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  :root {
+    --font-family: 'Inter', sans-serif; 
+  }
+  
+  .root { 
+    background-color: var(--background-color); 
+    border-radius: 16px !important; 
+    padding: 8px;
+    height: 50px;
+    max-width: 330px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    right: 0;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .title { 
+    flex-grow: 1; 
+    color: #fff;  
+    font-family: var(--font-family);
+  }
+  
+  .backbutton { 
+  color: #fff; 
+  margin-top: 6px; 
+  }
+  
+  .toolbar { 
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    }
+  
+  

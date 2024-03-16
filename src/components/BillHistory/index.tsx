@@ -5,7 +5,8 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import styles from "./BillHistory.module.scss";
 import dummyAvatar from "../../assets/images/dummyavatar.jpg";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom"; // Assuming you are using React Router
 
 interface BillData {
   name: string;
@@ -18,10 +19,15 @@ interface BillData {
 export default function BillHistory() {
   const [FullScreen, setFullScreen] = useState(false);
   const [billData, setBillData] = useState(dummyBillData);
+  const location = useLocation();
 
-  const viewAllDataClick = () => {
-    setFullScreen(!FullScreen);
-  };
+  useEffect(() => {
+    if (location.pathname === "/history") {
+      setFullScreen(true);
+    } else {
+      setFullScreen(false);
+    }
+  }, [location]);
 
   const handleDeleteClick = (index: number) => {
     const updatedBillData = [...billData];
@@ -39,19 +45,28 @@ export default function BillHistory() {
         <Box className={styles.container}>
           <Box className={styles.header}>
             <Typography className={styles.title}>Your bills history</Typography>
-            <Typography className={styles.viewAll} onClick={viewAllDataClick}>
-              {FullScreen ? (
-                <>
-                  <KeyboardArrowLeftIcon className={styles.arrowIcon} />
-                  Hide All
-                </>
-              ) : (
-                <>
-                  View All
-                  <KeyboardArrowRightIcon className={styles.arrowIcon} />
-                </>
-              )}
-            </Typography>
+            {location.pathname !== "/history" && (
+              <>
+                {!FullScreen && (
+                  <Typography
+                    className={styles.viewAll}
+                    onClick={() => setFullScreen(true)}
+                  >
+                    View All
+                    <KeyboardArrowRightIcon className={styles.arrowIcon} />
+                  </Typography>
+                )}
+                {FullScreen && (
+                  <Typography
+                    className={styles.viewAll}
+                    onClick={() => setFullScreen(false)}
+                  >
+                    <KeyboardArrowLeftIcon className={styles.arrowIcon} />
+                    Hide All
+                  </Typography>
+                )}
+              </>
+            )}
           </Box>
           <Box
             className={`${styles.scrollbox} ${
@@ -101,7 +116,6 @@ export default function BillHistory() {
             ))}
           </Box>
         </Box>
-        <Box className={styles.shadow}></Box>
       </Box>
     </>
   );

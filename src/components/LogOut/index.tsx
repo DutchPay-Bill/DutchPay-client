@@ -1,17 +1,26 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Typography } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
 import styles from "./LogOut.module.scss";
-import { PublicData } from "../../utils/globalState";
+import { userLogout } from "../../utils/fetchApi";
 
 const LogOut: React.FC = () => {
-  const { logout } = useContext(PublicData);
+  const handleLogout = async () => {
+    try {
+      const response = await userLogout();
+      if (response?.ok) {
+        window.location.href = "/login";
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <RouterLink onClick={logout} to="/login" className={styles.root}>
+    <div className={styles.root} onClick={handleLogout}>
       <Typography variant="body1" className={styles.title}>
         Log out
       </Typography>
-    </RouterLink>
+    </div>
   );
 };
 

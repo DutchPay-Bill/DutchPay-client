@@ -6,4 +6,4 @@ export { default as DashboardPage } from "./DashboardPage";
 export { default as GoogleAuthFail } from "./GoogleAuthFail";
 export { default as GoogleAuthSuccess } from "./GoogleAuthSuccess";
 export { default as NewBillDashboard } from "./NewBillDashboard";
-export { default as ChangeProfilePage } from "./ChangeProfilePage";
+export { default as Ewallet } from "./Ewallet";

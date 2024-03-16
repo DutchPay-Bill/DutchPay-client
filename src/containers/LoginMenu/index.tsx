@@ -34,6 +34,7 @@ export default function LoginMenu() {
     "success" | "error" | "info" | "warning" | undefined
   >(undefined);
   const [alertMessage, setAlertMessage] = useState<string>("");
+  const [open, setOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -44,7 +45,9 @@ export default function LoginMenu() {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     if (name === "phone") {
-      setPhone(value);
+      if (/^\d*$/.test(value)) {
+        setPhone(value);
+      }
     } else if (name === "password") {
       setPasword(value);
     }
@@ -56,19 +59,19 @@ export default function LoginMenu() {
       const phone_number = selectedValue + phone;
       const value = { phone_number, password };
       const response = await phoneLogin(value);
-      setTimeout(() => {
-        if (response?.ok) {
-          setAlertSeverity("success");
-          setAlertMessage("Login successful. Redirecting to dashboard");
-          setTimeout(() => {
-            navigate("/dashboard");
-          }, 2000);
-        }
-      }, 1500);
+      if (response?.ok) {
+        setOpen(true);
+        setAlertSeverity("success");
+        setAlertMessage("Login successful. Redirecting to dashboard");
+        setTimeout(() => {
+          navigate("/dashboard", { replace: true });
+        }, 1000);
+      }
     } catch (error) {
       console.error(error);
       if (error instanceof Response) {
         const result = await error.json();
+        setOpen(true);
         setAlertSeverity("error");
         setAlertMessage(result.message);
       }
@@ -82,7 +85,12 @@ export default function LoginMenu() {
   return (
     <Box className={styles.loginMenu}>
       {alertSeverity && alertMessage && (
-        <CustomAlert severity={alertSeverity} message={alertMessage} />
+        <CustomAlert
+          severity={alertSeverity}
+          message={alertMessage}
+          open={open}
+          setOpen={setOpen}
+        />
       )}
       <img className={styles.logo} src={logo} alt="Dutch Pay Logo" />
 
