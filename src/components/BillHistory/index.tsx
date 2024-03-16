@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import styles from './BillHistory.module.scss';
-import DeleteIcon from '@mui/icons-material/Delete';
+// import DeleteIcon from '@mui/icons-material/Delete';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom'; // Assuming you are using React Router
 import { API_URL } from '../../utils/access';
@@ -54,11 +54,11 @@ export default function BillHistory() {
     getBillHistory();
   }, []);
 
-  const handleDeleteClick = (index: number) => {
-    const updatedBillData = [...billData];
-    updatedBillData.splice(index, 1);
-    setBillData(updatedBillData);
-  };
+  // const handleDeleteClick = (index: number) => {
+  //   const updatedBillData = [...billData];
+  //   updatedBillData.splice(index, 1);
+  //   setBillData(updatedBillData);
+  // };
 
   // const getRandomColor = () => {
   //   // getRandomColor function remains unchanged
@@ -104,9 +104,9 @@ export default function BillHistory() {
                     <Typography className={styles.billDate}>
                       {new Date(bill.date).toLocaleDateString()}
                     </Typography>
-                    <Box className={styles.deleteBackground} onClick={() => handleDeleteClick(index)}>
+                    {/* <Box className={styles.deleteBackground} onClick={() => handleDeleteClick(index)}>
                       <DeleteIcon className={styles.deleteIcon} />
-                    </Box>
+                    </Box> */}
                   </Box>
                 </Box>
                 <Box className={styles.billAmount}>
