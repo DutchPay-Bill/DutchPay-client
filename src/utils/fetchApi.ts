@@ -111,3 +111,19 @@ export const userLogout = async () => {
     console.error("An error occurred:", error);
   }
 };
+
+export const getBillHistory = async () => {
+  try {
+    const response = await fetch(API_URL + "/v1/bill", {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
+
