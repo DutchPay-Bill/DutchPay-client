@@ -11,6 +11,7 @@ import {
   GoogleAuthSuccess,
   NewBillDashboard,
   Ewallet,
+  ChangeProfilePage,
 } from "./pages";
 import LoadingAppPage from "./pages/LoadingAppPage";
 import GlobalState from "./utils/globalState";
@@ -25,25 +26,11 @@ const App = () => {
             <Route path="/" element={<LoadingAppPage />} />
             <Route path="/login" element={<LoginDashBoardPage />} />
             <Route path="/register" element={<RegisterDashboardPage />} />
-            <Route path="/my-account" element={<MyAccount />} />
-            <Route path="/google-auth/failed" element={<GoogleAuthFail />} />
-            <Route
-              path="/google-auth/success"
-              element={<GoogleAuthSuccess />}
-            />
-            <Route
-              path="/myaccount"
-              element={
-                <>
-                  <MyAccount />
-                  <PublicLayout />
-                </>
-              }
-            />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/new-bill" element={<NewBillDashboard />} />
             <Route path="/history" element={<BillHistoryPage />} />
             <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/change-profile" element={<ChangeProfilePage />} />
             <Route path="/e-wallet" element={<Ewallet />} />
             <Route path="/google-auth/failed" element={<GoogleAuthFail />} />
             <Route

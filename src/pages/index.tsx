@@ -7,3 +7,4 @@ export { default as GoogleAuthFail } from "./GoogleAuthFail";
 export { default as GoogleAuthSuccess } from "./GoogleAuthSuccess";
 export { default as NewBillDashboard } from "./NewBillDashboard";
 export { default as Ewallet } from "./Ewallet";
+export { default as ChangeProfilePage } from "./ChangeProfilePage";
